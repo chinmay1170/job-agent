@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import time
 from typing import Literal
 
 from pydantic import BaseModel, Field
@@ -111,13 +112,24 @@ def run_judge(limit: int = 60) -> dict:
         batch = jobs[start:start + BATCH_SIZE]
         batch_ids = {j["id"] for j in batch}
         totals["batches"] += 1
-        try:
-            result = llm.ask_json(_build_prompt(profile, batch), JudgeBatch,
-                                  model="sonnet")
-        except llm.LLMError as e:
-            print(f"ERROR: judge batch {totals['batches']} failed: {e}")
+
+        # claude -p rate-limits when fired back-to-back; pace + retry with
+        # exponential backoff so a transient rc=1 doesn't drop a whole batch.
+        result = None
+        for attempt in range(4):
+            try:
+                result = llm.ask_json(_build_prompt(profile, batch), JudgeBatch,
+                                      model="sonnet")
+                break
+            except llm.LLMError as e:
+                wait = 10 * (2 ** attempt)  # 10, 20, 40, 80s
+                print(f"  batch {totals['batches']} attempt {attempt + 1} failed "
+                      f"({str(e)[:80]}); retrying in {wait}s")
+                time.sleep(wait)
+        if result is None:
+            print(f"ERROR: judge batch {totals['batches']} gave up after 4 attempts")
             db.log_event(conn, "score", None, "judge_batch_error",
-                         {"batch": totals["batches"], "error": str(e)[:300]})
+                         {"batch": totals["batches"]})
             continue
 
         seen: set[int] = set()
@@ -148,6 +160,7 @@ def run_judge(limit: int = 60) -> dict:
                      {"batch": totals["batches"], "jobs": len(batch),
                       "scored": len(seen), "missing": sorted(missing)})
         print(f"judge batch {totals['batches']}: {len(seen)}/{len(batch)} scored")
+        time.sleep(3)  # pace successful batches to avoid rate-limiting
 
     print(f"judge: {len(jobs)} prefiltered -> {totals['apply_queued']} apply_queued, "
           f"{totals['scored']} scored (borderline), {totals['skipped']} skipped, "
