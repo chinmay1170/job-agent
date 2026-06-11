@@ -59,7 +59,26 @@ def _apply_one(conn, page, job, app_row, caps: dict, dry_run: bool) -> str:
         _enqueue_review(conn, job_id, "login_wall", {"url": form_url})
         return "queued"
 
+    # SPA application forms (e.g. N26) mount late — retry with backoff and
+    # scroll, and follow an in-page "Apply" button if the form isn't present.
     schema = browser.extract_form_schema(page)
+    if not schema:
+        for sel in ("a:has-text('Apply')", "button:has-text('Apply')",
+                    "a[href*='apply']"):
+            loc = page.locator(sel).first
+            try:
+                if loc.count() and loc.is_visible():
+                    loc.click(timeout=5000)
+                    page.wait_for_timeout(2500)
+                    break
+            except Exception:  # noqa: BLE001
+                continue
+    for _ in range(4):
+        schema = browser.extract_form_schema(page)
+        if schema:
+            break
+        page.mouse.wheel(0, 1200)
+        page.wait_for_timeout(2500)
     if not schema:
         _enqueue_review(conn, job_id, "no_form_found",
                         {"url": form_url, "screenshot": proof.snap(page, job_id, "no_form")})
