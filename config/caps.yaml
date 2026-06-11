@@ -11,4 +11,9 @@ email_weekends: false
 followup_after_days: 7
 field_confidence_threshold: 0.85
 judge_fit_threshold: 70
-dry_run: true                  # GLOBAL: no submits, no sends until flipped
+dry_run: false                 # LIVE since 2026-06-12 (user-approved); outreach still shadows first 3 days via --shadow
+# Which resume PDF gets uploaded to applications and outreach:
+#   original = the user's own hand-made PDF (config/Chinmay_Krishna_Resume.pdf)
+#   tailored = per-job Typst-generated PDF (riskier: AI-resume filters)
+resume_mode: original
+original_resume_path: config/Chinmay_Krishna_Resume.pdf

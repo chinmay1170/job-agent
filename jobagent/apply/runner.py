@@ -77,7 +77,8 @@ def _apply_one(conn, page, job, app_row, caps: dict, dry_run: bool) -> str:
         return "queued"
 
     fill_failures = filler.execute_plan(page, plan, threshold)
-    uploaded = filler.upload_files(page, app_row["resume_path"], app_row["cover_path"])
+    resume_pdf = config.resume_pdf(app_row["resume_path"])
+    uploaded = filler.upload_files(page, resume_pdf, app_row["cover_path"])
     if fill_failures or not uploaded:
         _enqueue_review(conn, job_id, "low_confidence", {
             "url": form_url, "fill_failures": fill_failures, "resume_uploaded": uploaded,

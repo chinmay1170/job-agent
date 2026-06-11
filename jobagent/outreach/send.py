@@ -178,8 +178,9 @@ def run_outreach(shadow: bool = False) -> None:
                 app = conn.execute(
                     "SELECT resume_path FROM applications WHERE job_id=?", (item["job_id"],)
                 ).fetchone()
-                if app and app["resume_path"] and Path(app["resume_path"]).exists():
-                    attach = [Path(app["resume_path"])]
+                resume = config.resume_pdf(app["resume_path"] if app else None)
+                if resume and Path(resume).exists():
+                    attach = [Path(resume)]
 
             real_to = item["email"]
             to, subject = real_to, draft["subject"]

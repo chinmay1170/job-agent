@@ -32,3 +32,19 @@ def caps() -> dict:
 
 def blocklist() -> dict:
     return load("blocklist")
+
+
+def resume_pdf(tailored_path: str | None) -> str:
+    """The resume to upload/attach, honoring caps.resume_mode.
+
+    'original' (default) returns the user's own hand-made PDF — tailored,
+    AI-generated PDFs trip ATS/recruiter AI-resume filters.
+    """
+    c = caps()
+    if c.get("resume_mode", "original") == "original":
+        path = CONFIG_DIR.parent / c.get(
+            "original_resume_path", "config/Chinmay_Krishna_Resume.pdf"
+        )
+        if path.exists():
+            return str(path)
+    return tailored_path or ""
