@@ -58,6 +58,7 @@ else
     run_stage discover  uv run --no-sync jobagent discover --source all
     run_stage prefilter uv run --no-sync jobagent score prefilter
     run_stage judge     uv run --no-sync jobagent score judge
+    run_stage enrich    uv run --no-sync jobagent enrich
     run_stage tailor    uv run --no-sync jobagent tailor --all-queued
     run_stage apply     uv run --no-sync jobagent apply --limit "$APPLY_LIMIT"
     run_stage outreach  uv run --no-sync jobagent outreach run

@@ -117,6 +117,13 @@ def digest() -> None:
 
 
 @app.command()
+def enrich(limit: int = typer.Option(25, "--limit")) -> None:
+    """Fill market cap / employee count / HQ for pipeline companies."""
+    from jobagent.enrich import enrich_pipeline
+    enrich_pipeline(limit=limit)
+
+
+@app.command()
 def dashboard(port: int = typer.Option(8787, "--port")) -> None:
     """Serve the tracking dashboard on localhost."""
     import uvicorn

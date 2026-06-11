@@ -193,7 +193,8 @@ def index(request: Request) -> HTMLResponse:
             SELECT a.id, a.status, a.method, a.submitted_at, a.created_at,
                    a.resume_path, a.cover_path, a.proof_screenshot,
                    j.title, j.url, j.score,
-                   c.name AS company, c.region
+                   c.name AS company, c.region,
+                   c.market_cap, c.employee_count, c.hq
             FROM applications a
             JOIN jobs j ON j.id = a.job_id
             LEFT JOIN companies c ON c.id = j.company_id

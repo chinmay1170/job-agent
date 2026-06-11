@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.chinmay.jobagent.dashboard</string>
+
+    <!-- Always-on dashboard at http://localhost:8787 while the laptop is up. -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/uv</string>
+        <string>run</string>
+        <string>--no-sync</string>
+        <string>jobagent</string>
+        <string>dashboard</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/chinmaykrishna/Documents/job-agent</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONPATH</key>
+        <string>/Users/chinmaykrishna/Documents/job-agent</string>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    </dict>
+
+    <!-- Start at login and keep it alive (restart if it ever exits). -->
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/chinmaykrishna/Documents/job-agent/logs/dashboard.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/chinmaykrishna/Documents/job-agent/logs/dashboard.log</string>
+</dict>
+</plist>

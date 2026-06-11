@@ -15,6 +15,10 @@ CREATE TABLE IF NOT EXISTS companies (
   sponsor_evidence TEXT,
   blocklisted INTEGER DEFAULT 0,
   cooldown_until TEXT,
+  market_cap TEXT,          -- e.g. "$48B" or "Private"
+  employee_count TEXT,      -- e.g. "~4,000" or "10,000+"
+  hq TEXT,                  -- headquarters city, country
+  enriched_at TEXT,
   created_at TEXT DEFAULT (datetime('now'))
 );
 

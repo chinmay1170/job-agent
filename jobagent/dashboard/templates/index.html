@@ -185,14 +185,19 @@
       </select>
     </div>
     <div class="table-scroll"><table id="appTable">
-      <thead><tr><th>Date</th><th>Company</th><th>Role</th><th>Region</th><th>Score</th><th>Status</th><th>Files</th></tr></thead>
+      <thead><tr><th>Date</th><th>Company</th><th>Role</th><th>Region</th><th>Size</th><th>Score</th><th>Status</th><th>Files</th></tr></thead>
       <tbody>
       {% for a in applications %}
         <tr data-co="{{ (a.company or '')|lower }}" data-role="{{ (a.title or '')|lower }}" data-status="{{ a.status }}" data-region="{{ a.region or '' }}">
           <td style="color:var(--muted);white-space:nowrap;">{{ (a.submitted_at or a.created_at or '')[:10] }}</td>
-          <td><b>{{ a.company or '?' }}</b></td>
+          <td><b>{{ a.company or '?' }}</b>{% if a.hq %}<div style="color:var(--muted);font-size:11px;">{{ a.hq }}</div>{% endif %}</td>
           <td>{% if a.url %}<a href="{{ a.url }}" target="_blank">{{ a.title or '?' }}</a>{% else %}{{ a.title or '?' }}{% endif %}</td>
           <td><span class="chip">{{ a.region or '—' }}</span></td>
+          <td style="white-space:nowrap;font-size:12px;">
+            {% if a.market_cap %}<div title="market cap">{{ a.market_cap }}</div>{% endif %}
+            {% if a.employee_count %}<div style="color:var(--muted);" title="employees">{{ a.employee_count }}</div>{% endif %}
+            {% if not a.market_cap and not a.employee_count %}<span style="color:var(--muted);">—</span>{% endif %}
+          </td>
           <td>{{ a.score if a.score is not none else '—' }}</td>
           <td><span class="pill {{ a.status|status_class }}">{{ (a.status or '').replace('_',' ') }}</span></td>
           <td style="white-space:nowrap;">
