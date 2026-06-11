@@ -151,7 +151,8 @@ TASK: Produce a tailoring plan.
 - selected_experience: pick the most relevant roles (keep every employer; you may
   trim bullets). Copy company and title EXACTLY as written in the profile. Pick
   3-5 bullets for the most relevant role, 2-4 for others, fewest for the oldest.
-- selected_projects: pick at most 1 project with 2-3 bullets (or none if irrelevant).
+- selected_projects: pick the single most relevant project with 2-3 bullets
+  (select at least one).
 - cover_letter_paragraphs: exactly 3 short paragraphs, 180 words TOTAL maximum,
   addressed to {company_name} for the {job['title']} role. Ground every claim in
   the profile.
@@ -213,6 +214,12 @@ def _resume_content(profile: dict, plan: TailorPlan) -> dict:
                 "dates": _dates(entry),
                 "bullets": [b.strip() for b in match],
             })
+    if not projects:  # never drop the section — fall back to profile verbatim
+        projects = [
+            {"name": e["name"], "stack": e.get("stack", ""), "dates": _dates(e),
+             "bullets": [b["text"].strip() for b in e["bullets"]]}
+            for e in profile.get("projects", [])
+        ]
 
     education = [
         {"school": e["school"], "degree": e["degree"],

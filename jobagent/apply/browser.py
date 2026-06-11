@@ -62,6 +62,12 @@ _FORM_SCHEMA_JS = r"""
       : el.tagName === 'TEXTAREA' ? 'textarea' : (el.type || 'text');
     if (['hidden', 'submit', 'button', 'image'].includes(type)) return;
     if (el.offsetParent === null && type !== 'file') return;  // invisible
+    // Skip framework-internal companions (react-select's hidden required
+    // input, intl-tel-input search box): filling the real combobox/tel
+    // control satisfies them.
+    if ((el.className || '').includes('requiredInput')) return;
+    if (!el.id && !el.name && !el.getAttribute('aria-label') &&
+        el.closest('div')?.parentElement?.querySelector('[role="combobox"]')) return;
     const sel = selectorFor(el);
     const key = type === 'radio' || type === 'checkbox' ? `${el.name}::${el.value}` : sel;
     if (seen.has(key)) return;

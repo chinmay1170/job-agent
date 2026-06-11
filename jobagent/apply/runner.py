@@ -29,7 +29,12 @@ def _cover_text(job_id: int) -> str:
     content = proof.ARTIFACTS / str(job_id) / "content.json"
     if content.exists():
         data = json.loads(content.read_text())
-        paras = data.get("cover_letter_paragraphs") or data.get("body_paragraphs") or []
+        paras = (
+            data.get("cover", {}).get("body_paragraphs")
+            or data.get("plan", {}).get("cover_letter_paragraphs")
+            or data.get("cover_letter_paragraphs")
+            or []
+        )
         return "\n\n".join(paras)
     return ""
 
