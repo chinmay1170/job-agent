@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.chinmay.jobagent</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>scripts/run_daily.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/chinmaykrishna/Documents/job-agent</string>
+
+    <!-- Two daily runs share this script: run_daily.sh detects hour >= 17
+         and runs the lighter evening pass (inbox scan + apply + digest). -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Hour</key>
+            <integer>9</integer>
+            <key>Minute</key>
+            <integer>30</integer>
+        </dict>
+        <dict>
+            <key>Hour</key>
+            <integer>19</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/Users/chinmaykrishna/Documents/job-agent/logs/launchd.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/chinmaykrishna/Documents/job-agent/logs/launchd.log</string>
+</dict>
+</plist>
