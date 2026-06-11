@@ -1,0 +1,546 @@
+# Curated seed list: companies that (a) are known visa sponsors in EU/UK/UAE/AU
+# (or are UAE-based) and (b) host jobs on a public ATS board.
+#
+# EVERY entry was verified with a live HTTP request to the matching public ATS
+# API on 2026-06-11, requiring HTTP 200 AND at least one live job posting
+# (dormant boards — e.g. Workable accounts left behind after an ATS migration,
+# lever/atlassian with 0 postings — were excluded):
+#   greenhouse:      boards-api.greenhouse.io/v1/boards/{slug}/jobs
+#   lever:           api.lever.co/v0/postings/{slug}?mode=json (+ api.eu.lever.co)
+#   ashby:           api.ashbyhq.com/posting-api/job-board/{slug}
+#   workable:        apply.workable.com/api/v3/accounts/{slug}/jobs (total > 0)
+#   smartrecruiters: api.smartrecruiters.com/v1/companies/{slug}/postings (totalFound > 0
+#                    — the endpoint returns 200 for ANY identifier, so 200 alone is meaningless)
+#
+# region: eu|uk|uae|au|us   ats: greenhouse|lever|ashby|workable|smartrecruiters
+companies:
+  # --- EU (NL/DE/FR/Nordics/other; IND-recognised + EU tech sponsors) ---
+  - name: Adyen
+    region: eu
+    ats: greenhouse
+    slug: adyen
+    verified: 2026-06-11
+  - name: Aircall
+    region: eu
+    ats: lever
+    slug: aircall
+    verified: 2026-06-11
+  - name: Alan
+    region: eu
+    ats: ashby
+    slug: alan
+    verified: 2026-06-11
+  - name: Algolia
+    region: eu
+    ats: greenhouse
+    slug: algolia
+    verified: 2026-06-11
+  - name: Babbel
+    region: eu
+    ats: ashby
+    slug: babbel
+    verified: 2026-06-11
+  - name: Back Market
+    region: eu
+    ats: ashby
+    slug: backmarket
+    verified: 2026-06-11
+  - name: Bird
+    region: eu
+    ats: greenhouse
+    slug: bird
+    verified: 2026-06-11
+  - name: Bitpanda
+    region: eu
+    ats: greenhouse
+    slug: bitpanda
+    verified: 2026-06-11
+  - name: BlaBlaCar
+    region: eu
+    ats: lever
+    slug: blablacar
+    verified: 2026-06-11
+  - name: Catawiki
+    region: eu
+    ats: greenhouse
+    slug: catawiki
+    verified: 2026-06-11
+  - name: Celonis
+    region: eu
+    ats: greenhouse
+    slug: celonis
+    verified: 2026-06-11
+  - name: Choco
+    region: eu
+    ats: ashby
+    slug: choco
+    verified: 2026-06-11
+  - name: Collibra
+    region: eu
+    ats: greenhouse
+    slug: collibra
+    verified: 2026-06-11
+  - name: Contentful
+    region: eu
+    ats: greenhouse
+    slug: contentful
+    verified: 2026-06-11
+  - name: Contentsquare
+    region: eu
+    ats: lever
+    slug: contentsquare
+    verified: 2026-06-11
+  - name: DataCamp
+    region: eu
+    ats: greenhouse
+    slug: datacamp
+    verified: 2026-06-11
+  - name: Dataiku
+    region: eu
+    ats: greenhouse
+    slug: dataiku
+    verified: 2026-06-11
+  - name: DeepL
+    region: eu
+    ats: ashby
+    slug: deepl
+    verified: 2026-06-11
+  - name: Delivery Hero
+    region: eu
+    ats: smartrecruiters
+    slug: DeliveryHero
+    verified: 2026-06-11
+  - name: Doctolib
+    region: eu
+    ats: greenhouse
+    slug: doctolib
+    verified: 2026-06-11
+  - name: Dust
+    region: eu
+    ats: ashby
+    slug: dust
+    verified: 2026-06-11
+  - name: Epidemic Sound
+    region: eu
+    ats: ashby
+    slug: epidemic-sound
+    verified: 2026-06-11
+  - name: Farfetch
+    region: eu
+    ats: lever
+    slug: farfetch
+    verified: 2026-06-11
+  - name: Flix
+    region: eu
+    ats: greenhouse
+    slug: flix
+    verified: 2026-06-11
+  - name: Flow Traders
+    region: eu
+    ats: greenhouse
+    slug: flowtraders
+    verified: 2026-06-11
+  - name: GetYourGuide
+    region: eu
+    ats: greenhouse
+    slug: getyourguide
+    verified: 2026-06-11
+  - name: Grover
+    region: eu
+    ats: greenhouse
+    slug: grover
+    verified: 2026-06-11
+  - name: HelloFresh
+    region: eu
+    ats: greenhouse
+    slug: hellofresh
+    verified: 2026-06-11
+  - name: Hugging Face
+    region: eu
+    ats: workable
+    slug: huggingface
+    verified: 2026-06-11
+  - name: IMC Trading
+    region: eu
+    ats: greenhouse
+    slug: imc
+    verified: 2026-06-11
+  - name: Ledger
+    region: eu
+    ats: lever
+    slug: ledger
+    verified: 2026-06-11
+  - name: Lokalise
+    region: eu
+    ats: greenhouse
+    slug: lokalise
+    verified: 2026-06-11
+  - name: Mistral AI
+    region: eu
+    ats: lever
+    slug: mistral
+    verified: 2026-06-11
+  - name: Mollie
+    region: eu
+    ats: ashby
+    slug: mollie
+    verified: 2026-06-11
+  - name: Moss
+    region: eu
+    ats: ashby
+    slug: moss
+    verified: 2026-06-11
+  - name: N26
+    region: eu
+    ats: greenhouse
+    slug: n26
+    verified: 2026-06-11
+  - name: Nexthink
+    region: eu
+    ats: smartrecruiters
+    slug: Nexthink
+    verified: 2026-06-11
+  - name: Pennylane
+    region: eu
+    ats: lever
+    slug: pennylane
+    verified: 2026-06-11
+  - name: Pigment
+    region: eu
+    ats: lever
+    slug: pigment
+    verified: 2026-06-11
+  - name: Pipedrive
+    region: eu
+    ats: lever
+    slug: pipedrive
+    verified: 2026-06-11
+  - name: Proton
+    region: eu
+    ats: greenhouse
+    slug: proton
+    verified: 2026-06-11
+  - name: Qonto
+    region: eu
+    ats: lever
+    slug: qonto
+    verified: 2026-06-11
+  - name: Raisin
+    region: eu
+    ats: greenhouse
+    slug: raisin
+    verified: 2026-06-11
+  - name: RELEX Solutions
+    region: eu
+    ats: greenhouse
+    slug: relex
+    verified: 2026-06-11
+  - name: Remote
+    region: eu
+    ats: greenhouse
+    slug: remotecom
+    verified: 2026-06-11
+  - name: Sendcloud
+    region: eu
+    ats: greenhouse
+    slug: sendcloud
+    verified: 2026-06-11
+  - name: Smartly
+    region: eu
+    ats: greenhouse
+    slug: smartlyio
+    verified: 2026-06-11
+  - name: Solaris
+    region: eu
+    ats: greenhouse
+    slug: solarisbank
+    verified: 2026-06-11
+  - name: Sorare
+    region: eu
+    ats: ashby
+    slug: sorare
+    verified: 2026-06-11
+  - name: Spotify
+    region: eu
+    ats: lever
+    slug: spotify
+    verified: 2026-06-11
+  - name: SumUp
+    region: eu
+    ats: greenhouse
+    slug: sumup
+    verified: 2026-06-11
+  - name: Swile
+    region: eu
+    ats: lever
+    slug: swile
+    verified: 2026-06-11
+  - name: Trade Republic
+    region: eu
+    ats: greenhouse
+    slug: traderepublic
+    verified: 2026-06-11
+  - name: Typeform
+    region: eu
+    ats: greenhouse
+    slug: typeform
+    verified: 2026-06-11
+  - name: Veriff
+    region: eu
+    ats: greenhouse
+    slug: veriff
+    verified: 2026-06-11
+  - name: Wolt
+    region: eu
+    ats: greenhouse
+    slug: wolt
+    verified: 2026-06-11
+  # --- UK (Skilled Worker licensed sponsors) ---
+  - name: Checkout.com
+    region: uk
+    ats: ashby
+    slug: checkout.com
+    verified: 2026-06-11
+  - name: Deliveroo
+    region: uk
+    ats: ashby
+    slug: deliveroo
+    verified: 2026-06-11
+  - name: ElevenLabs
+    region: uk
+    ats: ashby
+    slug: elevenlabs
+    verified: 2026-06-11
+  - name: Fresha
+    region: uk
+    ats: lever
+    slug: fresha
+    verified: 2026-06-11
+  - name: GoCardless
+    region: uk
+    ats: greenhouse
+    slug: gocardless
+    verified: 2026-06-11
+  - name: Graphcore
+    region: uk
+    ats: greenhouse
+    slug: graphcore
+    verified: 2026-06-11
+  - name: Improbable
+    region: uk
+    ats: ashby
+    slug: improbable
+    verified: 2026-06-11
+  - name: Lendable
+    region: uk
+    ats: ashby
+    slug: lendable
+    verified: 2026-06-11
+  - name: Marshmallow
+    region: uk
+    ats: ashby
+    slug: marshmallow
+    verified: 2026-06-11
+  - name: Monzo
+    region: uk
+    ats: greenhouse
+    slug: monzo
+    verified: 2026-06-11
+  - name: Paddle
+    region: uk
+    ats: ashby
+    slug: paddle
+    verified: 2026-06-11
+  - name: PolyAI
+    region: uk
+    ats: greenhouse
+    slug: polyai
+    verified: 2026-06-11
+  - name: Skyscanner
+    region: uk
+    ats: greenhouse
+    slug: skyscanner
+    verified: 2026-06-11
+  - name: Starling Bank
+    region: uk
+    ats: workable
+    slug: starling-bank
+    verified: 2026-06-11
+  - name: Synthesia
+    region: uk
+    ats: ashby
+    slug: synthesia
+    verified: 2026-06-11
+  - name: Thought Machine
+    region: uk
+    ats: ashby
+    slug: thought-machine
+    verified: 2026-06-11
+  - name: Tide
+    region: uk
+    ats: greenhouse
+    slug: tide
+    verified: 2026-06-11
+  - name: Trainline
+    region: uk
+    ats: ashby
+    slug: trainline
+    verified: 2026-06-11
+  - name: Wayve
+    region: uk
+    ats: greenhouse
+    slug: wayve
+    verified: 2026-06-11
+  - name: Wise
+    region: uk
+    ats: smartrecruiters
+    slug: Wise
+    verified: 2026-06-11
+  - name: Zilch
+    region: uk
+    ats: ashby
+    slug: zilch
+    verified: 2026-06-11
+  # --- UAE (UAE-based / Dubai-headquartered) ---
+  - name: Binance
+    region: uae
+    ats: lever
+    slug: binance
+    verified: 2026-06-11
+  - name: Careem
+    region: uae
+    ats: greenhouse
+    slug: careem
+    verified: 2026-06-11
+  - name: Lean Technologies
+    region: uae
+    ats: ashby
+    slug: leantech
+    verified: 2026-06-11
+  - name: OKX
+    region: uae
+    ats: greenhouse
+    slug: okx
+    verified: 2026-06-11
+  - name: Ziina
+    region: uae
+    ats: ashby
+    slug: ziina
+    verified: 2026-06-11
+  # --- AU (standard business sponsors) ---
+  - name: Airwallex
+    region: au
+    ats: ashby
+    slug: airwallex
+    verified: 2026-06-11
+  - name: Brighte
+    region: au
+    ats: lever
+    slug: brighte
+    verified: 2026-06-11
+  - name: Canva
+    region: au
+    ats: smartrecruiters
+    slug: Canva
+    verified: 2026-06-11
+  - name: Culture Amp
+    region: au
+    ats: greenhouse
+    slug: cultureamp
+    verified: 2026-06-11
+  - name: Deputy
+    region: au
+    ats: lever
+    slug: deputy
+    verified: 2026-06-11
+  - name: Dovetail
+    region: au
+    ats: ashby
+    slug: dovetail
+    verified: 2026-06-11
+  - name: Eucalyptus
+    region: au
+    ats: greenhouse
+    slug: eucalyptus
+    verified: 2026-06-11
+  - name: Harrison.ai
+    region: au
+    ats: ashby
+    slug: harrison.ai
+    verified: 2026-06-11
+  - name: Immutable
+    region: au
+    ats: lever
+    slug: immutable
+    verified: 2026-06-11
+  - name: Mable
+    region: au
+    ats: lever
+    slug: mable
+    verified: 2026-06-11
+  - name: Octopus Deploy
+    region: au
+    ats: greenhouse
+    slug: octopusdeploy
+    verified: 2026-06-11
+  - name: Rokt
+    region: au
+    ats: ashby
+    slug: rokt
+    verified: 2026-06-11
+  # --- US (established H-1B sponsors) ---
+  - name: Airbnb
+    region: us
+    ats: greenhouse
+    slug: airbnb
+    verified: 2026-06-11
+  - name: Cloudflare
+    region: us
+    ats: greenhouse
+    slug: cloudflare
+    verified: 2026-06-11
+  - name: Coinbase
+    region: us
+    ats: greenhouse
+    slug: coinbase
+    verified: 2026-06-11
+  - name: Databricks
+    region: us
+    ats: greenhouse
+    slug: databricks
+    verified: 2026-06-11
+  - name: Datadog
+    region: us
+    ats: greenhouse
+    slug: datadog
+    verified: 2026-06-11
+  - name: Figma
+    region: us
+    ats: greenhouse
+    slug: figma
+    verified: 2026-06-11
+  - name: Notion
+    region: us
+    ats: ashby
+    slug: notion
+    verified: 2026-06-11
+  - name: Palantir
+    region: us
+    ats: lever
+    slug: palantir
+    verified: 2026-06-11
+  - name: Pinterest
+    region: us
+    ats: greenhouse
+    slug: pinterest
+    verified: 2026-06-11
+  - name: Reddit
+    region: us
+    ats: greenhouse
+    slug: reddit
+    verified: 2026-06-11
+  - name: Stripe
+    region: us
+    ats: greenhouse
+    slug: stripe
+    verified: 2026-06-11
