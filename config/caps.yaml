@@ -1,0 +1,14 @@
+# Safety caps. Start conservative, ramp manually as quality is verified.
+applications_per_day: 3        # ramp: 3 -> 8 -> 15
+emails_per_day: 10             # hard ceiling 20; deliverability protection
+emails_hard_max: 20
+per_company_lifetime: 2
+company_cooldown_days: 30
+max_apply_minutes_per_run: 45
+min_email_gap_minutes: 8
+email_send_window: {start_hour: 9, end_hour: 18}   # recipient-local approx
+email_weekends: false
+followup_after_days: 7
+field_confidence_threshold: 0.85
+judge_fit_threshold: 70
+dry_run: true                  # GLOBAL: no submits, no sends until flipped

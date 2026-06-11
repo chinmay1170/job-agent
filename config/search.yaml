@@ -1,0 +1,85 @@
+# What to look for and where.
+titles:
+  include:
+    - senior software engineer
+    - senior backend engineer
+    - senior software developer
+    - staff software engineer
+    - lead software engineer
+    - backend engineer
+    - platform engineer
+    - distributed systems engineer
+    - software engineer iii
+    - sde 3
+    - sde iii
+  # Title must ALSO match one of these domains unless seniority is explicit.
+  domains:
+    - backend
+    - back-end
+    - platform
+    - distributed
+    - infrastructure
+    - software
+  exclude:
+    - frontend
+    - front-end
+    - mobile
+    - ios
+    - android
+    - data scientist
+    - machine learning scientist
+    - qa
+    - test
+    - sdet
+    - manager
+    - director
+    - intern
+    - junior
+    - graduate
+    - embedded
+    - salesforce
+    - sap
+
+keywords_boost: [java, spring, kafka, aws, distributed, microservices, dynamodb, kubernetes]
+
+regions:
+  us: {countries: [United States, USA, US], adzuna: us}
+  uk: {countries: [United Kingdom, UK, England, London], adzuna: gb}
+  eu: {countries: [Netherlands, Germany, Ireland, Sweden, Denmark, France, Spain, Portugal, Poland, Austria, Belgium, Switzerland], adzuna: [nl, de]}
+  uae: {countries: [United Arab Emirates, UAE, Dubai, Abu Dhabi]}
+  au: {countries: [Australia, Sydney, Melbourne], adzuna: au}
+
+posting_text:
+  positive:
+    - visa sponsorship
+    - sponsorship available
+    - sponsorship provided
+    - we sponsor
+    - relocation package
+    - relocation support
+    - relocation assistance
+    - relocation provided
+    - work permit
+    - visa support
+    - visa assistance
+  negative:
+    - no sponsorship
+    - not able to sponsor
+    - unable to sponsor
+    - cannot sponsor
+    - can not sponsor
+    - won't sponsor
+    - will not sponsor
+    - without sponsorship
+    - no visa
+    - must have the right to work
+    - must already have the right to work
+    - right to work in
+    - authorized to work without
+    - citizens only
+    - citizenship required
+    - security clearance
+    - no relocation
+    - w2 only
+    - us persons only
+    - green card

@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="60">
+<title>jobagent dashboard</title>
+<style>
+  :root {
+    --bg: #0f1115; --card: #181b22; --border: #2a2f3a;
+    --text: #d7dae0; --muted: #8a91a0; --accent: #6ea8fe;
+    --green: #2ea05f; --red: #d14b4b; --blue: #3b78c4;
+    --orange: #d98a2b; --gray: #5b6270;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f5f6f8; --card: #ffffff; --border: #dde1e8;
+      --text: #1d2330; --muted: #66708a; --accent: #2563eb;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 16px; background: var(--bg); color: var(--text);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  h1 { font-size: 18px; margin: 0; }
+  h2 { font-size: 15px; margin: 0 0 10px; color: var(--text); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap; margin-bottom: 14px;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 14px;
+  }
+  .kill-banner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap; border-radius: 10px; padding: 10px 16px;
+    margin-bottom: 14px; border: 1px solid;
+  }
+  .kill-on  { background: rgba(209,75,75,.12);  border-color: var(--red);  color: var(--red); }
+  .kill-off { background: rgba(46,160,95,.10);  border-color: var(--green); color: var(--green); }
+  .kill-banner form { margin: 0; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td {
+    text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  tr:last-child td { border-bottom: none; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .badge {
+    display: inline-block; padding: 1px 8px; border-radius: 999px;
+    font-size: 12px; font-weight: 600; color: #fff; white-space: nowrap;
+  }
+  .badge.green  { background: var(--green); }
+  .badge.red    { background: var(--red); }
+  .badge.blue   { background: var(--blue); }
+  .badge.orange { background: var(--orange); }
+  .badge.gray   { background: var(--gray); }
+  .muted { color: var(--muted); }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+  pre.state {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px; margin: 8px 0; overflow-x: auto; max-height: 280px;
+    font-size: 12px; white-space: pre-wrap; word-break: break-word;
+  }
+  .review-item { border-top: 1px solid var(--border); padding: 12px 0; }
+  .review-item:first-of-type { border-top: none; padding-top: 0; }
+  .review-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+  .review-actions form { margin: 0; }
+  button, .btn {
+    background: var(--card); border: 1px solid var(--border); color: var(--text);
+    border-radius: 7px; padding: 5px 12px; font: inherit; font-size: 13px;
+    cursor: pointer; display: inline-block;
+  }
+  button:hover, .btn:hover { border-color: var(--accent); text-decoration: none; }
+  button.primary { background: var(--green); border-color: var(--green); color: #fff; }
+  button.danger  { background: var(--red);   border-color: var(--red);   color: #fff; }
+  img.shot { max-width: 420px; max-height: 240px; border: 1px solid var(--border); border-radius: 8px; display: block; margin-top: 8px; }
+  .highlight td { background: rgba(46,160,95,.08); }
+  .tablewrap { overflow-x: auto; }
+  .snippet { max-width: 420px; }
+  @media (max-width: 640px) {
+    body { padding: 10px; }
+    th, td { padding: 5px 6px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>jobagent dashboard</h1>
+  <span class="muted">auto-refreshes every 60s</span>
+</header>
+
+<!-- Kill switch -->
+<div class="kill-banner {{ 'kill-on' if killed else 'kill-off' }}">
+  <strong>
+    {% if killed %}KILL SWITCH ENGAGED — all submits and sends are halted{% else %}Running — kill switch is off{% endif %}
+  </strong>
+  <form method="post" action="/kill"
+        onsubmit="return confirm('{{ 'Release the kill switch and resume side effects?' if killed else 'Engage the kill switch and halt all submits/sends?' }}');">
+    <button type="submit" class="{{ 'primary' if killed else 'danger' }}">
+      {{ 'Release kill switch' if killed else 'Engage kill switch' }}
+    </button>
+  </form>
+</div>
+
+<!-- 1. Funnel -->
+<div class="card">
+  <h2>Funnel</h2>
+  <div class="tablewrap">
+    <table>
+      <tr><th>Stage</th><th class="num">Today</th><th class="num">Last 7 days</th><th class="num">All-time</th></tr>
+      {% for m in funnel %}
+      <tr>
+        <td>{{ m.label }}</td>
+        <td class="num">{{ m.today }}</td>
+        <td class="num">{{ m.week }}</td>
+        <td class="num">{{ m.all }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<!-- 2. Applications -->
+<div class="card">
+  <h2>Applications ({{ applications | length }})</h2>
+  {% if applications %}
+  <div class="tablewrap">
+    <table>
+      <tr>
+        <th>Date</th><th>Company</th><th>Title</th><th>Region</th>
+        <th class="num">Score</th><th>Status</th><th>Artifacts</th>
+      </tr>
+      {% for a in applications %}
+      <tr>
+        <td class="mono">{{ (a.submitted_at or a.created_at or '')[:10] }}</td>
+        <td>{{ a.company or '—' }}</td>
+        <td>{% if a.url %}<a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title or 'job' }}</a>{% else %}{{ a.title or '—' }}{% endif %}</td>
+        <td>{{ a.region or '—' }}</td>
+        <td class="num">{{ a.score if a.score is not none else '—' }}</td>
+        <td><span class="badge {{ a.status | status_class }}">{{ a.status }}</span></td>
+        <td>
+          {% set ru = a.resume_path | artifact_url %}
+          {% set cu = a.cover_path | artifact_url %}
+          {% set pu = a.proof_screenshot | artifact_url %}
+          {% if ru %}<a href="{{ ru }}" target="_blank">resume</a>{% endif %}
+          {% if cu %} <a href="{{ cu }}" target="_blank">cover</a>{% endif %}
+          {% if pu %} <a href="{{ pu }}" target="_blank">proof</a>{% endif %}
+          {% if not ru and not cu and not pu %}<span class="muted">—</span>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% else %}<p class="muted">No applications yet.</p>{% endif %}
+</div>
+
+<!-- 3. Replies -->
+<div class="card">
+  <h2>Replies ({{ replies | length }})</h2>
+  {% if replies %}
+  <div class="tablewrap">
+    <table>
+      <tr><th>Classification</th><th>From</th><th>Subject</th><th>Snippet</th><th>Last message</th></tr>
+      {% for t in replies %}
+      <tr class="{{ 'highlight' if t.classification == 'interview_request' else '' }}">
+        <td>
+          {% set cls = {'interview_request': 'green', 'rejection': 'red', 'info_request': 'orange', 'auto_ack': 'gray'}.get(t.classification, 'blue') %}
+          <span class="badge {{ cls }}">{{ t.classification or 'unclassified' }}</span>
+        </td>
+        <td>{{ t.from_email or '—' }}</td>
+        <td>{{ t.subject or '—' }}</td>
+        <td class="snippet muted">{{ t.snippet or '' }}</td>
+        <td class="mono">{{ t.last_message_at or '—' }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% else %}<p class="muted">No inbox threads yet.</p>{% endif %}
+</div>
+
+<!-- 4. Review queue -->
+<div class="card">
+  <h2>Review queue ({{ review_items | length }} open)</h2>
+  {% if review_items %}
+    {% for item in review_items %}
+    <div class="review-item">
+      <div>
+        <span class="badge orange">{{ item.reason or 'unknown' }}</span>
+        <strong>{{ item.title or 'Unknown job' }}</strong>
+        <span class="muted">— {{ item.company or 'unknown company' }} · queued {{ item.created_at }}</span>
+      </div>
+      {% set shot = item.screenshot | artifact_url %}
+      {% if shot %}<a href="{{ shot }}" target="_blank"><img class="shot" src="{{ shot }}" alt="screenshot"></a>{% endif %}
+      {% if item.state_pretty %}
+      <details>
+        <summary class="muted">Prepared answers / state</summary>
+        <pre class="state">{{ item.state_pretty }}</pre>
+      </details>
+      {% endif %}
+      <div class="review-actions">
+        {% if item.open_url %}<a class="btn" href="{{ item.open_url }}" target="_blank" rel="noopener">Open URL</a>{% endif %}
+        <form method="post" action="/review/{{ item.id }}/resolve">
+          <input type="hidden" name="resolution" value="applied_manually">
+          <button type="submit" class="primary">Mark applied</button>
+        </form>
+        <form method="post" action="/review/{{ item.id }}/resolve">
+          <input type="hidden" name="resolution" value="skipped">
+          <button type="submit">Skip</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}<p class="muted">Review queue is empty. Nice.</p>{% endif %}
+</div>
+
+<!-- 5. Activity -->
+<div class="card">
+  <h2>Activity (last {{ events | length }} events)</h2>
+  {% if events %}
+  <div class="tablewrap">
+    <table>
+      <tr><th>Time</th><th>Entity</th><th>Event</th><th>Detail</th></tr>
+      {% for e in events %}
+      <tr>
+        <td class="mono">{{ e.ts }}</td>
+        <td class="mono">{{ e.entity_type }}#{{ e.entity_id if e.entity_id is not none else '?' }}</td>
+        <td>{{ e.event }}</td>
+        <td class="muted mono">{{ (e.detail or '')[:160] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% else %}<p class="muted">No events yet.</p>{% endif %}
+</div>
+
+</body>
+</html>

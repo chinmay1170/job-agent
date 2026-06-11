@@ -1,0 +1,8 @@
+.env
+data/
+artifacts/
+logs/
+token.json
+credentials.json
+__pycache__/
+.venv/
