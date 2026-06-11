@@ -7,16 +7,18 @@
 //    projects: [{name, stack, dates, bullets: [str]}],
 //    education: [{school, degree, detail, dates}], awards: [str]}
 #let data = json(bytes(sys.inputs.at("data")))
+// compact mode: used by the one-page enforcement loop in tailor.py
+#let compact = data.at("compact", default: false)
 
-#set page(paper: "a4", margin: 1.5cm)
-#set text(font: "New Computer Modern", size: 10pt, fill: black)
-#set par(justify: false, leading: 0.5em)
-#set list(indent: 0.5em, body-indent: 0.4em, spacing: 0.45em)
+#set page(paper: "a4", margin: if compact { 1.1cm } else { 1.5cm })
+#set text(font: "New Computer Modern", size: if compact { 9.2pt } else { 10pt }, fill: black)
+#set par(justify: false, leading: if compact { 0.42em } else { 0.5em })
+#set list(indent: 0.5em, body-indent: 0.4em, spacing: if compact { 0.35em } else { 0.45em })
 
 #let section(title) = {
-  v(0.7em)
-  text(weight: "bold", size: 10.5pt)[#upper(title)]
-  v(0.35em)
+  v(if compact { 0.5em } else { 0.7em })
+  text(weight: "bold", size: if compact { 9.8pt } else { 10.5pt })[#upper(title)]
+  v(if compact { 0.25em } else { 0.35em })
 }
 
 // ── Header ─────────────────────────────────────────────────────────────

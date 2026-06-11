@@ -259,6 +259,48 @@ def _cover_content(profile: dict, plan: TailorPlan, job: sqlite3.Row,
     }
 
 
+# ── one-page enforcement ────────────────────────────────────────────────
+
+def _page_count(pdf: Path) -> int:
+    import pypdf
+    return len(pypdf.PdfReader(str(pdf)).pages)
+
+
+def _trim_bullets(content: dict) -> dict:
+    """Cap bullets by recency: newest role keeps 4, next 3, older 2."""
+    caps = [4, 3, 2, 2]
+    for i, entry in enumerate(content.get("experience", [])):
+        entry["bullets"] = entry["bullets"][: caps[min(i, len(caps) - 1)]]
+    for p in content.get("projects", []):
+        p["bullets"] = p["bullets"][:2]
+    return content
+
+
+def _drop_internships(content: dict) -> dict:
+    exp = content.get("experience", [])
+    if len(exp) > 1:
+        content["experience"] = [e for e in exp if "intern" not in e["title"].lower()]
+    return content
+
+
+def _render_one_page(content: dict, out_pdf: Path) -> dict:
+    """Render the resume, progressively compacting until it fits one page."""
+    steps = [
+        lambda c: c,                                    # as planned by the LLM
+        _trim_bullets,
+        _drop_internships,
+        lambda c: {**c, "compact": True},               # tighter typography
+        lambda c: {**c, "projects": c["projects"][:1]},
+    ]
+    for step in steps:
+        content = step(content)
+        render_resume(content, out_pdf)
+        if _page_count(out_pdf) <= 1:
+            return content
+    print(f"[tailor] WARNING: {out_pdf} still exceeds one page after compaction")
+    return content
+
+
 # ── orchestration ───────────────────────────────────────────────────────
 
 def _target_jobs(conn: sqlite3.Connection, job_id: int | None,
@@ -296,7 +338,7 @@ def _tailor_one(conn: sqlite3.Connection, job: sqlite3.Row, profile: dict) -> No
     resume_pdf = out_dir / "resume.pdf"
     cover_pdf = out_dir / "cover.pdf"
 
-    render_resume(resume_content, resume_pdf)
+    resume_content = _render_one_page(resume_content, resume_pdf)
     render_cover(cover_content, cover_pdf)
     (out_dir / "content.json").write_text(
         json.dumps({"resume": resume_content, "cover": cover_content,
