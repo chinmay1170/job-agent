@@ -20,6 +20,16 @@ BOARD_SLEEP = 0.5  # politeness gap between board / detail fetches
 
 SEEDS_PATH = config.CONFIG_DIR / "seeds" / "eu_uae_boards.yaml"
 
+# Seed-less aggregate sources. run_discover dispatches via the seed list, so
+# each aggregate gets one synthetic "board" entry appended by load_seeds.
+AGGREGATE_SEEDS = [
+    {"name": "Remotive", "ats": "remotive", "slug": "remote-jobs"},
+    {"name": "RemoteOK", "ats": "remoteok", "slug": "api"},
+    {"name": "HN Who is hiring", "ats": "hn", "slug": "whoishiring"},
+    {"name": "Adzuna", "ats": "adzuna", "slug": "search"},
+    {"name": "JobSpy", "ats": "jobspy", "slug": "scrape"},
+]
+
 _TAG = re.compile(r"<[^>]+>")
 _BLOCK = re.compile(r"</?(?:p|div|li|ul|ol|h[1-6]|tr|table)[^>]*>|<br\s*/?>", re.I)
 _SCRIPT = re.compile(r"<(script|style)[^>]*>.*?</\1>", re.I | re.S)
@@ -56,9 +66,10 @@ def strip_html(raw: str | None) -> str:
 def load_seeds(path: str | Path | None = None) -> list[dict]:
     """Load seed company boards. Missing/empty file -> [] with a warning."""
     p = Path(path) if path else SEEDS_PATH
+    aggregates = [dict(s) for s in AGGREGATE_SEEDS]
     if not p.exists():
         print(f"WARNING: seeds file not found at {p}; no boards to discover.")
-        return []
+        return aggregates
     data = yaml.safe_load(p.read_text()) or {}
     companies = data.get("companies") or []
     out = []
@@ -69,7 +80,7 @@ def load_seeds(path: str | Path | None = None) -> list[dict]:
         out.append(c)
     if not out:
         print(f"WARNING: seeds file {p} contains no usable companies.")
-    return out
+    return out + aggregates
 
 
 def location_bucket(location: str | None) -> str:

@@ -8,6 +8,12 @@
 
 set -u
 
+# Guard: uv sync can rewrite editable-install .pth files with the macOS
+# UF_HIDDEN flag set, which Python 3.12 site.py silently skips -> every
+# jobagent command dies with ModuleNotFoundError. Unhide before each run.
+export PYTHONPATH="$(cd "$(dirname "$0")/.." && pwd)"
+chflags nohidden .venv/lib/python3.12/site-packages/*.pth 2>/dev/null || true
+
 cd "$(dirname "$0")/.." || exit 0
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
@@ -41,22 +47,22 @@ run_stage() {
 
 if [ "$EVENING" -eq 1 ]; then
     echo "JobAgent evening run ($(date '+%F %T'))"
-    run_stage inbox    uv run jobagent inbox scan
-    run_stage apply    uv run jobagent apply --limit "$APPLY_LIMIT"
-    run_stage digest   uv run jobagent digest
+    run_stage inbox    uv run --no-sync jobagent inbox scan
+    run_stage apply    uv run --no-sync jobagent apply --limit "$APPLY_LIMIT"
+    run_stage digest   uv run --no-sync jobagent digest
 else
     echo "JobAgent morning run ($(date '+%F %T'))"
     if [ "$(date +%u)" -eq 1 ]; then
-        run_stage sponsors uv run jobagent sponsors ingest --all
+        run_stage sponsors uv run --no-sync jobagent sponsors ingest --all
     fi
-    run_stage discover  uv run jobagent discover --source all
-    run_stage prefilter uv run jobagent score prefilter
-    run_stage judge     uv run jobagent score judge
-    run_stage tailor    uv run jobagent tailor --all-queued
-    run_stage apply     uv run jobagent apply --limit "$APPLY_LIMIT"
-    run_stage outreach  uv run jobagent outreach run
-    run_stage inbox     uv run jobagent inbox scan
-    run_stage digest    uv run jobagent digest
+    run_stage discover  uv run --no-sync jobagent discover --source all
+    run_stage prefilter uv run --no-sync jobagent score prefilter
+    run_stage judge     uv run --no-sync jobagent score judge
+    run_stage tailor    uv run --no-sync jobagent tailor --all-queued
+    run_stage apply     uv run --no-sync jobagent apply --limit "$APPLY_LIMIT"
+    run_stage outreach  uv run --no-sync jobagent outreach run
+    run_stage inbox     uv run --no-sync jobagent inbox scan
+    run_stage digest    uv run --no-sync jobagent digest
 fi
 
 echo "--- stage log summary (${TODAY}) ---"

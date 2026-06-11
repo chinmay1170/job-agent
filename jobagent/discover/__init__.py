@@ -4,7 +4,9 @@ from __future__ import annotations
 from pathlib import Path
 
 from jobagent import db
-from jobagent.discover import ashby, base, greenhouse, lever, smartrecruiters, workable
+from jobagent.discover import (adzuna, ashby, base, greenhouse, hn_hiring,
+                               jobspy_runner, lever, remoteok, remotive,
+                               smartrecruiters, workable)
 
 # source name -> fetch(conn, company_seed) -> (found, inserted)
 SOURCES = {
@@ -13,6 +15,11 @@ SOURCES = {
     "ashby": ashby.fetch,
     "workable": workable.fetch,
     "smartrecruiters": smartrecruiters.fetch,
+    "remotive": remotive.fetch,
+    "remoteok": remoteok.fetch,
+    "hn": hn_hiring.fetch,
+    "adzuna": adzuna.fetch,
+    "jobspy": jobspy_runner.fetch,
 }
 
 
