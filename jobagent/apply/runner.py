@@ -12,7 +12,7 @@ import time
 from datetime import date, timedelta
 
 from jobagent import config, db, killswitch
-from jobagent.apply import browser, field_mapper, filler, proof, router
+from jobagent.apply import browser, field_mapper, filler, proof, router, security_code
 
 
 def _enqueue_review(conn, job_id: int, reason: str, state: dict) -> None:
@@ -77,6 +77,9 @@ def _apply_one(conn, page, job, app_row, caps: dict, dry_run: bool) -> str:
         return "queued"
 
     fill_failures = filler.execute_plan(page, plan, threshold)
+    consents = filler.resolve_consent_combos(page)
+    if consents:
+        db.log_event(conn, "job", job_id, "consents_acknowledged", {"labels": consents})
     resume_pdf = config.resume_pdf(app_row["resume_path"])
     uploaded = filler.upload_files(page, resume_pdf, app_row["cover_path"])
     if fill_failures or not uploaded:
@@ -102,6 +105,15 @@ def _apply_one(conn, page, job, app_row, caps: dict, dry_run: bool) -> str:
     if conn.execute("SELECT 1 FROM applications WHERE job_id=? AND status NOT IN ('pending','failed')",
                     (job_id,)).fetchone():
         return "already_applied"
+    lifetime = conn.execute(
+        "SELECT COUNT(*) FROM applications a JOIN jobs j ON j.id=a.job_id "
+        "WHERE j.company_id=? AND a.status NOT IN ('pending','failed')",
+        (job["company_id"],),
+    ).fetchone()[0]
+    if lifetime >= caps["per_company_lifetime"]:
+        conn.execute("UPDATE jobs SET status='skipped' WHERE id=?", (job_id,))
+        conn.commit()
+        return "company_cap"
 
     submit = filler.find_submit(page)
     if submit is None:
@@ -109,7 +121,17 @@ def _apply_one(conn, page, job, app_row, caps: dict, dry_run: bool) -> str:
                         {"url": form_url, "note": "no submit button found", "screenshot": shot})
         return "queued"
 
+    submit_ts = time.time()
     outcome, evidence = filler.submit_and_verify(page, submit)
+    if outcome != "confirmed" and security_code.find_security_input(page):
+        # Greenhouse emailed a security code — fetch it from Gmail and finish.
+        db.log_event(conn, "job", job_id, "security_challenge", {"url": form_url})
+        url_now = page.url
+        code = security_code.complete_challenge(page, submit, submit_ts)
+        if code:
+            outcome, evidence = filler.watch_outcome(page, url_now)
+            db.log_event(conn, "job", job_id, "security_code_entered",
+                         {"outcome": outcome})
     conf_shot = proof.snap(page, job_id, "confirmation")
     dom = proof.save_dom(page, job_id)
 

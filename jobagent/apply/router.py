@@ -12,6 +12,10 @@ def route(apply_url: str) -> str:
     host = urlparse(apply_url).netloc.lower()
     if "myworkdayjobs.com" in host or "workday" in host:
         return "queue_workday"
+    # Login-walled boards: no open form to drive — these are outreach
+    # targets, not browser-appliable.
+    if "indeed." in host or "glassdoor." in host or "linkedin." in host:
+        return "queue_login_board"
     if "greenhouse.io" in host:
         return "greenhouse"
     if "lever.co" in host:

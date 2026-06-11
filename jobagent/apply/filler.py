@@ -62,7 +62,8 @@ def upload_files(page: Page, resume_path: str, cover_path: str | None) -> bool:
     if n == 0:
         return False
     inputs.nth(0).set_input_files(resume_path)
-    time.sleep(1.5)  # many ATS forms parse the resume async
+    time.sleep(6)  # ATS uploads/parses the file async — submit too early and
+    #                validation still counts the field as empty
     if cover_path and n > 1:
         try:
             inputs.nth(1).set_input_files(cover_path)
@@ -70,6 +71,59 @@ def upload_files(page: Page, resume_path: str, cover_path: str | None) -> bool:
         except Exception:  # noqa: BLE001 — cover letter slot is best-effort
             pass
     return True
+
+
+CONSENT_RE = re.compile(
+    r"(i confirm|i acknowledge|i have read|privacy (notice|policy)|"
+    r"true and correct|i consent|i agree|terms (and|&) conditions)", re.IGNORECASE)
+AFFIRM_RE = re.compile(
+    r"^(yes|i confirm|i agree|i acknowledge|i consent|i accept|confirmed|accept)",
+    re.IGNORECASE)
+
+
+def resolve_consent_combos(page: Page) -> list[str]:
+    """Open required consent react-selects and pick the affirmative option.
+
+    Consent acknowledgements are a condition of applying, not a judgment
+    call, so they're resolved deterministically — never anything else.
+    """
+    resolved = []
+    combos = page.locator("[role=combobox]")
+    for i in range(combos.count()):
+        combo = combos.nth(i)
+        try:
+            labelled = combo.get_attribute("aria-labelledby") or ""
+            label = " ".join(
+                page.locator(f"[id='{lid}']").inner_text(timeout=2000)
+                for lid in labelled.split() if lid
+            ) if labelled else (combo.get_attribute("aria-label") or "")
+            if not CONSENT_RE.search(label):
+                continue
+            shell_text = combo.evaluate(
+                "e => (e.closest('.select-shell') || e.closest('div[class*=select]'))"
+                "?.textContent || ''"
+            )
+            if shell_text and "select..." not in shell_text.lower():
+                continue  # already has a value
+            combo.click()
+            page.wait_for_timeout(500)
+            options = page.locator("[role='option']")
+            pick = None
+            for j in range(options.count()):
+                if AFFIRM_RE.search(options.nth(j).inner_text(timeout=2000).strip()):
+                    pick = options.nth(j)
+                    break
+            if pick is None and options.count() == 1:
+                pick = options.first
+            if pick:
+                pick.click()
+                page.wait_for_timeout(300)
+                resolved.append(label[:80])
+            else:
+                page.keyboard.press("Escape")
+        except Exception:  # noqa: BLE001 — leave unresolved; submit gate catches it
+            continue
+    return resolved
 
 
 def find_submit(page: Page):
@@ -90,8 +144,26 @@ def submit_and_verify(page: Page, submit_loc) -> tuple[str, str]:
     upstream (risk of double submit); it goes to the review queue.
     """
     url_before = page.url
-    submit_loc.click()
-    deadline = time.time() + 20
+    try:
+        submit_loc.click(timeout=15000)
+    except Exception:  # noqa: BLE001 — disabled/detached button
+        return "uncertain", "submit click failed (button disabled?)"
+    outcome, evidence = watch_outcome(page, url_before)
+    if outcome == "error":
+        # Validation errors mean nothing was submitted — async state (file
+        # uploads, react-select commits) often settles just after the first
+        # click. One re-submit is safe; a second failure goes to review.
+        time.sleep(4)
+        try:
+            submit_loc.click(timeout=10000)
+        except Exception:  # noqa: BLE001
+            return "uncertain", "resubmit click failed (button disabled?)"
+        outcome, evidence = watch_outcome(page, url_before)
+    return outcome, evidence
+
+
+def watch_outcome(page: Page, url_before: str, seconds: int = 20) -> tuple[str, str]:
+    deadline = time.time() + seconds
     while time.time() < deadline:
         time.sleep(1.0)
         try:
@@ -102,6 +174,6 @@ def submit_and_verify(page: Page, submit_loc) -> tuple[str, str]:
             return "confirmed", CONFIRMATION_RE.search(body).group(0)
         if ERROR_RE.search(body):
             return "error", ERROR_RE.search(body).group(0)
-    if page.url != url_before:
+    if url_before and page.url != url_before:
         return "confirmed", f"url changed to {page.url}"
     return "uncertain", ""

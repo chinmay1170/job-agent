@@ -94,11 +94,15 @@ def plan_fill(schema: list[dict], cover_text: str) -> FillPlan:
 
 def unmet_required(schema: list[dict], plan: FillPlan, threshold: float) -> list[str]:
     """Labels of required controls the plan can't confidently satisfy."""
+    from jobagent.apply.filler import CONSENT_RE  # avoid import cycle
+
     by_sel = {a.selector: a for a in plan.actions}
     problems = []
     for ctl in schema:
         if ctl.get("type") == "file":
             continue  # resume/cover uploads handled by the runner
+        if CONSENT_RE.search(ctl.get("label") or ""):
+            continue  # consent acks resolved deterministically post-fill
         if not ctl.get("required"):
             continue
         act = by_sel.get(ctl["selector"])
