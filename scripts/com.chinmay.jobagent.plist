@@ -8,7 +8,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>scripts/run_daily.sh</string>
+        <string>/Users/chinmaykrishna/Documents/job-agent/scripts/run_daily.sh</string>
     </array>
 
     <key>WorkingDirectory</key>

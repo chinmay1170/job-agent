@@ -129,6 +129,59 @@ def state_url(state_json: str | None) -> str | None:
     return None
 
 
+def chart_regions(conn: sqlite3.Connection) -> list[dict]:
+    """Pipeline volume by region: queued + applications, for the region chart."""
+    rows = conn.execute(
+        """
+        SELECT COALESCE(NULLIF(c.region, ''), 'other') AS label,
+               SUM(j.status IN ('apply_queued', 'applied', 'needs_review')) AS queued,
+               COUNT(a.id) AS applied
+        FROM jobs j
+        LEFT JOIN companies c ON c.id = j.company_id
+        LEFT JOIN applications a ON a.job_id = j.id AND a.submitted_at IS NOT NULL
+        WHERE j.status IN ('apply_queued', 'applied', 'needs_review', 'prefiltered', 'scored')
+        GROUP BY label ORDER BY queued DESC LIMIT 8
+        """
+    ).fetchall()
+    return [dict(r) for r in rows if (r["queued"] or 0) + (r["applied"] or 0) > 0]
+
+
+def chart_companies(conn: sqlite3.Connection) -> list[dict]:
+    """Top companies in the active pipeline."""
+    rows = conn.execute(
+        """
+        SELECT c.name AS label,
+               SUM(j.status IN ('apply_queued', 'needs_review')) AS queued,
+               COUNT(a.id) AS applied
+        FROM jobs j
+        JOIN companies c ON c.id = j.company_id
+        LEFT JOIN applications a ON a.job_id = j.id AND a.submitted_at IS NOT NULL
+        WHERE j.status IN ('apply_queued', 'applied', 'needs_review')
+        GROUP BY c.name
+        HAVING queued + applied > 0
+        ORDER BY applied DESC, queued DESC LIMIT 10
+        """
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def chart_timeline(conn: sqlite3.Connection) -> list[dict]:
+    """Last 14 days: discovered jobs and submitted applications per day."""
+    rows = conn.execute(
+        """
+        WITH RECURSIVE days(d) AS (
+            SELECT date('now', '-13 days')
+            UNION ALL SELECT date(d, '+1 day') FROM days WHERE d < date('now')
+        )
+        SELECT d AS day,
+            (SELECT COUNT(*) FROM jobs WHERE date(discovered_at) = d) AS discovered,
+            (SELECT COUNT(*) FROM applications WHERE date(submitted_at) = d) AS applied
+        FROM days
+        """
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
 # ---------- routes ----------
 
 @app.get("/", response_class=HTMLResponse)
@@ -194,6 +247,9 @@ def index(request: Request) -> HTMLResponse:
             "replies": replies,
             "review_items": review_items,
             "events": events,
+            "chart_regions": chart_regions(conn),
+            "chart_companies": chart_companies(conn),
+            "chart_timeline": chart_timeline(conn),
         }
     finally:
         conn.close()
