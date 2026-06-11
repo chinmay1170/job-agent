@@ -165,6 +165,36 @@ def chart_companies(conn: sqlite3.Connection) -> list[dict]:
     return [dict(r) for r in rows]
 
 
+def calibration(conn: sqlite3.Connection) -> list[dict]:
+    """Predicted selection-chance buckets vs actual positive-response rate.
+
+    A "positive response" = interview or any non-rejection recruiter reply.
+    'no_response' and 'rejected' count as resolved-negative. submitted/pending
+    are still pending (not yet resolved) and excluded from the rate.
+    """
+    rows = conn.execute(
+        """
+        SELECT predicted_chance AS pc, status FROM applications
+        WHERE predicted_chance IS NOT NULL
+        """
+    ).fetchall()
+    buckets = [(0, 20), (20, 40), (40, 60), (60, 80), (80, 101)]
+    out = []
+    for lo, hi in buckets:
+        in_b = [r for r in rows if lo <= (r["pc"] or 0) < hi]
+        resolved = [r for r in in_b if r["status"] in
+                    ("interview", "rejected", "no_response")]
+        positive = [r for r in resolved if r["status"] == "interview"]
+        out.append({
+            "label": f"{lo}-{hi if hi <= 100 else 100}%",
+            "total": len(in_b),
+            "resolved": len(resolved),
+            "positive": len(positive),
+            "rate": round(len(positive) / len(resolved) * 100) if resolved else None,
+        })
+    return out
+
+
 def chart_timeline(conn: sqlite3.Connection) -> list[dict]:
     """Last 14 days: discovered jobs and submitted applications per day."""
     rows = conn.execute(
@@ -192,7 +222,8 @@ def index(request: Request) -> HTMLResponse:
             """
             SELECT a.id, a.status, a.method, a.submitted_at, a.created_at,
                    a.resume_path, a.cover_path, a.proof_screenshot,
-                   j.title, j.url, j.score,
+                   j.title, j.url, j.score, j.selection_chance,
+                   a.predicted_chance,
                    c.name AS company, c.region,
                    c.market_cap, c.employee_count, c.hq
             FROM applications a
@@ -251,6 +282,7 @@ def index(request: Request) -> HTMLResponse:
             "chart_regions": chart_regions(conn),
             "chart_companies": chart_companies(conn),
             "chart_timeline": chart_timeline(conn),
+            "calibration": calibration(conn),
         }
     finally:
         conn.close()

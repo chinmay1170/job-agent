@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS jobs (
   description TEXT,
   posted_at TEXT,
   sponsorship_signal TEXT,
+  selection_chance INTEGER,   -- LLM-estimated P(positive recruiter response), 0-100
   status TEXT DEFAULT 'discovered',
   -- discovered | prefiltered_out | scored | apply_queued | applied
   -- | needs_review | skipped | failed
@@ -54,6 +55,7 @@ CREATE TABLE IF NOT EXISTS applications (
   resume_path TEXT,
   cover_path TEXT,
   answers_json TEXT,
+  predicted_chance INTEGER,   -- selection_chance snapshot at apply time (calibration)
   status TEXT DEFAULT 'pending',
   -- pending | submitted | confirmed | needs_review | failed
   -- | rejected | interview | no_response

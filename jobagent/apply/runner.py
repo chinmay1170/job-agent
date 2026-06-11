@@ -157,9 +157,9 @@ def _apply_one(conn, page, job, app_row, caps: dict, dry_run: bool) -> str:
     if outcome == "confirmed":
         conn.execute(
             "UPDATE applications SET method='browser', answers_json=?, status='submitted', "
-            "submitted_at=datetime('now'), proof_screenshot=?, proof_dom=?, confirmation_text=? "
-            "WHERE job_id=?",
-            (answers_audit, conf_shot, dom, evidence, job_id),
+            "submitted_at=datetime('now'), proof_screenshot=?, proof_dom=?, confirmation_text=?, "
+            "predicted_chance=? WHERE job_id=?",
+            (answers_audit, conf_shot, dom, evidence, job["selection_chance"], job_id),
         )
         conn.execute("UPDATE jobs SET status='applied' WHERE id=?", (job_id,))
         cooldown = (date.today() + timedelta(days=caps["company_cooldown_days"])).isoformat()
@@ -194,7 +194,8 @@ def run_apply(limit: int = 3, dry_run: bool | None = None, job_id: int | None = 
         q += "AND j.id=? "
         params.append(job_id)
     else:
-        q += "AND j.status='apply_queued' ORDER BY j.score DESC LIMIT ?"
+        q += ("AND j.status='apply_queued' "
+              "ORDER BY COALESCE(j.selection_chance, j.score) DESC LIMIT ?")
         params.append(limit)
     jobs = conn.execute(q, params).fetchall()
     if not jobs:

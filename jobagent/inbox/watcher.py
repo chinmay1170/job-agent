@@ -129,6 +129,25 @@ def _correlate(conn: sqlite3.Connection, thread_id: str, sender_email: str,
     return None, None, False
 
 
+def mark_stale_no_response(conn) -> int:
+    """Submitted applications with no reply after N days -> 'no_response'.
+
+    Keeps the calibration denominator honest: a predicted chance only counts
+    against a real outcome once enough time has passed for a reply.
+    """
+    from jobagent import config
+    days = config.caps().get("no_response_after_days", 14)
+    cur = conn.execute(
+        "UPDATE applications SET status='no_response' "
+        "WHERE status IN ('submitted', 'confirmed') "
+        "AND submitted_at IS NOT NULL "
+        "AND submitted_at < datetime('now', ?)",
+        (f"-{int(days)} days",),
+    )
+    conn.commit()
+    return cur.rowcount
+
+
 def run_scan() -> None:
     try:
         killswitch.check()
@@ -143,6 +162,9 @@ def run_scan() -> None:
         raise SystemExit(1)
 
     conn = db.connect()
+    stale = mark_stale_no_response(conn)
+    if stale:
+        print(f"inbox: marked {stale} application(s) no_response (stale)")
     my_email = svc.users().getProfile(userId="me").execute()["emailAddress"].lower()
 
     outreach_by_thread = {

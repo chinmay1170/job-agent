@@ -61,6 +61,7 @@ def run_prefilter() -> dict:
     region_pats = _region_patterns()
     block_norms = _blocklist_norms()
     lifetime_cap = caps.get("per_company_lifetime", 2)
+    exclude_remote = caps.get("exclude_remote", True)
 
     funnel = {g: 0 for g in GATES}
     passed = 0
@@ -105,22 +106,24 @@ def run_prefilter() -> dict:
             fail(job["id"], "title")
             continue
 
-        # 4. location gate
+        # 4. location gate — onsite/hybrid in a target region only.
+        #    Remote-only roles are the wrong path for visa sponsorship.
         loc = (job["location"] or "").strip()
+        is_remote = (not loc and job["remote"]) or bool(loc and _REMOTE.search(loc))
         region = _match_region(loc, region_pats) if loc else None
         if region:
             if not job["company_region"]:
                 conn.execute("UPDATE companies SET region=? WHERE id=?",
                              (region, job["cid"]))
-        elif (not loc and job["remote"]) or (loc and _REMOTE.search(loc)):
-            region = "remote"
-        elif job["company_region"]:
+        elif job["company_region"] and job["company_region"] != "remote":
             region = job["company_region"]  # seed region fallback (e.g. 'Amsterdam')
-        else:
+        if not region or (exclude_remote and is_remote and not _match_region(loc, region_pats)):
             fail(job["id"], "location")
             continue
 
-        # 5. sponsorship gate — negative posting text ALWAYS wins
+        # 5. sponsorship signal — ONLY an explicit negation hard-rejects.
+        #    Absence of sponsorship language no longer kills the job; the judge
+        #    folds sponsorship likelihood into selection_chance instead.
         text = f"{job['title'] or ''}\n{job['description'] or ''}".lower()
         if any(n in text for n in negatives):
             fail(job["id"], "sponsorship", signal="none")
@@ -132,8 +135,7 @@ def run_prefilter() -> dict:
         elif any(p in text for p in positives):
             signal = "posting_text"
         else:
-            fail(job["id"], "sponsorship", signal="none")
-            continue
+            signal = "unknown"  # passes; judge estimates the odds
 
         passed += 1
         signals[signal] = signals.get(signal, 0) + 1

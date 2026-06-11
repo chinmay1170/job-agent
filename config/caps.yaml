@@ -1,5 +1,6 @@
-# Safety caps. User target: >= 10 applications/day.
-applications_per_day: 10       # ceiling 15; morning + evening passes share this
+# Volume guardrail (deliverability / anti-bot), NOT a target — apply as many
+# queued jobs as exist up to this, ordered by selection_chance desc.
+applications_per_day: 25
 emails_per_day: 10             # hard ceiling 20; deliverability protection
 emails_hard_max: 20
 per_company_lifetime: 2
@@ -10,7 +11,13 @@ email_send_window: {start_hour: 9, end_hour: 18}   # recipient-local approx
 email_weekends: false
 followup_after_days: 7
 field_confidence_threshold: 0.85
-judge_fit_threshold: 70
+# Apply when the judge's estimated selection_chance (P of a positive recruiter
+# response) is at least this. Lower = more applications / more long-shots.
+min_selection_chance: 50
+# Mark applications with no recruiter reply after this many days as no_response
+# (keeps the calibration denominator honest).
+no_response_after_days: 14
+exclude_remote: true           # relocation/visa path only — skip remote-only roles
 dry_run: false                 # LIVE since 2026-06-12 (user-approved); outreach still shadows first 3 days via --shadow
 # Which resume PDF gets uploaded to applications and outreach:
 #   original = the user's own hand-made PDF (config/Chinmay_Krishna_Resume.pdf)

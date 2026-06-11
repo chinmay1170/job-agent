@@ -149,6 +149,29 @@
   </div>
 
   <div class="panel" style="margin-bottom:18px;">
+    <h3>Calibration — predicted chance vs actual reply rate</h3>
+    {% set has_cal = calibration | selectattr('resolved') | list %}
+    {% if has_cal %}
+    <div class="bar-row" style="grid-template-columns:80px 1fr 1fr; color:var(--muted); font-size:11px;">
+      <div></div><div>positive-response rate</div><div>applications</div>
+    </div>
+    {% for b in calibration %}
+    <div class="bar-row" style="grid-template-columns:80px 1fr auto;">
+      <div class="bar-label">{{ b.label }}</div>
+      <div class="bar-track">
+        {% if b.rate is not none %}<div class="bar-fill" style="width:{{ b.rate }}%; background:var(--green);"></div>{% endif %}
+      </div>
+      <div class="bar-val">{% if b.rate is not none %}{{ b.rate }}%{% else %}<span style="color:var(--muted);">—</span>{% endif %}
+        <span style="color:var(--muted); font-weight:400;">({{ b.positive }}/{{ b.resolved }} of {{ b.total }})</span></div>
+    </div>
+    {% endfor %}
+    <div class="legend"><span>Green bar = % of resolved applications in that predicted-chance band that got an interview. Builds as replies arrive.</span></div>
+    {% else %}
+    <div class="empty">Calibration builds as applications resolve — predicted chance vs whether you got a reply. Check back after the first replies land.</div>
+    {% endif %}
+  </div>
+
+  <div class="panel" style="margin-bottom:18px;">
     <h3>Last 14 days</h3>
     {% set tmax = (chart_timeline | map(attribute='discovered') | list + [1]) | max %}
     {% set amax = (chart_timeline | map(attribute='applied') | list + [1]) | max %}
@@ -185,7 +208,7 @@
       </select>
     </div>
     <div class="table-scroll"><table id="appTable">
-      <thead><tr><th>Date</th><th>Company</th><th>Role</th><th>Region</th><th>Size</th><th>Score</th><th>Status</th><th>Files</th></tr></thead>
+      <thead><tr><th>Date</th><th>Company</th><th>Role</th><th>Region</th><th>Size</th><th>Chance</th><th>Status</th><th>Files</th></tr></thead>
       <tbody>
       {% for a in applications %}
         <tr data-co="{{ (a.company or '')|lower }}" data-role="{{ (a.title or '')|lower }}" data-status="{{ a.status }}" data-region="{{ a.region or '' }}">
@@ -198,7 +221,8 @@
             {% if a.employee_count %}<div style="color:var(--muted);" title="employees">{{ a.employee_count }}</div>{% endif %}
             {% if not a.market_cap and not a.employee_count %}<span style="color:var(--muted);">—</span>{% endif %}
           </td>
-          <td>{{ a.score if a.score is not none else '—' }}</td>
+          {% set chance = a.predicted_chance if a.predicted_chance is not none else a.selection_chance %}
+          <td>{% if chance is not none %}<b style="color:{{ 'var(--green)' if chance>=60 else ('var(--amber)' if chance>=40 else 'var(--muted)') }};">{{ chance }}%</b>{% else %}—{% endif %}</td>
           <td><span class="pill {{ a.status|status_class }}">{{ (a.status or '').replace('_',' ') }}</span></td>
           <td style="white-space:nowrap;">
             {% set ru = a.resume_path|artifact_url %}{% if ru %}<a class="mini" href="{{ ru }}" target="_blank">Resume</a>{% endif %}

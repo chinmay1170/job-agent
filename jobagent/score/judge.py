@@ -10,12 +10,16 @@ from jobagent import config, db, llm
 
 BATCH_SIZE = 15
 DESC_TRUNC = 1500
-BORDERLINE_FLOOR = 60
 
 
 class JudgeScore(BaseModel):
     job_id: int
     fit_score: int = Field(ge=0, le=100)
+    selection_chance: int = Field(
+        ge=0, le=100,
+        description="Estimated probability (0-100) of a POSITIVE recruiter "
+                    "response (reply/screen/interview) for THIS candidate — "
+                    "India-based, needs visa sponsorship + relocation.")
     sponsorship_confidence: Literal["high", "medium", "low"]
     reasons: list[str]
     red_flags: list[str]
@@ -49,15 +53,25 @@ def _build_prompt(profile: str, batch: list) -> str:
         "",
         profile,
         "",
-        "For EACH job, score fit for a senior backend / distributed-systems "
-        "engineer who needs visa sponsorship + relocation support. "
-        "fit_score (0-100) reflects how well the role matches the candidate's "
+        "For EACH job, score it for a senior backend / distributed-systems "
+        "engineer who needs visa sponsorship + relocation support.",
+        "- fit_score (0-100): how well the role matches the candidate's "
         "seniority, stack (Java/Spring Boot, Kafka, AWS, distributed systems) "
-        "and trajectory. sponsorship_confidence reflects how confident the "
-        "posting/company suggests visa sponsorship is realistic for an "
-        "India-based candidate (high/medium/low). reasons: short bullets for "
-        "the score; red_flags: anything concerning (sponsorship doubts, "
-        "stack mismatch, seniority mismatch, contract/agency role).",
+        "and trajectory.",
+        "- selection_chance (0-100): your honest estimate of the PROBABILITY "
+        "this specific candidate gets a positive recruiter response "
+        "(reply/screen/interview). Weigh ALL of: fit, seniority match, how "
+        "likely the company sponsors a visa + relocates an India-based hire "
+        "(known sponsors and roles that mention visa/relocation score higher; "
+        "roles silent on sponsorship are uncertain, not zero; US roles are "
+        "harder due to H-1B; EU/UAE generally easier), role competition, and "
+        "posting freshness. Be calibrated and realistic — most cold "
+        "applications are long shots; reserve 60+ for genuinely strong matches "
+        "at likely sponsors.",
+        "- sponsorship_confidence (high/medium/low): how confident the "
+        "posting/company suggests visa sponsorship is realistic.",
+        "- reasons: short bullets; red_flags: concerns (sponsorship doubts, "
+        "stack/seniority mismatch, contract/agency role).",
         "",
         "JOBS:",
     ]
@@ -76,7 +90,9 @@ def _build_prompt(profile: str, batch: list) -> str:
 
 def run_judge(limit: int = 60) -> dict:
     conn = db.connect()
-    threshold = config.caps().get("judge_fit_threshold", 70)
+    caps = config.caps()
+    min_chance = caps.get("min_selection_chance", 50)
+    borderline = max(20, min_chance - 20)  # show near-misses in the digest
     jobs = conn.execute(
         "SELECT j.id, j.title, j.location, j.description, c.name AS company_name "
         "FROM jobs j JOIN companies c ON j.company_id = c.id "
@@ -109,18 +125,20 @@ def run_judge(limit: int = 60) -> dict:
             if s.job_id not in batch_ids or s.job_id in seen:
                 continue  # guard against hallucinated/duplicated ids
             seen.add(s.job_id)
-            if s.fit_score >= threshold and s.sponsorship_confidence != "low":
+            if s.selection_chance >= min_chance:
                 status = "apply_queued"
-            elif s.fit_score >= BORDERLINE_FLOOR:
-                status = "scored"  # borderline — surfaces in digest
+            elif s.selection_chance >= borderline:
+                status = "scored"  # near-miss — surfaces in digest
             else:
                 status = "skipped"
             totals[status] += 1
             conn.execute(
-                "UPDATE jobs SET status=?, score=?, score_reasons=? WHERE id=?",
-                (status, s.fit_score,
+                "UPDATE jobs SET status=?, score=?, selection_chance=?, "
+                "score_reasons=? WHERE id=?",
+                (status, s.fit_score, s.selection_chance,
                  json.dumps({"reasons": s.reasons, "red_flags": s.red_flags,
-                             "sponsorship_confidence": s.sponsorship_confidence},
+                             "sponsorship_confidence": s.sponsorship_confidence,
+                             "selection_chance": s.selection_chance},
                             ensure_ascii=False),
                  s.job_id))
         conn.commit()
