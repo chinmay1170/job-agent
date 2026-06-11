@@ -1,5 +1,5 @@
-# Safety caps. Start conservative, ramp manually as quality is verified.
-applications_per_day: 3        # ramp: 3 -> 8 -> 15
+# Safety caps. User target: >= 10 applications/day.
+applications_per_day: 10       # ceiling 15; morning + evening passes share this
 emails_per_day: 10             # hard ceiling 20; deliverability protection
 emails_hard_max: 20
 per_company_lifetime: 2
