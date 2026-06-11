@@ -99,8 +99,9 @@ def send_message(
     attachments: list[Path] | None = None,
     thread_id: str | None = None,
     svc=None,
+    html_body: str | None = None,
 ) -> dict:
-    """Send a plain-text email (optionally with attachments / into a thread).
+    """Send an email (multipart HTML when html_body given; plain otherwise).
 
     Returns {"id": ..., "threadId": ...} from the Gmail API.
     """
@@ -110,6 +111,8 @@ def send_message(
     msg["To"] = to
     msg["Subject"] = subject
     msg.set_content(body_text)
+    if html_body:
+        msg.add_alternative(html_body, subtype="html")
 
     for path in attachments or []:
         path = Path(path)

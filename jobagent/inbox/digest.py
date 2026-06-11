@@ -11,6 +11,7 @@ from datetime import date
 
 from jobagent import config, db, killswitch
 from jobagent.db import ROOT
+from jobagent.inbox import digest_html
 from jobagent.outreach import gmail
 
 DIGEST_DIR = ROOT / "artifacts" / "digests"
@@ -20,6 +21,23 @@ DIGEST_TO = "chinmaykrishna3@gmail.com"
 def _section(title: str, lines: list[str], empty: str = "_none_") -> str:
     body = "\n".join(lines) if lines else empty
     return f"## {title}\n\n{body}\n"
+
+
+def _funnel(conn: sqlite3.Connection) -> dict:
+    j = dict(conn.execute("SELECT status, COUNT(*) FROM jobs GROUP BY status").fetchall())
+    a = dict(conn.execute("SELECT status, COUNT(*) FROM applications GROUP BY status").fetchall())
+    replies = conn.execute(
+        "SELECT COUNT(*) FROM inbox_threads WHERE classification IS NOT NULL "
+        "AND classification != 'auto_ack'"
+    ).fetchone()[0]
+    return {
+        "discovered": sum(j.values()),
+        "queued": j.get("apply_queued", 0),
+        "applied": j.get("applied", 0),
+        "replies": replies,
+        "interviews": a.get("interview", 0),
+        "rejections": a.get("rejected", 0),
+    }
 
 
 def _build_digest(conn: sqlite3.Connection, today: str) -> str:
@@ -103,17 +121,43 @@ def _build_digest(conn: sqlite3.Connection, today: str) -> str:
         _section(f"Errors today ({len(errors)})", error_lines, empty="_none — clean day_"),
         _section("Counters vs caps", counter_lines),
     ]
-    return "\n".join(parts)
+    markdown = "\n".join(parts)
+
+    reply_rows = conn.execute(
+        "SELECT subject, from_email, classification FROM inbox_threads "
+        "WHERE date(classified_at) = ? ORDER BY "
+        "CASE classification WHEN 'interview_request' THEN 0 WHEN 'rejection' THEN 1 "
+        "ELSE 2 END, last_message_at DESC LIMIT 20",
+        (today,),
+    ).fetchall()
+    counter_data = {}
+    counts_by_kind = {r["kind"]: r["count"] for r in counters}
+    for kind, cap in cap_for.items():
+        if cap:
+            counter_data[kind] = (counts_by_kind.get(kind, 0), cap)
+
+    html = digest_html.render(today, {
+        "funnel": _funnel(conn),
+        "apps": [dict(r) for r in apps],
+        "sent": [dict(r) for r in sent],
+        "replies": [dict(r) for r in reply_rows],
+        "rq_open": rq_open,
+        "borderline": [dict(r) for r in borderline[:8]],
+        "errors": [dict(r) for r in errors[:10]],
+        "counters": counter_data,
+    })
+    return markdown, html
 
 
 def run_digest() -> None:
     conn = db.connect()
     today = date.today().isoformat()
-    content = _build_digest(conn, today)
+    content, html = _build_digest(conn, today)
 
     DIGEST_DIR.mkdir(parents=True, exist_ok=True)
     path = DIGEST_DIR / f"{today}.md"
     path.write_text(content)
+    (DIGEST_DIR / f"{today}.html").write_text(html)
     print(f"digest: wrote {path}")
 
     if killswitch.is_killed():
@@ -122,7 +166,7 @@ def run_digest() -> None:
 
     subject = f"JobAgent digest {today}"
     try:
-        result = gmail.send_message(DIGEST_TO, subject, content)
+        result = gmail.send_message(DIGEST_TO, subject, content, html_body=html)
         db.log_event(conn, "digest", None, "digest_emailed",
                      {"to": DIGEST_TO, "gmail_message_id": result["id"], "date": today})
         print(f"digest: emailed to {DIGEST_TO} (message {result['id']})")
