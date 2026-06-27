@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS companies (
   market_cap TEXT,          -- e.g. "$48B" or "Private"
   employee_count TEXT,      -- e.g. "~4,000" or "10,000+"
   hq TEXT,                  -- headquarters city, country
+  tier TEXT,                -- megacap | large | mid | startup (from enrichment)
   enriched_at TEXT,
   created_at TEXT DEFAULT (datetime('now'))
 );
@@ -37,6 +38,7 @@ CREATE TABLE IF NOT EXISTS jobs (
   posted_at TEXT,
   sponsorship_signal TEXT,
   selection_chance INTEGER,   -- LLM-estimated P(positive recruiter response), 0-100
+  salary_benchmark TEXT,      -- web-searched market rate for this role+location, e.g. 'GBP 95,000-120,000 | ask: GBP 110,000'
   status TEXT DEFAULT 'discovered',
   -- discovered | prefiltered_out | scored | apply_queued | applied
   -- | needs_review | skipped | failed
@@ -99,7 +101,8 @@ CREATE TABLE IF NOT EXISTS review_queue (
   state_json TEXT,
   created_at TEXT DEFAULT (datetime('now')),
   resolved_at TEXT,
-  resolution TEXT
+  resolution TEXT,
+  notified_at TEXT          -- set when emailed to the user (manual-apply email)
 );
 
 CREATE TABLE IF NOT EXISTS events (

@@ -544,3 +544,3692 @@ companies:
     ats: greenhouse
     slug: stripe
     verified: 2026-06-11
+
+  # --- Large / public companies (tier-expansion 2026-06-13) ---
+  # Big-cap names on auto-appliable ATSes (Greenhouse/Ashby/Lever). Slugs follow
+  # the standard lowercase-name convention; discovery prunes any that 404, so a
+  # wrong slug just yields 0 jobs (no harm). Added to widen company-tier mix.
+  - {name: Databricks,  region: us,  ats: greenhouse, slug: databricks,  verified: pending}
+  - {name: Datadog,     region: us,  ats: greenhouse, slug: datadog,     verified: pending}
+  - {name: Coinbase,    region: us,  ats: greenhouse, slug: coinbase,    verified: pending}
+  - {name: Pinterest,   region: us,  ats: greenhouse, slug: pinterest,   verified: pending}
+  - {name: Reddit,      region: us,  ats: greenhouse, slug: reddit,      verified: pending}
+  - {name: Dropbox,     region: us,  ats: greenhouse, slug: dropbox,     verified: pending}
+  - {name: Robinhood,   region: us,  ats: greenhouse, slug: robinhood,   verified: pending}
+  - {name: DoorDash,    region: us,  ats: greenhouse, slug: doordash,    verified: pending}
+  - {name: Instacart,   region: us,  ats: greenhouse, slug: instacart,   verified: pending}
+  - {name: Twilio,      region: us,  ats: greenhouse, slug: twilio,      verified: pending}
+  - {name: Asana,       region: us,  ats: greenhouse, slug: asana,       verified: pending}
+  - {name: Discord,     region: us,  ats: greenhouse, slug: discord,     verified: pending}
+  - {name: Brex,        region: us,  ats: greenhouse, slug: brex,        verified: pending}
+  - {name: Plaid,       region: us,  ats: greenhouse, slug: plaid,       verified: pending}
+  - {name: Gusto,       region: us,  ats: greenhouse, slug: gusto,       verified: pending}
+  - {name: Samsara,     region: us,  ats: greenhouse, slug: samsara,     verified: pending}
+  - {name: Affirm,      region: us,  ats: greenhouse, slug: affirm,      verified: pending}
+  - {name: Benchling,   region: us,  ats: greenhouse, slug: benchling,   verified: pending}
+  - {name: HashiCorp,   region: us,  ats: greenhouse, slug: hashicorp,   verified: pending}
+  - {name: Confluent,   region: us,  ats: greenhouse, slug: confluent,   verified: pending}
+  - {name: MongoDB,     region: us,  ats: greenhouse, slug: mongodb,     verified: pending}
+  - {name: Elastic,     region: eu,  ats: greenhouse, slug: elastic,     verified: pending}
+  - {name: Snowflake,   region: us,  ats: greenhouse, slug: snowflake,   verified: pending}
+  - {name: Block,       region: us,  ats: greenhouse, slug: block,       verified: pending}
+  - {name: Anthropic,   region: us,  ats: greenhouse, slug: anthropic,   verified: pending}
+  - {name: OpenAI,      region: us,  ats: ashby,      slug: openai,      verified: pending}
+  - {name: Ramp,        region: us,  ats: ashby,      slug: ramp,        verified: pending}
+  - {name: Linear,      region: us,  ats: ashby,      slug: linear,      verified: pending}
+  - {name: Vanta,       region: us,  ats: ashby,      slug: vanta,       verified: pending}
+  - {name: Mistral AI,  region: eu,  ats: ashby,      slug: mistral,     verified: pending}
+
+  # --- Bulk company expansion 2026-06-14 (find-more-companies) ---
+  - {name: GitLab, region: us, ats: greenhouse, slug: gitlab, verified: pending}
+  - {name: Notion, region: us, ats: greenhouse, slug: notion, verified: pending}
+  - {name: Airtable, region: us, ats: greenhouse, slug: airtable, verified: pending}
+  - {name: Retool, region: us, ats: greenhouse, slug: retool, verified: pending}
+  - {name: Scale AI, region: us, ats: greenhouse, slug: scaleai, verified: pending}
+  - {name: Rippling, region: us, ats: greenhouse, slug: rippling, verified: pending}
+  - {name: Deel, region: us, ats: greenhouse, slug: deel, verified: pending}
+  - {name: Mercury, region: us, ats: greenhouse, slug: mercury, verified: pending}
+  - {name: Chime, region: us, ats: greenhouse, slug: chime, verified: pending}
+  - {name: Carta, region: us, ats: greenhouse, slug: carta, verified: pending}
+  - {name: Confluent, region: us, ats: greenhouse, slug: confluentinc, verified: pending}
+  - {name: Cockroach Labs, region: us, ats: greenhouse, slug: cockroachlabs, verified: pending}
+  - {name: Redis, region: us, ats: greenhouse, slug: redislabs, verified: pending}
+  - {name: Grafana Labs, region: us, ats: greenhouse, slug: grafanalabs, verified: pending}
+  - {name: PagerDuty, region: us, ats: greenhouse, slug: pagerduty, verified: pending}
+  - {name: Fastly, region: us, ats: greenhouse, slug: fastly, verified: pending}
+  - {name: DigitalOcean, region: us, ats: greenhouse, slug: digitalocean, verified: pending}
+  - {name: Okta, region: us, ats: greenhouse, slug: okta, verified: pending}
+  - {name: 1Password, region: us, ats: greenhouse, slug: 1password, verified: pending}
+  - {name: Postman, region: us, ats: greenhouse, slug: postman, verified: pending}
+  - {name: Coda, region: us, ats: greenhouse, slug: coda, verified: pending}
+  - {name: Miro, region: us, ats: greenhouse, slug: miro, verified: pending}
+  - {name: Calendly, region: us, ats: greenhouse, slug: calendly, verified: pending}
+  - {name: Webflow, region: us, ats: greenhouse, slug: webflow, verified: pending}
+  - {name: Vercel, region: us, ats: greenhouse, slug: vercel, verified: pending}
+  - {name: Netlify, region: us, ats: greenhouse, slug: netlify, verified: pending}
+  - {name: Lyft, region: us, ats: greenhouse, slug: lyft, verified: pending}
+  - {name: Roblox, region: us, ats: greenhouse, slug: roblox, verified: pending}
+  - {name: Twitch, region: us, ats: greenhouse, slug: twitch, verified: pending}
+  - {name: Squarespace, region: us, ats: greenhouse, slug: squarespace, verified: pending}
+  - {name: Wealthfront, region: us, ats: greenhouse, slug: wealthfront, verified: pending}
+  - {name: Betterment, region: us, ats: greenhouse, slug: betterment, verified: pending}
+  - {name: SoFi, region: us, ats: greenhouse, slug: sofi, verified: pending}
+  - {name: Marqeta, region: us, ats: greenhouse, slug: marqeta, verified: pending}
+  - {name: Toast, region: us, ats: greenhouse, slug: toasttab, verified: pending}
+  - {name: Flexport, region: us, ats: greenhouse, slug: flexport, verified: pending}
+  - {name: Verkada, region: us, ats: greenhouse, slug: verkada, verified: pending}
+  - {name: Anduril, region: us, ats: greenhouse, slug: anduril, verified: pending}
+  - {name: Gong, region: us, ats: greenhouse, slug: gong, verified: pending}
+  - {name: Amplitude, region: us, ats: greenhouse, slug: amplitude, verified: pending}
+  - {name: Mixpanel, region: us, ats: greenhouse, slug: mixpanel, verified: pending}
+  - {name: dbt Labs, region: us, ats: greenhouse, slug: dbtlabs, verified: pending}
+  - {name: Fivetran, region: us, ats: greenhouse, slug: fivetran, verified: pending}
+  - {name: Airbyte, region: us, ats: greenhouse, slug: airbyte, verified: pending}
+  - {name: Hex, region: us, ats: ashby, slug: hex, verified: pending}
+  - {name: Census, region: us, ats: ashby, slug: census, verified: pending}
+  - {name: Modern Treasury, region: us, ats: greenhouse, slug: moderntreasury, verified: pending}
+  - {name: Unit, region: us, ats: ashby, slug: unit, verified: pending}
+  - {name: Lithic, region: us, ats: greenhouse, slug: lithic, verified: pending}
+  - {name: Alloy, region: us, ats: greenhouse, slug: alloy, verified: pending}
+  - {name: Persona, region: us, ats: ashby, slug: persona, verified: pending}
+  - {name: Cohere, region: us, ats: ashby, slug: cohere, verified: pending}
+  - {name: Hugging Face, region: us, ats: greenhouse, slug: huggingface, verified: pending}
+  - {name: Weights Biases, region: us, ats: ashby, slug: wandb, verified: pending}
+  - {name: Pinecone, region: us, ats: ashby, slug: pinecone, verified: pending}
+  - {name: Anyscale, region: us, ats: greenhouse, slug: anyscale, verified: pending}
+  - {name: Together AI, region: us, ats: ashby, slug: togetherai, verified: pending}
+  - {name: Perplexity, region: us, ats: ashby, slug: perplexity, verified: pending}
+  - {name: Runway, region: us, ats: ashby, slug: runwayml, verified: pending}
+  - {name: Glean, region: us, ats: greenhouse, slug: glean, verified: pending}
+  - {name: Harvey, region: us, ats: ashby, slug: harvey, verified: pending}
+  - {name: Sierra, region: us, ats: ashby, slug: sierra, verified: pending}
+  - {name: Cresta, region: us, ats: greenhouse, slug: cresta, verified: pending}
+  - {name: Writer, region: us, ats: ashby, slug: writer, verified: pending}
+  - {name: Ironclad, region: us, ats: greenhouse, slug: ironclad, verified: pending}
+  - {name: Canva, region: au, ats: lever, slug: canva, verified: pending}
+  - {name: Atlassian, region: au, ats: lever, slug: atlassian, verified: pending}
+  - {name: SafetyCulture, region: au, ats: lever, slug: safetyculture, verified: pending}
+  - {name: Linktree, region: au, ats: lever, slug: linktree, verified: pending}
+  - {name: Employment Hero, region: au, ats: greenhouse, slug: employmenthero, verified: pending}
+  - {name: Revolut, region: uk, ats: greenhouse, slug: revolut, verified: pending}
+  - {name: Wise, region: uk, ats: greenhouse, slug: wise, verified: pending}
+  - {name: Checkout.com, region: uk, ats: greenhouse, slug: checkout, verified: pending}
+  - {name: Starling Bank, region: uk, ats: greenhouse, slug: starlingbank, verified: pending}
+  - {name: Zopa, region: uk, ats: greenhouse, slug: zopa, verified: pending}
+  - {name: ClearScore, region: uk, ats: greenhouse, slug: clearscore, verified: pending}
+  - {name: Cleo, region: uk, ats: ashby, slug: cleo, verified: pending}
+  - {name: Thought Machine, region: uk, ats: greenhouse, slug: thoughtmachine, verified: pending}
+  - {name: Form3, region: uk, ats: greenhouse, slug: form3, verified: pending}
+  - {name: Deliveroo, region: uk, ats: greenhouse, slug: deliveroo, verified: pending}
+  - {name: Darktrace, region: uk, ats: greenhouse, slug: darktrace, verified: pending}
+  - {name: Snyk, region: uk, ats: greenhouse, slug: snyk, verified: pending}
+  - {name: Improbable, region: uk, ats: greenhouse, slug: improbable, verified: pending}
+  - {name: Onfido, region: uk, ats: greenhouse, slug: onfido, verified: pending}
+  - {name: ComplyAdvantage, region: uk, ats: greenhouse, slug: complyadvantage, verified: pending}
+  - {name: Quantexa, region: uk, ats: greenhouse, slug: quantexa, verified: pending}
+  - {name: Multiverse, region: uk, ats: greenhouse, slug: multiverse, verified: pending}
+  - {name: Beamery, region: uk, ats: greenhouse, slug: beamery, verified: pending}
+  - {name: Pleo, region: eu, ats: greenhouse, slug: pleo, verified: pending}
+  - {name: Klarna, region: eu, ats: greenhouse, slug: klarna, verified: pending}
+  - {name: Mollie, region: eu, ats: greenhouse, slug: mollie, verified: pending}
+  - {name: Personio, region: eu, ats: greenhouse, slug: personio, verified: pending}
+  - {name: Bolt, region: eu, ats: greenhouse, slug: bolt, verified: pending}
+  - {name: Vinted, region: eu, ats: greenhouse, slug: vinted, verified: pending}
+  - {name: Spotify, region: eu, ats: greenhouse, slug: spotify, verified: pending}
+  - {name: Backbase, region: eu, ats: greenhouse, slug: backbase, verified: pending}
+  - {name: Mambu, region: eu, ats: greenhouse, slug: mambu, verified: pending}
+  - {name: Sennder, region: eu, ats: greenhouse, slug: sennder, verified: pending}
+  - {name: Forto, region: eu, ats: greenhouse, slug: forto, verified: pending}
+  - {name: Taxfix, region: eu, ats: greenhouse, slug: taxfix, verified: pending}
+  - {name: Alan, region: eu, ats: lever, slug: alan, verified: pending}
+  - {name: Payfit, region: eu, ats: lever, slug: payfit, verified: pending}
+  - {name: Spendesk, region: eu, ats: lever, slug: spendesk, verified: pending}
+  - {name: Back Market, region: eu, ats: lever, slug: backmarket, verified: pending}
+  - {name: ManoMano, region: eu, ats: lever, slug: manomano, verified: pending}
+  - {name: Sorare, region: eu, ats: lever, slug: sorare, verified: pending}
+  - {name: Mirakl, region: eu, ats: lever, slug: mirakl, verified: pending}
+  - {name: Glovo, region: eu, ats: greenhouse, slug: glovo, verified: pending}
+  - {name: Factorial, region: eu, ats: greenhouse, slug: factorialhr, verified: pending}
+  - {name: TravelPerk, region: eu, ats: greenhouse, slug: travelperk, verified: pending}
+  - {name: Cabify, region: eu, ats: greenhouse, slug: cabify, verified: pending}
+  - {name: Tessian, region: uk, ats: greenhouse, slug: tessian, verified: pending}
+  - {name: GoStudent, region: eu, ats: greenhouse, slug: gostudent, verified: pending}
+  - {name: Tabby, region: uae, ats: ashby, slug: tabby, verified: pending}
+  - {name: Tamara, region: uae, ats: greenhouse, slug: tamara, verified: pending}
+  - {name: Property Finder, region: uae, ats: greenhouse, slug: propertyfinder, verified: pending}
+  - {name: Kitopi, region: uae, ats: lever, slug: kitopi, verified: pending}
+  - {name: Grab, region: sg, ats: greenhouse, slug: grab, verified: pending}
+  - {name: Sea Group, region: sg, ats: greenhouse, slug: sea, verified: pending}
+  - {name: Carousell, region: sg, ats: greenhouse, slug: carousell, verified: pending}
+  - {name: Nium, region: sg, ats: greenhouse, slug: nium, verified: pending}
+  - {name: Coda Payments, region: sg, ats: greenhouse, slug: codapayments, verified: pending}
+  - {name: ShopBack, region: sg, ats: greenhouse, slug: shopback, verified: pending}
+  - {name: Ninja Van, region: sg, ats: greenhouse, slug: ninjavan, verified: pending}
+  - {name: Aspire, region: sg, ats: ashby, slug: aspire, verified: pending}
+  - {name: Endowus, region: sg, ats: lever, slug: endowus, verified: pending}
+  - {name: StashAway, region: sg, ats: lever, slug: stashaway, verified: pending}
+  - {name: Thunes, region: sg, ats: greenhouse, slug: thunes, verified: pending}
+  - {name: Matillion, region: uk, ats: greenhouse, slug: matillion, verified: pending}
+  - {name: Cribl, region: us, ats: greenhouse, slug: cribl, verified: pending}
+  - {name: Wiz, region: us, ats: greenhouse, slug: wiz, verified: pending}
+  - {name: Sentry, region: us, ats: greenhouse, slug: sentry, verified: pending}
+  - {name: LaunchDarkly, region: us, ats: greenhouse, slug: launchdarkly, verified: pending}
+  - {name: Temporal, region: us, ats: ashby, slug: temporal, verified: pending}
+  - {name: Render, region: us, ats: ashby, slug: render, verified: pending}
+  - {name: Supabase, region: us, ats: ashby, slug: supabase, verified: pending}
+  - {name: PlanetScale, region: us, ats: ashby, slug: planetscale, verified: pending}
+  - {name: Neon, region: us, ats: ashby, slug: neon, verified: pending}
+  - {name: Clerk, region: us, ats: ashby, slug: clerk, verified: pending}
+  - {name: WorkOS, region: us, ats: ashby, slug: workos, verified: pending}
+  - {name: Loom, region: us, ats: greenhouse, slug: loom, verified: pending}
+  - {name: Replit, region: us, ats: ashby, slug: replit, verified: pending}
+  - {name: Drata, region: us, ats: greenhouse, slug: drata, verified: pending}
+  - {name: Secureframe, region: us, ats: ashby, slug: secureframe, verified: pending}
+  - {name: Abnormal Security, region: us, ats: greenhouse, slug: abnormalsecurity, verified: pending}
+  - {name: Material Security, region: us, ats: greenhouse, slug: materialsecurity, verified: pending}
+  - {name: Tailscale, region: us, ats: ashby, slug: tailscale, verified: pending}
+  - {name: Coder, region: us, ats: greenhouse, slug: coder, verified: pending}
+  - {name: Cortex, region: us, ats: ashby, slug: cortex, verified: pending}
+  - {name: Sourcegraph, region: us, ats: greenhouse, slug: sourcegraph, verified: pending}
+  - {name: Codeium, region: us, ats: ashby, slug: codeium, verified: pending}
+  - {name: Mintlify, region: us, ats: ashby, slug: mintlify, verified: pending}
+  - {name: Knock, region: us, ats: ashby, slug: knock, verified: pending}
+  - {name: Courier, region: us, ats: greenhouse, slug: courier, verified: pending}
+  - {name: Merge, region: us, ats: greenhouse, slug: merge, verified: pending}
+  - {name: Finch, region: us, ats: ashby, slug: finch, verified: pending}
+  - {name: Gem, region: us, ats: greenhouse, slug: gem, verified: pending}
+  - {name: Lattice, region: us, ats: greenhouse, slug: lattice, verified: pending}
+  - {name: Checkr, region: us, ats: greenhouse, slug: checkr, verified: pending}
+  - {name: Faire, region: us, ats: greenhouse, slug: faire, verified: pending}
+  - {name: Whatnot, region: us, ats: greenhouse, slug: whatnot, verified: pending}
+  - {name: GoPuff, region: us, ats: greenhouse, slug: gopuff, verified: pending}
+  - {name: Nuro, region: us, ats: greenhouse, slug: nuro, verified: pending}
+  - {name: Cruise, region: us, ats: greenhouse, slug: cruise, verified: pending}
+  - {name: Zipline, region: us, ats: greenhouse, slug: zipline, verified: pending}
+  - {name: Applied Intuition, region: us, ats: ashby, slug: appliedintuition, verified: pending}
+  - {name: Pave, region: us, ats: ashby, slug: pave, verified: pending}
+  - {name: Rutter, region: us, ats: ashby, slug: rutter, verified: pending}
+  - {name: Codat, region: uk, ats: greenhouse, slug: codat, verified: pending}
+  - {name: Truelayer, region: uk, ats: greenhouse, slug: truelayer, verified: pending}
+  - {name: Yapily, region: uk, ats: ashby, slug: yapily, verified: pending}
+  - {name: PrimaryBid, region: uk, ats: greenhouse, slug: primarybid, verified: pending}
+  - {name: Curve, region: uk, ats: greenhouse, slug: curve, verified: pending}
+  - {name: Moneybox, region: uk, ats: ashby, slug: moneybox, verified: pending}
+  - {name: Freetrade, region: uk, ats: greenhouse, slug: freetrade, verified: pending}
+  - {name: PensionBee, region: uk, ats: greenhouse, slug: pensionbee, verified: pending}
+  - {name: Habito, region: uk, ats: greenhouse, slug: habito, verified: pending}
+
+  # --- 2026-06-21 expansion: scouted + HTTP-verified sponsor-likely boards ---
+  - name: Airtasker
+    region: au
+    ats: ashby
+    slug: airtasker
+    verified: 2026-06-21
+  - name: Appen
+    region: au
+    ats: lever
+    slug: appen
+    verified: 2026-06-21
+  - name: Auror
+    region: au
+    ats: ashby
+    slug: auror
+    verified: 2026-06-21
+  - name: Buildkite
+    region: au
+    ats: greenhouse
+    slug: buildkite
+    verified: 2026-06-21
+  - name: Cin7
+    region: au
+    ats: lever
+    slug: cin7
+    verified: 2026-06-21
+  - name: Dawn Aerospace
+    region: au
+    ats: greenhouse
+    slug: dawnaerospace
+    verified: 2026-06-21
+  - name: Easygo
+    region: au
+    ats: greenhouse
+    slug: easygo
+    verified: 2026-06-21
+  - name: Halter
+    region: au
+    ats: ashby
+    slug: halter
+    verified: 2026-06-21
+  - name: Ignition
+    region: au
+    ats: ashby
+    slug: ignition
+    verified: 2026-06-21
+  - name: Kasada
+    region: au
+    ats: lever
+    slug: kasada
+    verified: 2026-06-21
+  - name: Lorikeet
+    region: au
+    ats: ashby
+    slug: lorikeet
+    verified: 2026-06-21
+  - name: Megaport
+    region: au
+    ats: lever
+    slug: megaport
+    verified: 2026-06-21
+  - name: Morse Micro
+    region: au
+    ats: ashby
+    slug: morse-micro
+    verified: 2026-06-21
+  - name: Prospa
+    region: au
+    ats: greenhouse
+    slug: prospa
+    verified: 2026-06-21
+  - name: Pushpay
+    region: au
+    ats: greenhouse
+    slug: pushpay
+    verified: 2026-06-21
+  - name: Quantium
+    region: au
+    ats: greenhouse
+    slug: quantium
+    verified: 2026-06-21
+  - name: Qwilr
+    region: au
+    ats: ashby
+    slug: qwilr
+    verified: 2026-06-21
+  - name: Relevance AI
+    region: au
+    ats: ashby
+    slug: relevanceai
+    verified: 2026-06-21
+  - name: Rocket Lab
+    region: au
+    ats: greenhouse
+    slug: rocketlab
+    verified: 2026-06-21
+  - name: SiteMinder
+    region: au
+    ats: ashby
+    slug: siteminder
+    verified: 2026-06-21
+  - name: Vow
+    region: au
+    ats: ashby
+    slug: vow
+    verified: 2026-06-21
+  - name: Weploy
+    region: au
+    ats: greenhouse
+    slug: weploy
+    verified: 2026-06-21
+  - name: Xero
+    region: au
+    ats: ashby
+    slug: xero
+    verified: 2026-06-21
+  - name: 360Learning
+    region: eu
+    ats: lever
+    slug: 360learning
+    verified: 2026-06-21
+  - name: Blacklane
+    region: eu
+    ats: greenhouse
+    slug: blacklane
+    verified: 2026-06-21
+  - name: Brevo
+    region: eu
+    ats: lever
+    slug: brevo
+    verified: 2026-06-21
+  - name: commercetools
+    region: eu
+    ats: greenhouse
+    slug: commercetools
+    verified: 2026-06-21
+  - name: Enpal
+    region: eu
+    ats: ashby
+    slug: enpal
+    verified: 2026-06-21
+  - name: Finary
+    region: eu
+    ats: ashby
+    slug: finary
+    verified: 2026-06-21
+  - name: Fourthline
+    region: eu
+    ats: greenhouse
+    slug: fourthline
+    verified: 2026-06-21
+  - name: Isar Aerospace
+    region: eu
+    ats: greenhouse
+    slug: isaraerospace
+    verified: 2026-06-21
+  - name: Langdock
+    region: eu
+    ats: ashby
+    slug: langdock
+    verified: 2026-06-21
+  - name: Langfuse
+    region: eu
+    ats: ashby
+    slug: langfuse
+    verified: 2026-06-21
+  - name: Malt
+    region: eu
+    ats: lever
+    slug: malt
+    verified: 2026-06-21
+  - name: Nabla
+    region: eu
+    ats: ashby
+    slug: nabla
+    verified: 2026-06-21
+  - name: Ostrom
+    region: eu
+    ats: ashby
+    slug: ostrom
+    verified: 2026-06-21
+  - name: Poolside
+    region: eu
+    ats: ashby
+    slug: poolside
+    verified: 2026-06-21
+  - name: Scandit
+    region: eu
+    ats: greenhouse
+    slug: scandit
+    verified: 2026-06-21
+  - name: Staffbase
+    region: eu
+    ats: greenhouse
+    slug: staffbase
+    verified: 2026-06-21
+  - name: Stripe Ireland
+    region: eu
+    ats: greenhouse
+    slug: intercom
+    verified: 2026-06-21
+  - name: Swan
+    region: eu
+    ats: ashby
+    slug: swan
+    verified: 2026-06-21
+  - name: Sweep
+    region: eu
+    ats: ashby
+    slug: sweep
+    verified: 2026-06-21
+  - name: Tines
+    region: eu
+    ats: greenhouse
+    slug: tines
+    verified: 2026-06-21
+  - name: Verkor
+    region: eu
+    ats: lever
+    slug: verkor
+    verified: 2026-06-21
+  - name: Vestiaire Collective
+    region: eu
+    ats: lever
+    slug: vestiairecollective
+    verified: 2026-06-21
+  - name: Voodoo
+    region: eu
+    ats: lever
+    slug: voodoo
+    verified: 2026-06-21
+  - name: Younited
+    region: eu
+    ats: lever
+    slug: younited
+    verified: 2026-06-21
+  - name: Abridge
+    region: us
+    ats: ashby
+    slug: abridge
+    verified: 2026-06-21
+  - name: Acceldata
+    region: us
+    ats: lever
+    slug: acceldata
+    verified: 2026-06-21
+  - name: Aerospike
+    region: us
+    ats: greenhouse
+    slug: aerospike
+    verified: 2026-06-21
+  - name: Alpaca
+    region: us
+    ats: greenhouse
+    slug: alpaca
+    verified: 2026-06-21
+  - name: Astronomer
+    region: us
+    ats: ashby
+    slug: astronomer
+    verified: 2026-06-21
+  - name: Attentive
+    region: us
+    ats: greenhouse
+    slug: attentive
+    verified: 2026-06-21
+  - name: Baseten
+    region: us
+    ats: ashby
+    slug: baseten
+    verified: 2026-06-21
+  - name: Bill.com
+    region: us
+    ats: greenhouse
+    slug: billcom
+    verified: 2026-06-21
+  - name: Blockchain.com
+    region: us
+    ats: greenhouse
+    slug: blockchain
+    verified: 2026-06-21
+  - name: Character AI
+    region: us
+    ats: ashby
+    slug: character
+    verified: 2026-06-21
+  - name: CircleCI
+    region: us
+    ats: greenhouse
+    slug: circleci
+    verified: 2026-06-21
+  - name: ClassPass
+    region: us
+    ats: greenhouse
+    slug: classpass
+    verified: 2026-06-21
+  - name: Clear Street
+    region: us
+    ats: greenhouse
+    slug: clearstreet
+    verified: 2026-06-21
+  - name: ClickHouse
+    region: us
+    ats: greenhouse
+    slug: clickhouse
+    verified: 2026-06-21
+  - name: Cohere Health
+    region: us
+    ats: greenhouse
+    slug: coherehealth
+    verified: 2026-06-21
+  - name: Comet
+    region: us
+    ats: greenhouse
+    slug: comet
+    verified: 2026-06-21
+  - name: Commure
+    region: us
+    ats: ashby
+    slug: commure
+    verified: 2026-06-21
+  - name: CookUnity
+    region: us
+    ats: greenhouse
+    slug: cookunity
+    verified: 2026-06-21
+  - name: Current
+    region: us
+    ats: greenhouse
+    slug: current
+    verified: 2026-06-21
+  - name: Cursor
+    region: us
+    ats: ashby
+    slug: cursor
+    verified: 2026-06-21
+  - name: Decagon
+    region: us
+    ats: ashby
+    slug: decagon
+    verified: 2026-06-21
+  - name: Deepgram
+    region: us
+    ats: ashby
+    slug: deepgram
+    verified: 2026-06-21
+  - name: Dremio
+    region: us
+    ats: greenhouse
+    slug: dremio
+    verified: 2026-06-21
+  - name: Epic Games
+    region: us
+    ats: greenhouse
+    slug: epicgames
+    verified: 2026-06-21
+  - name: Ethos
+    region: us
+    ats: greenhouse
+    slug: ethoslife
+    verified: 2026-06-21
+  - name: Gametime
+    region: us
+    ats: greenhouse
+    slug: gametimeunited
+    verified: 2026-06-21
+  - name: Gemini
+    region: us
+    ats: greenhouse
+    slug: gemini
+    verified: 2026-06-21
+  - name: GOAT Group
+    region: us
+    ats: greenhouse
+    slug: goatgroup
+    verified: 2026-06-21
+  - name: Hex Technologies
+    region: us
+    ats: greenhouse
+    slug: hextechnologies
+    verified: 2026-06-21
+  - name: Hightouch
+    region: us
+    ats: ashby
+    slug: hightouch
+    verified: 2026-06-21
+  - name: Honeycomb
+    region: us
+    ats: greenhouse
+    slug: honeycomb
+    verified: 2026-06-21
+  - name: Huntress
+    region: us
+    ats: greenhouse
+    slug: huntress
+    verified: 2026-06-21
+  - name: Imply
+    region: us
+    ats: greenhouse
+    slug: imply
+    verified: 2026-06-21
+  - name: Instawork
+    region: us
+    ats: greenhouse
+    slug: instawork
+    verified: 2026-06-21
+  - name: Kong
+    region: us
+    ats: ashby
+    slug: kong
+    verified: 2026-06-21
+  - name: LangChain
+    region: us
+    ats: ashby
+    slug: langchain
+    verified: 2026-06-21
+  - name: Life360
+    region: us
+    ats: greenhouse
+    slug: life360
+    verified: 2026-06-21
+  - name: LlamaIndex
+    region: us
+    ats: ashby
+    slug: llamaindex
+    verified: 2026-06-21
+  - name: Materialize
+    region: us
+    ats: ashby
+    slug: materialize
+    verified: 2026-06-21
+  - name: Maven Clinic
+    region: us
+    ats: ashby
+    slug: maven
+    verified: 2026-06-21
+  - name: Mercari
+    region: us
+    ats: greenhouse
+    slug: mercari
+    verified: 2026-06-21
+  - name: Middesk
+    region: us
+    ats: ashby
+    slug: middesk
+    verified: 2026-06-21
+  - name: Mindbody
+    region: us
+    ats: greenhouse
+    slug: mindbody
+    verified: 2026-06-21
+  - name: Misfits Market
+    region: us
+    ats: greenhouse
+    slug: misfitsmarket
+    verified: 2026-06-21
+  - name: Modal
+    region: us
+    ats: ashby
+    slug: modal
+    verified: 2026-06-21
+  - name: Modern Health
+    region: us
+    ats: greenhouse
+    slug: modernhealth
+    verified: 2026-06-21
+  - name: MotherDuck
+    region: us
+    ats: ashby
+    slug: motherduck
+    verified: 2026-06-21
+  - name: Neo4j
+    region: us
+    ats: greenhouse
+    slug: neo4j
+    verified: 2026-06-21
+  - name: New Relic
+    region: us
+    ats: greenhouse
+    slug: newrelic
+    verified: 2026-06-21
+  - name: Newsela
+    region: us
+    ats: greenhouse
+    slug: newsela
+    verified: 2026-06-21
+  - name: Nextdoor
+    region: us
+    ats: greenhouse
+    slug: nextdoor
+    verified: 2026-06-21
+  - name: Nomic
+    region: us
+    ats: ashby
+    slug: nomic
+    verified: 2026-06-21
+  - name: Nova Credit
+    region: us
+    ats: greenhouse
+    slug: novacredit
+    verified: 2026-06-21
+  - name: OfferUp
+    region: us
+    ats: greenhouse
+    slug: offerup
+    verified: 2026-06-21
+  - name: OpenTable
+    region: us
+    ats: greenhouse
+    slug: opentable
+    verified: 2026-06-21
+  - name: Oscar Health
+    region: us
+    ats: greenhouse
+    slug: oscar
+    verified: 2026-06-21
+  - name: Peloton
+    region: us
+    ats: greenhouse
+    slug: peloton
+    verified: 2026-06-21
+  - name: Prefect
+    region: us
+    ats: ashby
+    slug: prefect
+    verified: 2026-06-21
+  - name: Public.com
+    region: us
+    ats: greenhouse
+    slug: public
+    verified: 2026-06-21
+  - name: Railway
+    region: us
+    ats: ashby
+    slug: railway
+    verified: 2026-06-21
+  - name: Redwood Materials
+    region: us
+    ats: greenhouse
+    slug: redwoodmaterials
+    verified: 2026-06-21
+  - name: Ridgeline
+    region: us
+    ats: greenhouse
+    slug: ridgeline
+    verified: 2026-06-21
+  - name: Riot Games
+    region: us
+    ats: greenhouse
+    slug: riotgames
+    verified: 2026-06-21
+  - name: Ro
+    region: us
+    ats: lever
+    slug: ro
+    verified: 2026-06-21
+  - name: Rover
+    region: us
+    ats: lever
+    slug: rover
+    verified: 2026-06-21
+  - name: Sardine
+    region: us
+    ats: ashby
+    slug: sardine
+    verified: 2026-06-21
+  - name: Scopely
+    region: us
+    ats: greenhouse
+    slug: scopely
+    verified: 2026-06-21
+  - name: SeatGeek
+    region: us
+    ats: greenhouse
+    slug: seatgeek
+    verified: 2026-06-21
+  - name: Shield AI
+    region: us
+    ats: lever
+    slug: shieldai
+    verified: 2026-06-21
+  - name: SingleStore
+    region: us
+    ats: greenhouse
+    slug: singlestore
+    verified: 2026-06-21
+  - name: SpotHero
+    region: us
+    ats: greenhouse
+    slug: spothero
+    verified: 2026-06-21
+  - name: Starburst
+    region: us
+    ats: greenhouse
+    slug: starburst
+    verified: 2026-06-21
+  - name: StockX
+    region: us
+    ats: greenhouse
+    slug: stockx
+    verified: 2026-06-21
+  - name: Strava
+    region: us
+    ats: ashby
+    slug: strava
+    verified: 2026-06-21
+  - name: Substack
+    region: us
+    ats: ashby
+    slug: substack
+    verified: 2026-06-21
+  - name: Sumo Logic
+    region: us
+    ats: greenhouse
+    slug: sumologic
+    verified: 2026-06-21
+  - name: Sure
+    region: us
+    ats: lever
+    slug: sure
+    verified: 2026-06-21
+  - name: Sweetgreen
+    region: us
+    ats: greenhouse
+    slug: sweetgreen
+    verified: 2026-06-21
+  - name: Sysdig
+    region: us
+    ats: lever
+    slug: sysdig
+    verified: 2026-06-21
+  - name: The Athletic
+    region: us
+    ats: lever
+    slug: theathletic
+    verified: 2026-06-21
+  - name: TigerGraph
+    region: us
+    ats: greenhouse
+    slug: tigergraph
+    verified: 2026-06-21
+  - name: Unstructured
+    region: us
+    ats: ashby
+    slug: unstructured
+    verified: 2026-06-21
+  - name: Upgrade
+    region: us
+    ats: greenhouse
+    slug: upgrade
+    verified: 2026-06-21
+  - name: Vannevar Labs
+    region: us
+    ats: greenhouse
+    slug: vannevarlabs
+    verified: 2026-06-21
+  - name: Vapi
+    region: us
+    ats: ashby
+    slug: vapi
+    verified: 2026-06-21
+  - name: Via
+    region: us
+    ats: greenhouse
+    slug: via
+    verified: 2026-06-21
+  - name: Warp
+    region: us
+    ats: ashby
+    slug: warp
+    verified: 2026-06-21
+  - name: Watershed
+    region: us
+    ats: ashby
+    slug: watershed
+    verified: 2026-06-21
+  - name: Waymo
+    region: us
+    ats: greenhouse
+    slug: waymo
+    verified: 2026-06-21
+  - name: Weaviate
+    region: us
+    ats: ashby
+    slug: weaviate
+    verified: 2026-06-21
+  - name: Weee!
+    region: us
+    ats: greenhouse
+    slug: weee
+    verified: 2026-06-21
+  - name: WHOOP
+    region: us
+    ats: ashby
+    slug: whoop
+    verified: 2026-06-21
+  - name: Wonderschool
+    region: us
+    ats: greenhouse
+    slug: wonderschool
+    verified: 2026-06-21
+  - name: Yugabyte
+    region: us
+    ats: greenhouse
+    slug: yugabyte
+    verified: 2026-06-21
+
+  # --- 2026-06-21 expansion: scouted + HTTP-verified sponsor-likely boards ---
+  - name: Airalo
+    region: au
+    ats: lever
+    slug: airalo
+    verified: 2026-06-21
+  - name: Biofourmis
+    region: au
+    ats: greenhouse
+    slug: biofourmis
+    verified: 2026-06-21
+  - name: Coinhako
+    region: au
+    ats: ashby
+    slug: coinhako
+    verified: 2026-06-21
+  - name: Ferocia
+    region: au
+    ats: greenhouse
+    slug: ferocia
+    verified: 2026-06-21
+  - name: Kojo
+    region: au
+    ats: ashby
+    slug: kojo
+    verified: 2026-06-21
+  - name: Lalamove
+    region: au
+    ats: lever
+    slug: lalamove
+    verified: 2026-06-21
+  - name: PatSnap
+    region: au
+    ats: lever
+    slug: patsnap
+    verified: 2026-06-21
+  - name: Plenti
+    region: au
+    ats: lever
+    slug: plenti
+    verified: 2026-06-21
+  - name: ROLLER
+    region: au
+    ats: greenhouse
+    slug: roller
+    verified: 2026-06-21
+  - name: Secure Code Warrior
+    region: au
+    ats: lever
+    slug: securecodewarrior
+    verified: 2026-06-21
+  - name: Sitemate
+    region: au
+    ats: ashby
+    slug: sitemate
+    verified: 2026-06-21
+  - name: Sonder
+    region: au
+    ats: greenhouse
+    slug: sonderaustralia
+    verified: 2026-06-21
+  - name: UpGuard
+    region: au
+    ats: ashby
+    slug: upguard
+    verified: 2026-06-21
+  - name: Agicap
+    region: eu
+    ats: lever
+    slug: agicap
+    verified: 2026-06-21
+  - name: Akur8
+    region: eu
+    ats: ashby
+    slug: akur8
+    verified: 2026-06-21
+  - name: Ankorstore
+    region: eu
+    ats: ashby
+    slug: ankorstore
+    verified: 2026-06-21
+  - name: Billie
+    region: eu
+    ats: ashby
+    slug: billie
+    verified: 2026-06-21
+  - name: Cognite
+    region: eu
+    ats: greenhouse
+    slug: cognite
+    verified: 2026-06-21
+  - name: Corti
+    region: eu
+    ats: ashby
+    slug: corti
+    verified: 2026-06-21
+  - name: Cradle
+    region: eu
+    ats: ashby
+    slug: cradlebio
+    verified: 2026-06-21
+  - name: Crisp
+    region: eu
+    ats: ashby
+    slug: crisp
+    verified: 2026-06-21
+  - name: Deeploy
+    region: eu
+    ats: ashby
+    slug: deeploy
+    verified: 2026-06-21
+  - name: DEPT
+    region: eu
+    ats: greenhouse
+    slug: dept
+    verified: 2026-06-21
+  - name: Evervault
+    region: eu
+    ats: ashby
+    slug: evervault
+    verified: 2026-06-21
+  - name: Finn
+    region: eu
+    ats: lever
+    slug: finn
+    verified: 2026-06-21
+  - name: Fonoa
+    region: eu
+    ats: ashby
+    slug: fonoa
+    verified: 2026-06-21
+  - name: Kestra
+    region: eu
+    ats: ashby
+    slug: kestra
+    verified: 2026-06-21
+  - name: Luminovo
+    region: eu
+    ats: ashby
+    slug: luminovo
+    verified: 2026-06-21
+  - name: Mendix
+    region: eu
+    ats: lever
+    slug: mendix
+    verified: 2026-06-21
+  - name: n8n
+    region: eu
+    ats: ashby
+    slug: n8n
+    verified: 2026-06-21
+  - name: Nelly
+    region: eu
+    ats: ashby
+    slug: nelly
+    verified: 2026-06-21
+  - name: Orbem
+    region: eu
+    ats: ashby
+    slug: orbem
+    verified: 2026-06-21
+  - name: Owkin
+    region: eu
+    ats: ashby
+    slug: owkin
+    verified: 2026-06-21
+  - name: Parloa
+    region: eu
+    ats: greenhouse
+    slug: parloa
+    verified: 2026-06-21
+  - name: Peec AI
+    region: eu
+    ats: ashby
+    slug: peec
+    verified: 2026-06-21
+  - name: PhotoRoom
+    region: eu
+    ats: ashby
+    slug: photoroom
+    verified: 2026-06-21
+  - name: Pliant
+    region: eu
+    ats: ashby
+    slug: pliant
+    verified: 2026-06-21
+  - name: Proxima Fusion
+    region: eu
+    ats: ashby
+    slug: proxima-fusion
+    verified: 2026-06-21
+  - name: Safe
+    region: eu
+    ats: lever
+    slug: safe
+    verified: 2026-06-21
+  - name: Satispay
+    region: eu
+    ats: ashby
+    slug: satispay
+    verified: 2026-06-21
+  - name: Scout24
+    region: eu
+    ats: greenhouse
+    slug: scout24
+    verified: 2026-06-21
+  - name: Seyna
+    region: eu
+    ats: ashby
+    slug: seyna
+    verified: 2026-06-21
+  - name: Sword Health
+    region: eu
+    ats: lever
+    slug: swordhealth
+    verified: 2026-06-21
+  - name: Taktile
+    region: eu
+    ats: ashby
+    slug: taktile
+    verified: 2026-06-21
+  - name: The Exploration Company
+    region: eu
+    ats: ashby
+    slug: the-exploration-company
+    verified: 2026-06-21
+  - name: Twenty
+    region: eu
+    ats: ashby
+    slug: twenty
+    verified: 2026-06-21
+  - name: Upvest
+    region: eu
+    ats: ashby
+    slug: upvest
+    verified: 2026-06-21
+  - name: Wallapop
+    region: eu
+    ats: greenhouse
+    slug: wallapop
+    verified: 2026-06-21
+  - name: Wooga
+    region: eu
+    ats: greenhouse
+    slug: wooga
+    verified: 2026-06-21
+  - name: Abound
+    region: uk
+    ats: ashby
+    slug: abound
+    verified: 2026-06-21
+  - name: Birdie
+    region: uk
+    ats: ashby
+    slug: birdie
+    verified: 2026-06-21
+  - name: Causaly
+    region: uk
+    ats: ashby
+    slug: causaly
+    verified: 2026-06-21
+  - name: Elliptic
+    region: uk
+    ats: ashby
+    slug: elliptic
+    verified: 2026-06-21
+  - name: Flagstone
+    region: uk
+    ats: ashby
+    slug: flagstone
+    verified: 2026-06-21
+  - name: Flo Health
+    region: uk
+    ats: greenhouse
+    slug: flohealth
+    verified: 2026-06-21
+  - name: GetGround
+    region: uk
+    ats: ashby
+    slug: getground
+    verified: 2026-06-21
+  - name: Griffin
+    region: uk
+    ats: ashby
+    slug: griffin
+    verified: 2026-06-21
+  - name: Humaans
+    region: uk
+    ats: ashby
+    slug: humaans
+    verified: 2026-06-21
+  - name: Juro
+    region: uk
+    ats: ashby
+    slug: juro
+    verified: 2026-06-21
+  - name: Lightdash
+    region: uk
+    ats: ashby
+    slug: lightdash
+    verified: 2026-06-21
+  - name: MoonPay
+    region: uk
+    ats: lever
+    slug: moonpay
+    verified: 2026-06-21
+  - name: Primer
+    region: uk
+    ats: ashby
+    slug: primer
+    verified: 2026-06-21
+  - name: Relation Therapeutics
+    region: uk
+    ats: ashby
+    slug: relationrx
+    verified: 2026-06-21
+  - name: Signal AI
+    region: uk
+    ats: ashby
+    slug: signal-ai
+    verified: 2026-06-21
+  - name: Speechmatics
+    region: uk
+    ats: greenhouse
+    slug: speechmatics
+    verified: 2026-06-21
+  - name: Sylvera
+    region: uk
+    ats: ashby
+    slug: sylvera
+    verified: 2026-06-21
+  - name: Trustpilot
+    region: uk
+    ats: greenhouse
+    slug: trustpilot
+    verified: 2026-06-21
+  - name: Unlikely AI
+    region: uk
+    ats: ashby
+    slug: unlikelyai
+    verified: 2026-06-21
+  - name: Unmind
+    region: uk
+    ats: ashby
+    slug: unmind
+    verified: 2026-06-21
+  - name: Addi
+    region: us
+    ats: ashby
+    slug: addi
+    verified: 2026-06-21
+  - name: Alchemy
+    region: us
+    ats: ashby
+    slug: alchemy
+    verified: 2026-06-21
+  - name: Altana AI
+    region: us
+    ats: greenhouse
+    slug: altanaai
+    verified: 2026-06-21
+  - name: Arcadia
+    region: us
+    ats: lever
+    slug: arcadia
+    verified: 2026-06-21
+  - name: AssemblyAI
+    region: us
+    ats: greenhouse
+    slug: assemblyai
+    verified: 2026-06-21
+  - name: Aurora Innovation
+    region: us
+    ats: greenhouse
+    slug: aurorainnovation
+    verified: 2026-06-21
+  - name: Aven
+    region: us
+    ats: ashby
+    slug: aven
+    verified: 2026-06-21
+  - name: Base Power
+    region: us
+    ats: ashby
+    slug: base-power
+    verified: 2026-06-21
+  - name: Bastion
+    region: us
+    ats: ashby
+    slug: bastion
+    verified: 2026-06-21
+  - name: Belvo
+    region: us
+    ats: ashby
+    slug: belvo
+    verified: 2026-06-21
+  - name: Bland AI
+    region: us
+    ats: ashby
+    slug: bland
+    verified: 2026-06-21
+  - name: BoomAndBucket
+    region: us
+    ats: ashby
+    slug: boomandbucket
+    verified: 2026-06-21
+  - name: Branch
+    region: us
+    ats: greenhouse
+    slug: branch
+    verified: 2026-06-21
+  - name: Browserbase
+    region: us
+    ats: ashby
+    slug: browserbase
+    verified: 2026-06-21
+  - name: Campfire
+    region: us
+    ats: ashby
+    slug: campfire
+    verified: 2026-06-21
+  - name: Cardless
+    region: us
+    ats: ashby
+    slug: cardless
+    verified: 2026-06-21
+  - name: Cedar
+    region: us
+    ats: ashby
+    slug: cedar
+    verified: 2026-06-21
+  - name: Cerebras
+    region: us
+    ats: ashby
+    slug: cerebras
+    verified: 2026-06-21
+  - name: Chainguard
+    region: us
+    ats: greenhouse
+    slug: chainguard
+    verified: 2026-06-21
+  - name: Cobot
+    region: us
+    ats: ashby
+    slug: cobot
+    verified: 2026-06-21
+  - name: Cognition
+    region: us
+    ats: ashby
+    slug: cognition
+    verified: 2026-06-21
+  - name: Collective Health
+    region: us
+    ats: greenhouse
+    slug: collectivehealth
+    verified: 2026-06-21
+  - name: Colossal Biosciences
+    region: us
+    ats: greenhouse
+    slug: colossalbiosciences
+    verified: 2026-06-21
+  - name: Column
+    region: us
+    ats: ashby
+    slug: column
+    verified: 2026-06-21
+  - name: Conduit
+    region: us
+    ats: ashby
+    slug: conduit
+    verified: 2026-06-21
+  - name: Crusoe
+    region: us
+    ats: ashby
+    slug: crusoe
+    verified: 2026-06-21
+  - name: Cybereason
+    region: us
+    ats: greenhouse
+    slug: cybereason
+    verified: 2026-06-21
+  - name: DatologyAI
+    region: us
+    ats: ashby
+    slug: datologyai
+    verified: 2026-06-21
+  - name: Doppler
+    region: us
+    ats: ashby
+    slug: doppler
+    verified: 2026-06-21
+  - name: Dune Analytics
+    region: us
+    ats: ashby
+    slug: dune
+    verified: 2026-06-21
+  - name: Ethena
+    region: us
+    ats: lever
+    slug: ethena
+    verified: 2026-06-21
+  - name: Factory
+    region: us
+    ats: ashby
+    slug: factory
+    verified: 2026-06-21
+  - name: Fireblocks
+    region: us
+    ats: greenhouse
+    slug: fireblocks
+    verified: 2026-06-21
+  - name: Fireworks AI
+    region: us
+    ats: greenhouse
+    slug: fireworksai
+    verified: 2026-06-21
+  - name: Flexe
+    region: us
+    ats: greenhouse
+    slug: flexe
+    verified: 2026-06-21
+  - name: Flock Safety
+    region: us
+    ats: ashby
+    slug: flock
+    verified: 2026-06-21
+  - name: Flox
+    region: us
+    ats: ashby
+    slug: flox
+    verified: 2026-06-21
+  - name: Form Energy
+    region: us
+    ats: ashby
+    slug: formenergy
+    verified: 2026-06-21
+  - name: FourKites
+    region: us
+    ats: greenhouse
+    slug: fourkites
+    verified: 2026-06-21
+  - name: Galileo Financial Technologies
+    region: us
+    ats: greenhouse
+    slug: galileo
+    verified: 2026-06-21
+  - name: Gamma
+    region: us
+    ats: ashby
+    slug: gamma
+    verified: 2026-06-21
+  - name: Garner Health
+    region: us
+    ats: greenhouse
+    slug: garnerhealth
+    verified: 2026-06-21
+  - name: Gauntlet
+    region: us
+    ats: lever
+    slug: gauntlet
+    verified: 2026-06-21
+  - name: Gecko Robotics
+    region: us
+    ats: ashby
+    slug: gecko-robotics
+    verified: 2026-06-21
+  - name: Goldsky
+    region: us
+    ats: ashby
+    slug: goldsky
+    verified: 2026-06-21
+  - name: Helius
+    region: us
+    ats: ashby
+    slug: helius
+    verified: 2026-06-21
+  - name: Highnote
+    region: us
+    ats: greenhouse
+    slug: highnote
+    verified: 2026-06-21
+  - name: Inngest
+    region: us
+    ats: ashby
+    slug: inngest
+    verified: 2026-06-21
+  - name: Instabase
+    region: us
+    ats: greenhouse
+    slug: instabase
+    verified: 2026-06-21
+  - name: Julius AI
+    region: us
+    ats: ashby
+    slug: julius
+    verified: 2026-06-21
+  - name: Kalshi
+    region: us
+    ats: ashby
+    slug: kalshi
+    verified: 2026-06-21
+  - name: Kavak
+    region: us
+    ats: lever
+    slug: kavak
+    verified: 2026-06-21
+  - name: Knot
+    region: us
+    ats: ashby
+    slug: knot
+    verified: 2026-06-21
+  - name: Komodo Health
+    region: us
+    ats: greenhouse
+    slug: komodohealth
+    verified: 2026-06-21
+  - name: Labelbox
+    region: us
+    ats: greenhouse
+    slug: labelbox
+    verified: 2026-06-21
+  - name: Lookout
+    region: us
+    ats: greenhouse
+    slug: lookout
+    verified: 2026-06-21
+  - name: Lovable
+    region: us
+    ats: ashby
+    slug: lovable
+    verified: 2026-06-21
+  - name: Match Group
+    region: us
+    ats: lever
+    slug: matchgroup
+    verified: 2026-06-21
+  - name: Metabase
+    region: us
+    ats: lever
+    slug: metabase
+    verified: 2026-06-21
+  - name: Method Financial
+    region: us
+    ats: ashby
+    slug: method
+    verified: 2026-06-21
+  - name: Monumental
+    region: us
+    ats: ashby
+    slug: monumental
+    verified: 2026-06-21
+  - name: Mosaic
+    region: us
+    ats: ashby
+    slug: mosaic
+    verified: 2026-06-21
+  - name: Nauto
+    region: us
+    ats: greenhouse
+    slug: nauto
+    verified: 2026-06-21
+  - name: Nubank
+    region: us
+    ats: greenhouse
+    slug: nubank
+    verified: 2026-06-21
+  - name: Nymbus
+    region: us
+    ats: greenhouse
+    slug: nymbusinc
+    verified: 2026-06-21
+  - name: Offchain Labs
+    region: us
+    ats: lever
+    slug: offchainlabs
+    verified: 2026-06-21
+  - name: OpenEvidence
+    region: us
+    ats: ashby
+    slug: openevidence
+    verified: 2026-06-21
+  - name: Orb
+    region: us
+    ats: ashby
+    slug: orb
+    verified: 2026-06-21
+  - name: Orum
+    region: us
+    ats: ashby
+    slug: orum
+    verified: 2026-06-21
+  - name: Outschool
+    region: us
+    ats: greenhouse
+    slug: outschool
+    verified: 2026-06-21
+  - name: Pacaso
+    region: us
+    ats: greenhouse
+    slug: pacaso
+    verified: 2026-06-21
+  - name: Pano AI
+    region: us
+    ats: ashby
+    slug: pano-ai
+    verified: 2026-06-21
+  - name: Paxos
+    region: us
+    ats: ashby
+    slug: paxos
+    verified: 2026-06-21
+  - name: Payabli
+    region: us
+    ats: ashby
+    slug: payabli
+    verified: 2026-06-21
+  - name: Pendo
+    region: us
+    ats: greenhouse
+    slug: pendo
+    verified: 2026-06-21
+  - name: Phantom
+    region: us
+    ats: ashby
+    slug: phantom
+    verified: 2026-06-21
+  - name: Polymarket
+    region: us
+    ats: ashby
+    slug: polymarket
+    verified: 2026-06-21
+  - name: PostHog
+    region: us
+    ats: ashby
+    slug: posthog
+    verified: 2026-06-21
+  - name: project44
+    region: us
+    ats: greenhouse
+    slug: project44
+    verified: 2026-06-21
+  - name: Pylon
+    region: us
+    ats: ashby
+    slug: pylon
+    verified: 2026-06-21
+  - name: QuintoAndar
+    region: us
+    ats: greenhouse
+    slug: quintoandar
+    verified: 2026-06-21
+  - name: Rain
+    region: us
+    ats: ashby
+    slug: rain
+    verified: 2026-06-21
+  - name: Recursion Pharmaceuticals
+    region: us
+    ats: greenhouse
+    slug: recursionpharmaceuticals
+    verified: 2026-06-21
+  - name: Resend
+    region: us
+    ats: ashby
+    slug: resend
+    verified: 2026-06-21
+  - name: Restate
+    region: us
+    ats: ashby
+    slug: restate
+    verified: 2026-06-21
+  - name: RunPod
+    region: us
+    ats: ashby
+    slug: runpod
+    verified: 2026-06-21
+  - name: SambaNova Systems
+    region: us
+    ats: greenhouse
+    slug: sambanovasystems
+    verified: 2026-06-21
+  - name: Saronic
+    region: us
+    ats: ashby
+    slug: saronic
+    verified: 2026-06-21
+  - name: Semgrep
+    region: us
+    ats: ashby
+    slug: semgrep
+    verified: 2026-06-21
+  - name: ShipBob
+    region: us
+    ats: greenhouse
+    slug: shipbobinc
+    verified: 2026-06-21
+  - name: Sift
+    region: us
+    ats: ashby
+    slug: sift
+    verified: 2026-06-21
+  - name: Sigma Computing
+    region: us
+    ats: greenhouse
+    slug: sigmacomputing
+    verified: 2026-06-21
+  - name: Snorkel AI
+    region: us
+    ats: greenhouse
+    slug: snorkelai
+    verified: 2026-06-21
+  - name: Socure
+    region: us
+    ats: ashby
+    slug: socure
+    verified: 2026-06-21
+  - name: Spade
+    region: us
+    ats: ashby
+    slug: spade
+    verified: 2026-06-21
+  - name: Span
+    region: us
+    ats: ashby
+    slug: span
+    verified: 2026-06-21
+  - name: Standard Bots
+    region: us
+    ats: ashby
+    slug: standardbots
+    verified: 2026-06-21
+  - name: Stytch
+    region: us
+    ats: ashby
+    slug: stytch
+    verified: 2026-06-21
+  - name: Synctera
+    region: us
+    ats: ashby
+    slug: synctera
+    verified: 2026-06-21
+  - name: Temporal Technologies
+    region: us
+    ats: greenhouse
+    slug: temporaltechnologies
+    verified: 2026-06-21
+  - name: Transcarent
+    region: us
+    ats: greenhouse
+    slug: transcarent
+    verified: 2026-06-21
+  - name: Truckstop
+    region: us
+    ats: greenhouse
+    slug: truckstop
+    verified: 2026-06-21
+  - name: Truework
+    region: us
+    ats: greenhouse
+    slug: truework
+    verified: 2026-06-21
+  - name: Turing
+    region: us
+    ats: greenhouse
+    slug: turing
+    verified: 2026-06-21
+  - name: Turnkey
+    region: us
+    ats: ashby
+    slug: turnkey
+    verified: 2026-06-21
+  - name: Twelve
+    region: us
+    ats: ashby
+    slug: twelve
+    verified: 2026-06-21
+  - name: Twin Health
+    region: us
+    ats: greenhouse
+    slug: twinhealth
+    verified: 2026-06-21
+  - name: Vellum
+    region: us
+    ats: ashby
+    slug: vellum
+    verified: 2026-06-21
+  - name: Virta Health
+    region: us
+    ats: ashby
+    slug: virtahealth
+    verified: 2026-06-21
+  - name: Waymark
+    region: us
+    ats: greenhouse
+    slug: waymark
+    verified: 2026-06-21
+  - name: Wildlife Studios
+    region: us
+    ats: greenhouse
+    slug: wildlifestudios
+    verified: 2026-06-21
+  - name: Windmill
+    region: us
+    ats: ashby
+    slug: windmill
+    verified: 2026-06-21
+  - name: Zed
+    region: us
+    ats: ashby
+    slug: zed
+    verified: 2026-06-21
+  - name: Zip
+    region: us
+    ats: ashby
+    slug: zip
+    verified: 2026-06-21
+
+  # --- Seed expansion verified 2026-06-26 (+65 companies) ---
+  - name: HealthMatch
+    region: au
+    ats: ashby
+    slug: healthmatch
+    verified: 2026-06-26
+  - name: Sanity
+    region: eu
+    ats: ashby
+    slug: sanity
+    verified: 2026-06-26
+  - name: Bloomreach
+    region: eu
+    ats: greenhouse
+    slug: bloomreach
+    verified: 2026-06-26
+  - name: Ledgy
+    region: eu
+    ats: greenhouse
+    slug: ledgy
+    verified: 2026-06-26
+  - name: Make
+    region: eu
+    ats: greenhouse
+    slug: make
+    verified: 2026-06-26
+  - name: Refurbed
+    region: eu
+    ats: greenhouse
+    slug: refurbed
+    verified: 2026-06-26
+  - name: Spryker
+    region: eu
+    ats: greenhouse
+    slug: spryker
+    verified: 2026-06-26
+  - name: Storyblok
+    region: eu
+    ats: greenhouse
+    slug: storyblok
+    verified: 2026-06-26
+  - name: Prismic
+    region: eu
+    ats: lever
+    slug: prismic
+    verified: 2026-06-26
+  - name: Xendit
+    region: sg
+    ats: greenhouse
+    slug: xendit
+    verified: 2026-06-26
+  - name: Amber Group
+    region: sg
+    ats: lever
+    slug: ambergroup
+    verified: 2026-06-26
+  - name: B2C2
+    region: uk
+    ats: greenhouse
+    slug: b2c2
+    verified: 2026-06-26
+  - name: Marshall Wace
+    region: uk
+    ats: greenhouse
+    slug: marshallwace
+    verified: 2026-06-26
+  - name: Glide
+    region: us
+    ats: ashby
+    slug: glide
+    verified: 2026-06-26
+  - name: Gorgias
+    region: us
+    ats: ashby
+    slug: gorgias
+    verified: 2026-06-26
+  - name: Imprint
+    region: us
+    ats: ashby
+    slug: imprint
+    verified: 2026-06-26
+  - name: Magic Eden
+    region: us
+    ats: ashby
+    slug: magiceden
+    verified: 2026-06-26
+  - name: Mysten Labs
+    region: us
+    ats: ashby
+    slug: mystenlabs
+    verified: 2026-06-26
+  - name: QuickNode
+    region: us
+    ats: ashby
+    slug: quicknode
+    verified: 2026-06-26
+  - name: Sentilink
+    region: us
+    ats: ashby
+    slug: sentilink
+    verified: 2026-06-26
+  - name: Akuna Capital
+    region: us
+    ats: greenhouse
+    slug: akunacapital
+    verified: 2026-06-26
+  - name: Alma
+    region: us
+    ats: greenhouse
+    slug: alma
+    verified: 2026-06-26
+  - name: BeyondTrust
+    region: us
+    ats: greenhouse
+    slug: beyondtrust
+    verified: 2026-06-26
+  - name: BigID
+    region: us
+    ats: greenhouse
+    slug: bigid
+    verified: 2026-06-26
+  - name: BitGo
+    region: us
+    ats: greenhouse
+    slug: bitgo
+    verified: 2026-06-26
+  - name: Braze
+    region: us
+    ats: greenhouse
+    slug: braze
+    verified: 2026-06-26
+  - name: Bugcrowd
+    region: us
+    ats: greenhouse
+    slug: bugcrowd
+    verified: 2026-06-26
+  - name: Calm
+    region: us
+    ats: greenhouse
+    slug: calm
+    verified: 2026-06-26
+  - name: Carrot Fertility
+    region: us
+    ats: greenhouse
+    slug: carrotfertility
+    verified: 2026-06-26
+  - name: Cerebral
+    region: us
+    ats: greenhouse
+    slug: cerebral
+    verified: 2026-06-26
+  - name: Clara
+    region: us
+    ats: greenhouse
+    slug: clara
+    verified: 2026-06-26
+  - name: Cloudbeds
+    region: us
+    ats: greenhouse
+    slug: cloudbeds
+    verified: 2026-06-26
+  - name: Coalition
+    region: us
+    ats: greenhouse
+    slug: coalition
+    verified: 2026-06-26
+  - name: Consensys
+    region: us
+    ats: greenhouse
+    slug: consensys
+    verified: 2026-06-26
+  - name: Customer.io
+    region: us
+    ats: greenhouse
+    slug: customerio
+    verified: 2026-06-26
+  - name: Dashlane
+    region: us
+    ats: greenhouse
+    slug: dashlane
+    verified: 2026-06-26
+  - name: DataGrail
+    region: us
+    ats: greenhouse
+    slug: datagrail
+    verified: 2026-06-26
+  - name: Descript
+    region: us
+    ats: greenhouse
+    slug: descript
+    verified: 2026-06-26
+  - name: Dialpad
+    region: us
+    ats: greenhouse
+    slug: dialpad
+    verified: 2026-06-26
+  - name: EBANX
+    region: us
+    ats: greenhouse
+    slug: ebanx
+    verified: 2026-06-26
+  - name: EarnIn
+    region: us
+    ats: greenhouse
+    slug: earnin
+    verified: 2026-06-26
+  - name: Esusu
+    region: us
+    ats: greenhouse
+    slug: esusu
+    verified: 2026-06-26
+  - name: Extend
+    region: us
+    ats: greenhouse
+    slug: extend
+    verified: 2026-06-26
+  - name: FalconX
+    region: us
+    ats: greenhouse
+    slug: falconx
+    verified: 2026-06-26
+  - name: Flatiron Health
+    region: us
+    ats: greenhouse
+    slug: flatironhealth
+    verified: 2026-06-26
+  - name: Gympass
+    region: us
+    ats: greenhouse
+    slug: gympass
+    verified: 2026-06-26
+  - name: Incode
+    region: us
+    ats: greenhouse
+    slug: incode
+    verified: 2026-06-26
+  - name: Iterable
+    region: us
+    ats: greenhouse
+    slug: iterable
+    verified: 2026-06-26
+  - name: Jane Street
+    region: us
+    ats: greenhouse
+    slug: janestreet
+    verified: 2026-06-26
+  - name: Jumio
+    region: us
+    ats: greenhouse
+    slug: jumio
+    verified: 2026-06-26
+  - name: Jump Trading
+    region: us
+    ats: greenhouse
+    slug: jumptrading
+    verified: 2026-06-26
+  - name: Klaviyo
+    region: us
+    ats: greenhouse
+    slug: klaviyo
+    verified: 2026-06-26
+  - name: Melio
+    region: us
+    ats: greenhouse
+    slug: melio
+    verified: 2026-06-26
+  - name: Narvar
+    region: us
+    ats: greenhouse
+    slug: narvar
+    verified: 2026-06-26
+  - name: OneTrust
+    region: us
+    ats: greenhouse
+    slug: onetrust
+    verified: 2026-06-26
+  - name: Orca Security
+    region: us
+    ats: greenhouse
+    slug: orcasecurity
+    verified: 2026-06-26
+  - name: Ordergroove
+    region: us
+    ats: greenhouse
+    slug: ordergroove
+    verified: 2026-06-26
+  - name: Pie Insurance
+    region: us
+    ats: greenhouse
+    slug: pieinsurance
+    verified: 2026-06-26
+  - name: Prove
+    region: us
+    ats: greenhouse
+    slug: prove
+    verified: 2026-06-26
+  - name: Ripple
+    region: us
+    ats: greenhouse
+    slug: ripple
+    verified: 2026-06-26
+  - name: Transmit Security
+    region: us
+    ats: greenhouse
+    slug: transmitsecurity
+    verified: 2026-06-26
+  - name: Unqork
+    region: us
+    ats: greenhouse
+    slug: unqork
+    verified: 2026-06-26
+  - name: Upstart
+    region: us
+    ats: greenhouse
+    slug: upstart
+    verified: 2026-06-26
+  - name: VTEX
+    region: us
+    ats: greenhouse
+    slug: vtex
+    verified: 2026-06-26
+  - name: Workato
+    region: us
+    ats: greenhouse
+    slug: workato
+    verified: 2026-06-26
+
+  # --- Seed expansion verified 2026-06-26 (+5 companies) ---
+  - name: Ambience Healthcare
+    region: us
+    ats: ashby
+    slug: ambiencehealthcare
+    verified: 2026-06-26
+  - name: Pika
+    region: us
+    ats: ashby
+    slug: pika
+    verified: 2026-06-26
+  - name: Statsig
+    region: us
+    ats: ashby
+    slug: statsig
+    verified: 2026-06-26
+  - name: CoreWeave
+    region: us
+    ats: greenhouse
+    slug: coreweave
+    verified: 2026-06-26
+  - name: Observe.AI
+    region: us
+    ats: greenhouse
+    slug: observeai
+    verified: 2026-06-26
+
+  # --- Seed expansion verified 2026-06-26 (+299 companies) ---
+  - name: Float
+    region: ca
+    ats: ashby
+    slug: float
+    verified: 2026-06-26
+  - name: AlayaCare
+    region: ca
+    ats: greenhouse
+    slug: alayacare
+    verified: 2026-06-26
+  - name: D2L
+    region: ca
+    ats: greenhouse
+    slug: d2l
+    verified: 2026-06-26
+  - name: Hootsuite
+    region: ca
+    ats: greenhouse
+    slug: hootsuite
+    verified: 2026-06-26
+  - name: Later
+    region: ca
+    ats: greenhouse
+    slug: later
+    verified: 2026-06-26
+  - name: Thinkific
+    region: ca
+    ats: greenhouse
+    slug: thinkific
+    verified: 2026-06-26
+  - name: Mentimeter
+    region: eu
+    ats: greenhouse
+    slug: mentimeter
+    verified: 2026-06-26
+  - name: Truecaller
+    region: eu
+    ats: greenhouse
+    slug: truecaller
+    verified: 2026-06-26
+  - name: AppsFlyer
+    region: il
+    ats: greenhouse
+    slug: appsflyer
+    verified: 2026-06-26
+  - name: Axonius
+    region: il
+    ats: greenhouse
+    slug: axonius
+    verified: 2026-06-26
+  - name: Lightricks
+    region: il
+    ats: greenhouse
+    slug: lightricks
+    verified: 2026-06-26
+  - name: Pagaya
+    region: il
+    ats: greenhouse
+    slug: pagaya
+    verified: 2026-06-26
+  - name: Payoneer
+    region: il
+    ats: greenhouse
+    slug: payoneer
+    verified: 2026-06-26
+  - name: Taboola
+    region: il
+    ats: greenhouse
+    slug: taboola
+    verified: 2026-06-26
+  - name: Bybit
+    region: sg
+    ats: greenhouse
+    slug: bybit
+    verified: 2026-06-26
+  - name: Ravio
+    region: uk
+    ats: ashby
+    slug: ravio
+    verified: 2026-06-26
+  - name: 1X
+    region: us
+    ats: ashby
+    slug: 1x
+    verified: 2026-06-26
+  - name: Astra
+    region: us
+    ats: ashby
+    slug: astra
+    verified: 2026-06-26
+  - name: Atlas
+    region: us
+    ats: ashby
+    slug: atlas
+    verified: 2026-06-26
+  - name: Atomic
+    region: us
+    ats: ashby
+    slug: atomic
+    verified: 2026-06-26
+  - name: Aviator
+    region: us
+    ats: ashby
+    slug: aviator
+    verified: 2026-06-26
+  - name: Candid Health
+    region: us
+    ats: ashby
+    slug: candidhealth
+    verified: 2026-06-26
+  - name: Cartesia
+    region: us
+    ats: ashby
+    slug: cartesia
+    verified: 2026-06-26
+  - name: Causal
+    region: us
+    ats: ashby
+    slug: causal
+    verified: 2026-06-26
+  - name: Checkly
+    region: us
+    ats: ashby
+    slug: checkly
+    verified: 2026-06-26
+  - name: Coderabbit
+    region: us
+    ats: ashby
+    slug: coderabbit
+    verified: 2026-06-26
+  - name: CoinTracker
+    region: us
+    ats: ashby
+    slug: cointracker
+    verified: 2026-06-26
+  - name: Continue
+    region: us
+    ats: ashby
+    slug: continue
+    verified: 2026-06-26
+  - name: Cube
+    region: us
+    ats: ashby
+    slug: cube
+    verified: 2026-06-26
+  - name: Cube Software
+    region: us
+    ats: ashby
+    slug: cubesoftware
+    verified: 2026-06-26
+  - name: Datafold
+    region: us
+    ats: ashby
+    slug: datafold
+    verified: 2026-06-26
+  - name: Delphi
+    region: us
+    ats: ashby
+    slug: delphi
+    verified: 2026-06-26
+  - name: Depot
+    region: us
+    ats: ashby
+    slug: depot
+    verified: 2026-06-26
+  - name: Fathom
+    region: us
+    ats: ashby
+    slug: fathom
+    verified: 2026-06-26
+  - name: Footprint
+    region: us
+    ats: ashby
+    slug: footprint
+    verified: 2026-06-26
+  - name: Freshpaint
+    region: us
+    ats: ashby
+    slug: freshpaint
+    verified: 2026-06-26
+  - name: Granola
+    region: us
+    ats: ashby
+    slug: granola
+    verified: 2026-06-26
+  - name: Graphite
+    region: us
+    ats: ashby
+    slug: graphite
+    verified: 2026-06-26
+  - name: Greptile
+    region: us
+    ats: ashby
+    slug: greptile
+    verified: 2026-06-26
+  - name: Ideogram
+    region: us
+    ats: ashby
+    slug: ideogram
+    verified: 2026-06-26
+  - name: Infisical
+    region: us
+    ats: ashby
+    slug: infisical
+    verified: 2026-06-26
+  - name: Krea
+    region: us
+    ats: ashby
+    slug: krea
+    verified: 2026-06-26
+  - name: Lago
+    region: us
+    ats: ashby
+    slug: lago
+    verified: 2026-06-26
+  - name: Leap
+    region: us
+    ats: ashby
+    slug: leap
+    verified: 2026-06-26
+  - name: Levelpath
+    region: us
+    ats: ashby
+    slug: levelpath
+    verified: 2026-06-26
+  - name: Levels
+    region: us
+    ats: ashby
+    slug: levels
+    verified: 2026-06-26
+  - name: LiveKit
+    region: us
+    ats: ashby
+    slug: livekit
+    verified: 2026-06-26
+  - name: Meow
+    region: us
+    ats: ashby
+    slug: meow
+    verified: 2026-06-26
+  - name: Meshy
+    region: us
+    ats: ashby
+    slug: meshy
+    verified: 2026-06-26
+  - name: Metriport
+    region: us
+    ats: ashby
+    slug: metriport
+    verified: 2026-06-26
+  - name: Mux
+    region: us
+    ats: ashby
+    slug: mux
+    verified: 2026-06-26
+  - name: Namespace
+    region: us
+    ats: ashby
+    slug: namespace
+    verified: 2026-06-26
+  - name: Nango
+    region: us
+    ats: ashby
+    slug: nango
+    verified: 2026-06-26
+  - name: Nirvana
+    region: us
+    ats: ashby
+    slug: nirvana
+    verified: 2026-06-26
+  - name: Noyo
+    region: us
+    ats: ashby
+    slug: noyo
+    verified: 2026-06-26
+  - name: Omni
+    region: us
+    ats: ashby
+    slug: omni
+    verified: 2026-06-26
+  - name: Opal
+    region: us
+    ats: ashby
+    slug: opal
+    verified: 2026-06-26
+  - name: Opus Clip
+    region: us
+    ats: ashby
+    slug: opusclip
+    verified: 2026-06-26
+  - name: Parafin
+    region: us
+    ats: ashby
+    slug: parafin
+    verified: 2026-06-26
+  - name: Paragon
+    region: us
+    ats: ashby
+    slug: paragon
+    verified: 2026-06-26
+  - name: Physical Intelligence
+    region: us
+    ats: ashby
+    slug: physicalintelligence
+    verified: 2026-06-26
+  - name: Plain
+    region: us
+    ats: ashby
+    slug: plain
+    verified: 2026-06-26
+  - name: Plane
+    region: us
+    ats: ashby
+    slug: plane
+    verified: 2026-06-26
+  - name: Playground
+    region: us
+    ats: ashby
+    slug: playground
+    verified: 2026-06-26
+  - name: Propel
+    region: us
+    ats: ashby
+    slug: propel
+    verified: 2026-06-26
+  - name: Quindar
+    region: us
+    ats: ashby
+    slug: quindar
+    verified: 2026-06-26
+  - name: Rad AI
+    region: us
+    ats: ashby
+    slug: radai
+    verified: 2026-06-26
+  - name: Range
+    region: us
+    ats: ashby
+    slug: range
+    verified: 2026-06-26
+  - name: Recraft
+    region: us
+    ats: ashby
+    slug: recraft
+    verified: 2026-06-26
+  - name: Rho
+    region: us
+    ats: ashby
+    slug: rho
+    verified: 2026-06-26
+  - name: Rime
+    region: us
+    ats: ashby
+    slug: rime
+    verified: 2026-06-26
+  - name: Rula
+    region: us
+    ats: ashby
+    slug: rula
+    verified: 2026-06-26
+  - name: Savvy
+    region: us
+    ats: ashby
+    slug: savvy
+    verified: 2026-06-26
+  - name: Scalar
+    region: us
+    ats: ashby
+    slug: scalar
+    verified: 2026-06-26
+  - name: Skyflow
+    region: us
+    ats: ashby
+    slug: skyflow
+    verified: 2026-06-26
+  - name: Slingshot AI
+    region: us
+    ats: ashby
+    slug: slingshotai
+    verified: 2026-06-26
+  - name: Slope
+    region: us
+    ats: ashby
+    slug: slope
+    verified: 2026-06-26
+  - name: Socket
+    region: us
+    ats: ashby
+    slug: socket
+    verified: 2026-06-26
+  - name: Speakeasy
+    region: us
+    ats: ashby
+    slug: speakeasy
+    verified: 2026-06-26
+  - name: Sprig
+    region: us
+    ats: ashby
+    slug: sprig
+    verified: 2026-06-26
+  - name: Stedi
+    region: us
+    ats: ashby
+    slug: stedi
+    verified: 2026-06-26
+  - name: Suno
+    region: us
+    ats: ashby
+    slug: suno
+    verified: 2026-06-26
+  - name: Tavus
+    region: us
+    ats: ashby
+    slug: tavus
+    verified: 2026-06-26
+  - name: Tennr
+    region: us
+    ats: ashby
+    slug: tennr
+    verified: 2026-06-26
+  - name: Titan
+    region: us
+    ats: ashby
+    slug: titan
+    verified: 2026-06-26
+  - name: Tomo
+    region: us
+    ats: ashby
+    slug: tomo
+    verified: 2026-06-26
+  - name: Trigger.dev
+    region: us
+    ats: ashby
+    slug: triggerdev
+    verified: 2026-06-26
+  - name: Vitally
+    region: us
+    ats: ashby
+    slug: vitally
+    verified: 2026-06-26
+  - name: WunderGraph
+    region: us
+    ats: ashby
+    slug: wundergraph
+    verified: 2026-06-26
+  - name: 10x Genomics
+    region: us
+    ats: greenhouse
+    slug: 10xgenomics
+    verified: 2026-06-26
+  - name: 6sense
+    region: us
+    ats: greenhouse
+    slug: 6sense
+    verified: 2026-06-26
+  - name: Absci
+    region: us
+    ats: greenhouse
+    slug: absci
+    verified: 2026-06-26
+  - name: AfterShip
+    region: us
+    ats: greenhouse
+    slug: aftership
+    verified: 2026-06-26
+  - name: Agility Robotics
+    region: us
+    ats: greenhouse
+    slug: agilityrobotics
+    verified: 2026-06-26
+  - name: AlphaSense
+    region: us
+    ats: greenhouse
+    slug: alphasense
+    verified: 2026-06-26
+  - name: Altruist
+    region: us
+    ats: greenhouse
+    slug: altruist
+    verified: 2026-06-26
+  - name: Anaplan
+    region: us
+    ats: greenhouse
+    slug: anaplan
+    verified: 2026-06-26
+  - name: Anduril Industries
+    region: us
+    ats: greenhouse
+    slug: andurilindustries
+    verified: 2026-06-26
+  - name: Apiiro
+    region: us
+    ats: greenhouse
+    slug: apiiro
+    verified: 2026-06-26
+  - name: Apollo.io
+    region: us
+    ats: greenhouse
+    slug: apolloio
+    verified: 2026-06-26
+  - name: AppOmni
+    region: us
+    ats: greenhouse
+    slug: appomni
+    verified: 2026-06-26
+  - name: Apptronik
+    region: us
+    ats: greenhouse
+    slug: apptronik
+    verified: 2026-06-26
+  - name: Archer
+    region: us
+    ats: greenhouse
+    slug: archer
+    verified: 2026-06-26
+  - name: Arkose Labs
+    region: us
+    ats: greenhouse
+    slug: arkoselabs
+    verified: 2026-06-26
+  - name: Astera Labs
+    region: us
+    ats: greenhouse
+    slug: asteralabs
+    verified: 2026-06-26
+  - name: Astranis
+    region: us
+    ats: greenhouse
+    slug: astranis
+    verified: 2026-06-26
+  - name: Augury
+    region: us
+    ats: greenhouse
+    slug: augury
+    verified: 2026-06-26
+  - name: Backblaze
+    region: us
+    ats: greenhouse
+    slug: backblaze
+    verified: 2026-06-26
+  - name: Bandwidth
+    region: us
+    ats: greenhouse
+    slug: bandwidth
+    verified: 2026-06-26
+  - name: Beautiful.ai
+    region: us
+    ats: greenhouse
+    slug: beautifulai
+    verified: 2026-06-26
+  - name: BetterHelp
+    region: us
+    ats: greenhouse
+    slug: betterhelp
+    verified: 2026-06-26
+  - name: Billtrust
+    region: us
+    ats: greenhouse
+    slug: billtrust
+    verified: 2026-06-26
+  - name: Bishop Fox
+    region: us
+    ats: greenhouse
+    slug: bishopfox
+    verified: 2026-06-26
+  - name: Bitwarden
+    region: us
+    ats: greenhouse
+    slug: bitwarden
+    verified: 2026-06-26
+  - name: Blend
+    region: us
+    ats: greenhouse
+    slug: blend
+    verified: 2026-06-26
+  - name: Blueshift
+    region: us
+    ats: greenhouse
+    slug: blueshift
+    verified: 2026-06-26
+  - name: Bold
+    region: us
+    ats: greenhouse
+    slug: bold
+    verified: 2026-06-26
+  - name: Bringg
+    region: us
+    ats: greenhouse
+    slug: bringg
+    verified: 2026-06-26
+  - name: BuildOps
+    region: us
+    ats: greenhouse
+    slug: buildops
+    verified: 2026-06-26
+  - name: Bungie
+    region: us
+    ats: greenhouse
+    slug: bungie
+    verified: 2026-06-26
+  - name: Candid
+    region: us
+    ats: greenhouse
+    slug: candid
+    verified: 2026-06-26
+  - name: Capella Space
+    region: us
+    ats: greenhouse
+    slug: capellaspace
+    verified: 2026-06-26
+  - name: Carbon Robotics
+    region: us
+    ats: greenhouse
+    slug: carbonrobotics
+    verified: 2026-06-26
+  - name: Cato Networks
+    region: us
+    ats: greenhouse
+    slug: catonetworks
+    verified: 2026-06-26
+  - name: Celigo
+    region: us
+    ats: greenhouse
+    slug: celigo
+    verified: 2026-06-26
+  - name: Censys
+    region: us
+    ats: greenhouse
+    slug: censys
+    verified: 2026-06-26
+  - name: ChargePoint
+    region: us
+    ats: greenhouse
+    slug: chargepoint
+    verified: 2026-06-26
+  - name: Clear
+    region: us
+    ats: greenhouse
+    slug: clear
+    verified: 2026-06-26
+  - name: Click Therapeutics
+    region: us
+    ats: greenhouse
+    slug: clicktherapeutics
+    verified: 2026-06-26
+  - name: Clover Health
+    region: us
+    ats: greenhouse
+    slug: cloverhealth
+    verified: 2026-06-26
+  - name: Coactive
+    region: us
+    ats: greenhouse
+    slug: coactive
+    verified: 2026-06-26
+  - name: Cobalt.io
+    region: us
+    ats: greenhouse
+    slug: cobaltio
+    verified: 2026-06-26
+  - name: Cognism
+    region: us
+    ats: greenhouse
+    slug: cognism
+    verified: 2026-06-26
+  - name: CommerceIQ
+    region: us
+    ats: greenhouse
+    slug: commerceiq
+    verified: 2026-06-26
+  - name: Coupang
+    region: us
+    ats: greenhouse
+    slug: coupang
+    verified: 2026-06-26
+  - name: Coursera
+    region: us
+    ats: greenhouse
+    slug: coursera
+    verified: 2026-06-26
+  - name: Culture Biosciences
+    region: us
+    ats: greenhouse
+    slug: culturebiosciences
+    verified: 2026-06-26
+  - name: Cymulate
+    region: us
+    ats: greenhouse
+    slug: cymulate
+    verified: 2026-06-26
+  - name: Datarails
+    region: us
+    ats: greenhouse
+    slug: datarails
+    verified: 2026-06-26
+  - name: Diligent Robotics
+    region: us
+    ats: greenhouse
+    slug: diligentrobotics
+    verified: 2026-06-26
+  - name: Doximity
+    region: us
+    ats: greenhouse
+    slug: doximity
+    verified: 2026-06-26
+  - name: DriveWealth
+    region: us
+    ats: greenhouse
+    slug: drivewealth
+    verified: 2026-06-26
+  - name: Duda
+    region: us
+    ats: greenhouse
+    slug: duda
+    verified: 2026-06-26
+  - name: Duolingo
+    region: us
+    ats: greenhouse
+    slug: duolingo
+    verified: 2026-06-26
+  - name: ESS
+    region: us
+    ats: greenhouse
+    slug: ess
+    verified: 2026-06-26
+  - name: Elation Health
+    region: us
+    ats: greenhouse
+    slug: elationhealth
+    verified: 2026-06-26
+  - name: Element Biosciences
+    region: us
+    ats: greenhouse
+    slug: elementbiosciences
+    verified: 2026-06-26
+  - name: Embrace
+    region: us
+    ats: greenhouse
+    slug: embrace
+    verified: 2026-06-26
+  - name: Epirus
+    region: us
+    ats: greenhouse
+    slug: epirus
+    verified: 2026-06-26
+  - name: EquityZen
+    region: us
+    ats: greenhouse
+    slug: equityzen
+    verified: 2026-06-26
+  - name: Fairmarkit
+    region: us
+    ats: greenhouse
+    slug: fairmarkit
+    verified: 2026-06-26
+  - name: FanDuel
+    region: us
+    ats: greenhouse
+    slug: fanduel
+    verified: 2026-06-26
+  - name: Feedzai
+    region: us
+    ats: greenhouse
+    slug: feedzai
+    verified: 2026-06-26
+  - name: Fictiv
+    region: us
+    ats: greenhouse
+    slug: fictiv
+    verified: 2026-06-26
+  - name: Fieldwire
+    region: us
+    ats: greenhouse
+    slug: fieldwire
+    verified: 2026-06-26
+  - name: Figure
+    region: us
+    ats: greenhouse
+    slug: figure
+    verified: 2026-06-26
+  - name: Fleetio
+    region: us
+    ats: greenhouse
+    slug: fleetio
+    verified: 2026-06-26
+  - name: Forter
+    region: us
+    ats: greenhouse
+    slug: forter
+    verified: 2026-06-26
+  - name: Freenome
+    region: us
+    ats: greenhouse
+    slug: freenome
+    verified: 2026-06-26
+  - name: Generate Biomedicines
+    region: us
+    ats: greenhouse
+    slug: generatebiomedicines
+    verified: 2026-06-26
+  - name: Geotab
+    region: us
+    ats: greenhouse
+    slug: geotab
+    verified: 2026-06-26
+  - name: Ginkgo Bioworks
+    region: us
+    ats: greenhouse
+    slug: ginkgobioworks
+    verified: 2026-06-26
+  - name: GoDaddy
+    region: us
+    ats: greenhouse
+    slug: godaddy
+    verified: 2026-06-26
+  - name: Gremlin
+    region: us
+    ats: greenhouse
+    slug: gremlin
+    verified: 2026-06-26
+  - name: Group14
+    region: us
+    ats: greenhouse
+    slug: group14
+    verified: 2026-06-26
+  - name: HawkEye 360
+    region: us
+    ats: greenhouse
+    slug: hawkeye360
+    verified: 2026-06-26
+  - name: Helium 10
+    region: us
+    ats: greenhouse
+    slug: helium10
+    verified: 2026-06-26
+  - name: HighRadius
+    region: us
+    ats: greenhouse
+    slug: highradius
+    verified: 2026-06-26
+  - name: Hover
+    region: us
+    ats: greenhouse
+    slug: hover
+    verified: 2026-06-26
+  - name: ID.me
+    region: us
+    ats: greenhouse
+    slug: idme
+    verified: 2026-06-26
+  - name: IDnow
+    region: us
+    ats: greenhouse
+    slug: idnow
+    verified: 2026-06-26
+  - name: Insurify
+    region: us
+    ats: greenhouse
+    slug: insurify
+    verified: 2026-06-26
+  - name: Isomorphic Labs
+    region: us
+    ats: greenhouse
+    slug: isomorphiclabs
+    verified: 2026-06-26
+  - name: JFrog
+    region: us
+    ats: greenhouse
+    slug: jfrog
+    verified: 2026-06-26
+  - name: Jamf
+    region: us
+    ats: greenhouse
+    slug: jamf
+    verified: 2026-06-26
+  - name: JetBrains
+    region: us
+    ats: greenhouse
+    slug: jetbrains
+    verified: 2026-06-26
+  - name: Jungle Scout
+    region: us
+    ats: greenhouse
+    slug: junglescout
+    verified: 2026-06-26
+  - name: Justworks
+    region: us
+    ats: greenhouse
+    slug: justworks
+    verified: 2026-06-26
+  - name: KoBold Metals
+    region: us
+    ats: greenhouse
+    slug: koboldmetals
+    verified: 2026-06-26
+  - name: LevelTen Energy
+    region: us
+    ats: greenhouse
+    slug: leveltenenergy
+    verified: 2026-06-26
+  - name: Liquibase
+    region: us
+    ats: greenhouse
+    slug: liquibase
+    verified: 2026-06-26
+  - name: Locus Robotics
+    region: us
+    ats: greenhouse
+    slug: locusrobotics
+    verified: 2026-06-26
+  - name: Lucid Motors
+    region: us
+    ats: greenhouse
+    slug: lucidmotors
+    verified: 2026-06-26
+  - name: Luma Health
+    region: us
+    ats: greenhouse
+    slug: lumahealth
+    verified: 2026-06-26
+  - name: Lunar Energy
+    region: us
+    ats: greenhouse
+    slug: lunarenergy
+    verified: 2026-06-26
+  - name: Magic Leap
+    region: us
+    ats: greenhouse
+    slug: magicleap
+    verified: 2026-06-26
+  - name: Mattermost
+    region: us
+    ats: greenhouse
+    slug: mattermost
+    verified: 2026-06-26
+  - name: May Mobility
+    region: us
+    ats: greenhouse
+    slug: maymobility
+    verified: 2026-06-26
+  - name: Motional
+    region: us
+    ats: greenhouse
+    slug: motional
+    verified: 2026-06-26
+  - name: Motive
+    region: us
+    ats: greenhouse
+    slug: motive
+    verified: 2026-06-26
+  - name: Nasuni
+    region: us
+    ats: greenhouse
+    slug: nasuni
+    verified: 2026-06-26
+  - name: Natera
+    region: us
+    ats: greenhouse
+    slug: natera
+    verified: 2026-06-26
+  - name: Netradyne
+    region: us
+    ats: greenhouse
+    slug: netradyne
+    verified: 2026-06-26
+  - name: Netskope
+    region: us
+    ats: greenhouse
+    slug: netskope
+    verified: 2026-06-26
+  - name: Neuralink
+    region: us
+    ats: greenhouse
+    slug: neuralink
+    verified: 2026-06-26
+  - name: Noah Medical
+    region: us
+    ats: greenhouse
+    slug: noahmedical
+    verified: 2026-06-26
+  - name: Obsidian Security
+    region: us
+    ats: greenhouse
+    slug: obsidiansecurity
+    verified: 2026-06-26
+  - name: Octave
+    region: us
+    ats: greenhouse
+    slug: octave
+    verified: 2026-06-26
+  - name: Omada Health
+    region: us
+    ats: greenhouse
+    slug: omadahealth
+    verified: 2026-06-26
+  - name: One Medical
+    region: us
+    ats: greenhouse
+    slug: onemedical
+    verified: 2026-06-26
+  - name: OpenSpace
+    region: us
+    ats: greenhouse
+    slug: openspace
+    verified: 2026-06-26
+  - name: Openly
+    region: us
+    ats: greenhouse
+    slug: openly
+    verified: 2026-06-26
+  - name: Otter.ai
+    region: us
+    ats: greenhouse
+    slug: otterai
+    verified: 2026-06-26
+  - name: Oura
+    region: us
+    ats: greenhouse
+    slug: oura
+    verified: 2026-06-26
+  - name: Outrider
+    region: us
+    ats: greenhouse
+    slug: outrider
+    verified: 2026-06-26
+  - name: Pacvue
+    region: us
+    ats: greenhouse
+    slug: pacvue
+    verified: 2026-06-26
+  - name: Palmetto
+    region: us
+    ats: greenhouse
+    slug: palmetto
+    verified: 2026-06-26
+  - name: Paperless Parts
+    region: us
+    ats: greenhouse
+    slug: paperlessparts
+    verified: 2026-06-26
+  - name: Parse Biosciences
+    region: us
+    ats: greenhouse
+    slug: parsebiosciences
+    verified: 2026-06-26
+  - name: Parsley Health
+    region: us
+    ats: greenhouse
+    slug: parsleyhealth
+    verified: 2026-06-26
+  - name: Path Robotics
+    region: us
+    ats: greenhouse
+    slug: pathrobotics
+    verified: 2026-06-26
+  - name: PathAI
+    region: us
+    ats: greenhouse
+    slug: pathai
+    verified: 2026-06-26
+  - name: Ping Identity
+    region: us
+    ats: greenhouse
+    slug: pingidentity
+    verified: 2026-06-26
+  - name: Pivot Bio
+    region: us
+    ats: greenhouse
+    slug: pivotbio
+    verified: 2026-06-26
+  - name: Recorded Future
+    region: us
+    ats: greenhouse
+    slug: recordedfuture
+    verified: 2026-06-26
+  - name: Reltio
+    region: us
+    ats: greenhouse
+    slug: reltio
+    verified: 2026-06-26
+  - name: Resilience
+    region: us
+    ats: greenhouse
+    slug: resilience
+    verified: 2026-06-26
+  - name: Rightway
+    region: us
+    ats: greenhouse
+    slug: rightway
+    verified: 2026-06-26
+  - name: Riskified
+    region: us
+    ats: greenhouse
+    slug: riskified
+    verified: 2026-06-26
+  - name: Rockstar Games
+    region: us
+    ats: greenhouse
+    slug: rockstargames
+    verified: 2026-06-26
+  - name: Route
+    region: us
+    ats: greenhouse
+    slug: route
+    verified: 2026-06-26
+  - name: Rubrik
+    region: us
+    ats: greenhouse
+    slug: rubrik
+    verified: 2026-06-26
+  - name: SafeBreach
+    region: us
+    ats: greenhouse
+    slug: safebreach
+    verified: 2026-06-26
+  - name: Sagent
+    region: us
+    ats: greenhouse
+    slug: sagent
+    verified: 2026-06-26
+  - name: Salesloft
+    region: us
+    ats: greenhouse
+    slug: salesloft
+    verified: 2026-06-26
+  - name: Salsify
+    region: us
+    ats: greenhouse
+    slug: salsify
+    verified: 2026-06-26
+  - name: Salt Security
+    region: us
+    ats: greenhouse
+    slug: saltsecurity
+    verified: 2026-06-26
+  - name: Seer
+    region: us
+    ats: greenhouse
+    slug: seer
+    verified: 2026-06-26
+  - name: Sendbird
+    region: us
+    ats: greenhouse
+    slug: sendbird
+    verified: 2026-06-26
+  - name: Sezzle
+    region: us
+    ats: greenhouse
+    slug: sezzle
+    verified: 2026-06-26
+  - name: ShipMonk
+    region: us
+    ats: greenhouse
+    slug: shipmonk
+    verified: 2026-06-26
+  - name: Showpad
+    region: us
+    ats: greenhouse
+    slug: showpad
+    verified: 2026-06-26
+  - name: Sidecar Health
+    region: us
+    ats: greenhouse
+    slug: sidecarhealth
+    verified: 2026-06-26
+  - name: Sila Nanotechnologies
+    region: us
+    ats: greenhouse
+    slug: silananotechnologies
+    verified: 2026-06-26
+  - name: Similarweb
+    region: us
+    ats: greenhouse
+    slug: similarweb
+    verified: 2026-06-26
+  - name: Sisense
+    region: us
+    ats: greenhouse
+    slug: sisense
+    verified: 2026-06-26
+  - name: Slingshot Aerospace
+    region: us
+    ats: greenhouse
+    slug: slingshotaerospace
+    verified: 2026-06-26
+  - name: Smartsheet
+    region: us
+    ats: greenhouse
+    slug: smartsheet
+    verified: 2026-06-26
+  - name: Solid Power
+    region: us
+    ats: greenhouse
+    slug: solidpower
+    verified: 2026-06-26
+  - name: Sound Agriculture
+    region: us
+    ats: greenhouse
+    slug: soundagriculture
+    verified: 2026-06-26
+  - name: SpaceX
+    region: us
+    ats: greenhouse
+    slug: spacex
+    verified: 2026-06-26
+  - name: Splice
+    region: us
+    ats: greenhouse
+    slug: splice
+    verified: 2026-06-26
+  - name: SpyCloud
+    region: us
+    ats: greenhouse
+    slug: spycloud
+    verified: 2026-06-26
+  - name: Stability AI
+    region: us
+    ats: greenhouse
+    slug: stabilityai
+    verified: 2026-06-26
+  - name: Stackline
+    region: us
+    ats: greenhouse
+    slug: stackline
+    verified: 2026-06-26
+  - name: Strive Health
+    region: us
+    ats: greenhouse
+    slug: strivehealth
+    verified: 2026-06-26
+  - name: Synack
+    region: us
+    ats: greenhouse
+    slug: synack
+    verified: 2026-06-26
+  - name: Syndigo
+    region: us
+    ats: greenhouse
+    slug: syndigo
+    verified: 2026-06-26
+  - name: Take-Two
+    region: us
+    ats: greenhouse
+    slug: taketwo
+    verified: 2026-06-26
+  - name: Talkspace
+    region: us
+    ats: greenhouse
+    slug: talkspace
+    verified: 2026-06-26
+  - name: TaxBit
+    region: us
+    ats: greenhouse
+    slug: taxbit
+    verified: 2026-06-26
+  - name: Tebra
+    region: us
+    ats: greenhouse
+    slug: tebra
+    verified: 2026-06-26
+  - name: Tenstorrent
+    region: us
+    ats: greenhouse
+    slug: tenstorrent
+    verified: 2026-06-26
+  - name: Thirty Madison
+    region: us
+    ats: greenhouse
+    slug: thirtymadison
+    verified: 2026-06-26
+  - name: Thoropass
+    region: us
+    ats: greenhouse
+    slug: thoropass
+    verified: 2026-06-26
+  - name: Thrive Market
+    region: us
+    ats: greenhouse
+    slug: thrivemarket
+    verified: 2026-06-26
+  - name: Tia
+    region: us
+    ats: greenhouse
+    slug: tia
+    verified: 2026-06-26
+  - name: TripActions
+    region: us
+    ats: greenhouse
+    slug: tripactions
+    verified: 2026-06-26
+  - name: Truveta
+    region: us
+    ats: greenhouse
+    slug: truveta
+    verified: 2026-06-26
+  - name: Tulip
+    region: us
+    ats: greenhouse
+    slug: tulip
+    verified: 2026-06-26
+  - name: Two Chairs
+    region: us
+    ats: greenhouse
+    slug: twochairs
+    verified: 2026-06-26
+  - name: Uber Freight
+    region: us
+    ats: greenhouse
+    slug: uberfreight
+    verified: 2026-06-26
+  - name: Udemy
+    region: us
+    ats: greenhouse
+    slug: udemy
+    verified: 2026-06-26
+  - name: Ultima Genomics
+    region: us
+    ats: greenhouse
+    slug: ultimagenomics
+    verified: 2026-06-26
+  - name: Ursa Major
+    region: us
+    ats: greenhouse
+    slug: ursamajor
+    verified: 2026-06-26
+  - name: Valo Health
+    region: us
+    ats: greenhouse
+    slug: valohealth
+    verified: 2026-06-26
+  - name: Verana Health
+    region: us
+    ats: greenhouse
+    slug: veranahealth
+    verified: 2026-06-26
+  - name: Wasabi
+    region: us
+    ats: greenhouse
+    slug: wasabi
+    verified: 2026-06-26
+  - name: Weave
+    region: us
+    ats: greenhouse
+    slug: weave
+    verified: 2026-06-26
+  - name: Wing
+    region: us
+    ats: greenhouse
+    slug: wing
+    verified: 2026-06-26
+  - name: Wrike
+    region: us
+    ats: greenhouse
+    slug: wrike
+    verified: 2026-06-26
+  - name: Xometry
+    region: us
+    ats: greenhouse
+    slug: xometry
+    verified: 2026-06-26
+  - name: Yotpo
+    region: us
+    ats: greenhouse
+    slug: yotpo
+    verified: 2026-06-26
+  - name: Yubico
+    region: us
+    ats: greenhouse
+    slug: yubico
+    verified: 2026-06-26
+  - name: Zest AI
+    region: us
+    ats: greenhouse
+    slug: zestai
+    verified: 2026-06-26
+  - name: ZipRecruiter
+    region: us
+    ats: greenhouse
+    slug: ziprecruiter
+    verified: 2026-06-26
+  - name: Zocdoc
+    region: us
+    ats: greenhouse
+    slug: zocdoc
+    verified: 2026-06-26
+  - name: ZoomInfo
+    region: us
+    ats: greenhouse
+    slug: zoominfo
+    verified: 2026-06-26
+  - name: Zuora
+    region: us
+    ats: greenhouse
+    slug: zuora
+    verified: 2026-06-26
+  - name: Ambi Robotics
+    region: us
+    ats: lever
+    slug: ambirobotics
+    verified: 2026-06-26
+  - name: Anomaly
+    region: us
+    ats: lever
+    slug: anomaly
+    verified: 2026-06-26
+  - name: Ataccama
+    region: us
+    ats: lever
+    slug: ataccama
+    verified: 2026-06-26
+  - name: Celestia
+    region: us
+    ats: lever
+    slug: celestia
+    verified: 2026-06-26
+  - name: Doxel
+    region: us
+    ats: lever
+    slug: doxel
+    verified: 2026-06-26
+  - name: Drivetrain
+    region: us
+    ats: lever
+    slug: drivetrain
+    verified: 2026-06-26
+  - name: Dwolla
+    region: us
+    ats: lever
+    slug: dwolla
+    verified: 2026-06-26
+  - name: Gynger
+    region: us
+    ats: lever
+    slug: gynger
+    verified: 2026-06-26
+  - name: Hive
+    region: us
+    ats: lever
+    slug: hive
+    verified: 2026-06-26
+  - name: Kepler
+    region: us
+    ats: lever
+    slug: kepler
+    verified: 2026-06-26
+  - name: Merkle Science
+    region: us
+    ats: lever
+    slug: merklescience
+    verified: 2026-06-26
+  - name: Okendo
+    region: us
+    ats: lever
+    slug: okendo
+    verified: 2026-06-26
+  - name: Omnisend
+    region: us
+    ats: lever
+    slug: omnisend
+    verified: 2026-06-26
+  - name: Osaro
+    region: us
+    ats: lever
+    slug: osaro
+    verified: 2026-06-26
+  - name: Plume
+    region: us
+    ats: lever
+    slug: plume
+    verified: 2026-06-26
+  - name: Pyka
+    region: us
+    ats: lever
+    slug: pyka
+    verified: 2026-06-26
+  - name: Scality
+    region: us
+    ats: lever
+    slug: scality
+    verified: 2026-06-26
+  - name: Sila
+    region: us
+    ats: lever
+    slug: sila
+    verified: 2026-06-26
+  - name: WeRide
+    region: us
+    ats: lever
+    slug: weride
+    verified: 2026-06-26
+  - name: Zilliz
+    region: us
+    ats: lever
+    slug: zilliz
+    verified: 2026-06-26

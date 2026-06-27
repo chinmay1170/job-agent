@@ -4,14 +4,19 @@ titles:
     - senior software engineer
     - senior backend engineer
     - senior software developer
-    - staff software engineer
-    - lead software engineer
+    - lead software engineer          # Lead kept — usually a senior IC title
     - backend engineer
     - platform engineer
     - distributed systems engineer
     - software engineer iii
     - sde 3
     - sde iii
+    # Mid-level (SDE2/SE2) also acceptable when comp is strong — judge weighs salary.
+    - software engineer ii
+    - software engineer 2
+    - backend engineer ii
+    - sde 2
+    - sde ii
   # Title must ALSO match one of these domains unless seniority is explicit.
   domains:
     - backend
@@ -26,28 +31,64 @@ titles:
     - mobile
     - ios
     - android
+    # Core-ML / research / data-science. NOTE: granular ML-engineer titles are
+    # deliberately NOT here — they'd fire at the title gate and wrongly kill
+    # AI-platform roles ("ML Platform Engineer"). The nuanced cut (core-ML out,
+    # AI-platform kept) lives in prefilter._ml_core_acceptable. Only titles with
+    # no realistic platform variant stay in this blunt list.
     - data scientist
     - machine learning scientist
+    - applied scientist
+    - research scientist
     - qa
     - test
     - sdet
     - manager
-    - director
     - intern
     - junior
     - graduate
     - embedded
     - salesforce
     - sap
+    # Above-senior levels the candidate (Senior SDE3, ~5y) can't realistically land.
+    # "Lead" is intentionally NOT here (kept as a senior IC title).
+    - staff
+    - principal
+    - distinguished
+    - director
+    - vice president
+    - head of
+    - chief
+    - architect
 
 keywords_boost: [java, spring, kafka, aws, distributed, microservices, dynamodb, kubernetes]
 
+# countries lists include major city names — many postings give only a city
+# ("Berlin", "Madrid Office", "NL - Amsterdam") and would otherwise fail the gate.
 regions:
-  us: {countries: [United States, USA, US], adzuna: us}
-  uk: {countries: [United Kingdom, UK, England, London], adzuna: gb}
-  eu: {countries: [Netherlands, Germany, Ireland, Sweden, Denmark, France, Spain, Portugal, Poland, Austria, Belgium, Switzerland], adzuna: [nl, de]}
+  us: {countries: [United States, USA, US, New York, NYC, San Francisco, Seattle,
+                   Austin, Boston, Chicago, Denver, Los Angeles], adzuna: us}
+  uk: {countries: [United Kingdom, UK, England, London, Manchester, Edinburgh,
+                   Cambridge, Bristol], adzuna: gb}
+  eu: {countries: [Netherlands, Germany, Ireland, Sweden, Denmark, France, Spain,
+                   Portugal, Poland, Austria, Belgium, Switzerland, Finland,
+                   Estonia, Lithuania, Latvia, Hungary, Bulgaria, Czechia,
+                   Czech Republic, Romania, Italy, Luxembourg, Greece, Croatia,
+                   Slovakia, Slovenia,
+                   Amsterdam, Rotterdam, Eindhoven, Utrecht, The Hague,
+                   Berlin, Munich, Hamburg, Frankfurt, Cologne,
+                   Dublin, Stockholm, Gothenburg, Copenhagen,
+                   Paris, Lyon, Madrid, Barcelona, Valencia,
+                   Lisbon, Porto, Warsaw, Krakow, Wroclaw, Gdansk,
+                   Vienna, Brussels, Antwerp, Ghent,
+                   Zurich, Geneva, Lausanne, Basel, Bern,
+                   Helsinki, Tallinn, Vilnius, Riga, Budapest, Sofia, Prague,
+                   Bucharest, Milan, Rome, Athens],
+       adzuna: [nl, de, fr, es, it, at, pl]}
   uae: {countries: [United Arab Emirates, UAE, Dubai, Abu Dhabi]}
-  au: {countries: [Australia, Sydney, Melbourne], adzuna: au}
+  sg: {countries: [Singapore, SG]}
+  au: {countries: [Australia, Sydney, Melbourne, Brisbane, Perth, Canberra,
+                   NSW, VIC], adzuna: au}
 
 posting_text:
   positive:

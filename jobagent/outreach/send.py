@@ -53,6 +53,10 @@ def _first_touch_candidates(conn: sqlite3.Connection, caps_cfg: dict) -> list[di
           AND c.blocklisted = 0
           AND (ct.mx_valid IS NULL OR ct.mx_valid = 1)
           AND NOT EXISTS (SELECT 1 FROM outreach o WHERE o.contact_id = ct.id)
+          -- never outreach to a company that has already rejected us
+          AND NOT EXISTS (
+            SELECT 1 FROM applications a2 JOIN jobs j2 ON j2.id = a2.job_id
+            WHERE j2.company_id = c.id AND a2.status = 'rejected')
         ORDER BY j.id DESC
         """
     ).fetchall()

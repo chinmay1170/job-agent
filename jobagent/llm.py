@@ -24,16 +24,24 @@ class LLMError(RuntimeError):
     pass
 
 
-def _run_claude(prompt: str, model: str, timeout: int) -> str:
-    proc = subprocess.run(
-        [
-            CLAUDE_BIN, "-p", prompt,
-            "--output-format", "json",
-            "--model", model,
-            "--allowedTools", "",
-        ],
-        capture_output=True, text=True, timeout=timeout,
-    )
+def _run_claude(prompt: str, model: str, timeout: int,
+                allowed_tools: str = "") -> str:
+    try:
+        proc = subprocess.run(
+            [
+                CLAUDE_BIN, "-p", prompt,
+                "--output-format", "json",
+                "--model", model,
+                "--allowedTools", allowed_tools,
+            ],
+            capture_output=True, text=True, timeout=timeout,
+        )
+    except subprocess.TimeoutExpired as e:
+        # A hung/slow `claude -p` (session limit, network) must NOT stall the
+        # whole apply run — surface it as a normal LLMError so the caller's
+        # retry/review path handles it gracefully (subprocess.run already
+        # killed the child on timeout).
+        raise LLMError(f"claude -p timed out after {timeout}s") from e
     if proc.returncode != 0:
         raise LLMError(f"claude -p failed rc={proc.returncode}: {proc.stderr[:500]}")
     envelope = json.loads(proc.stdout)
@@ -53,8 +61,13 @@ def _extract_json(text: str) -> str:
 
 
 def ask_json(prompt: str, schema: Type[T], model: str = "sonnet",
-             timeout: int = 300, retries: int = 1) -> T:
-    """Run a judgment prompt and parse the response into `schema`."""
+             timeout: int = 300, retries: int = 1,
+             allowed_tools: str = "") -> T:
+    """Run a judgment prompt and parse the response into `schema`.
+
+    allowed_tools: pass "WebSearch" to let the model search the web (slower;
+    used for market-data lookups like salary benchmarks).
+    """
     contract = (
         "\n\nRespond with ONLY a JSON object matching this schema, no prose, "
         f"no markdown fences:\n{json.dumps(schema.model_json_schema(), indent=None)}"
@@ -65,7 +78,7 @@ def ask_json(prompt: str, schema: Type[T], model: str = "sonnet",
         if attempt and last_err:
             p += f"\n\nYour previous response was invalid ({last_err}). Output strictly valid JSON."
         try:
-            raw = _run_claude(p, model, timeout)
+            raw = _run_claude(p, model, timeout, allowed_tools)
             return schema.model_validate_json(_extract_json(raw))
         except (json.JSONDecodeError, ValidationError, LLMError) as e:
             last_err = e

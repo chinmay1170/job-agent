@@ -48,7 +48,9 @@ run_stage() {
 if [ "$EVENING" -eq 1 ]; then
     echo "JobAgent evening run ($(date '+%F %T'))"
     run_stage inbox    uv run --no-sync jobagent inbox scan
+    run_stage requeue  uv run --no-sync python -c "from jobagent.inbox.manual_email import requeue_fixable; requeue_fixable()"
     run_stage apply    uv run --no-sync jobagent apply --limit "$APPLY_LIMIT"
+    run_stage manualmail uv run --no-sync python -c "from jobagent.inbox.manual_email import send_manual_apply_email; send_manual_apply_email()"
     run_stage digest   uv run --no-sync jobagent digest
 else
     echo "JobAgent morning run ($(date '+%F %T'))"
@@ -57,10 +59,12 @@ else
     fi
     run_stage discover  uv run --no-sync jobagent discover --source all
     run_stage prefilter uv run --no-sync jobagent score prefilter
-    run_stage judge     uv run --no-sync jobagent score judge
     run_stage enrich    uv run --no-sync jobagent enrich
+    run_stage judge     uv run --no-sync jobagent score judge
     run_stage tailor    uv run --no-sync jobagent tailor --all-queued
+    run_stage requeue  uv run --no-sync python -c "from jobagent.inbox.manual_email import requeue_fixable; requeue_fixable()"
     run_stage apply     uv run --no-sync jobagent apply --limit "$APPLY_LIMIT"
+    run_stage manualmail uv run --no-sync python -c "from jobagent.inbox.manual_email import send_manual_apply_email; send_manual_apply_email()"
     run_stage outreach  uv run --no-sync jobagent outreach run
     run_stage inbox     uv run --no-sync jobagent inbox scan
     run_stage digest    uv run --no-sync jobagent digest

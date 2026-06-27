@@ -30,7 +30,7 @@ _MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
 _SKILL_LABELS = {
     "languages_backend": "Languages & Backend",
     "cloud_devops_data": "Cloud, DevOps & Data",
-    "ai_genai": "AI / GenAI",
+    "genai_tooling": "GenAI Tooling",
 }
 
 
@@ -328,7 +328,7 @@ def _tailor_one(conn: sqlite3.Connection, job: sqlite3.Row, profile: dict) -> No
     print(f"[tailor] job {job['id']}: {job['title']} @ {company_name}")
 
     plan = ask_json(_build_prompt(profile, job, company_name), TailorPlan,
-                    model="sonnet")
+                    model="sonnet", timeout=480)
 
     resume_content = _resume_content(profile, plan)
     cover_content = _cover_content(profile, plan, job, company_name)

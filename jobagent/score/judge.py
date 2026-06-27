@@ -40,6 +40,18 @@ def _profile_summary() -> str:
     return (
         f"CANDIDATE PROFILE\n"
         f"Headline: {p.get('headline', '')}\n"
+        f"Seniority: SENIOR level (SDE3, ~5 years) — targets Senior / Lead IC "
+        f"roles. ALSO open to mid-level (SDE2/SE2) roles when compensation is "
+        f"strong — don't penalise those for being a step down. Staff / Principal "
+        f"/ Director / VP / Head are a POOR fit (over-leveled).\n"
+        f"Domain: BACKEND-leaning FULL-STACK / distributed-systems engineer "
+        f"(Java/Spring, Kafka, AWS, microservices; also JavaScript/TypeScript) "
+        f"— backend AND full-stack roles are a strong fit. NOT an ML / "
+        f"data-science / research candidate — score core-ML, applied-science, "
+        f"model-training and research roles LOW. He DOES have real GenAI-TOOLING "
+        f"experience (LLM integration, RAG, MCP servers), so AI-PLATFORM / "
+        f"AI-infra / GenAI-tooling / backend-for-AI roles ARE a strong fit too. "
+        f"(Pure front-end-only roles are a weak fit — he is backend-strong.)\n"
         f"Location: {ident.get('location', 'India')} | needs visa sponsorship: yes | "
         f"willing to relocate: yes | target regions: "
         f"{', '.join(ident.get('target_regions', []))}\n"
@@ -64,24 +76,53 @@ def _build_prompt(profile: str, batch: list) -> str:
         "(reply/screen/interview). Weigh ALL of: fit, seniority match, how "
         "likely the company sponsors a visa + relocates an India-based hire "
         "(known sponsors and roles that mention visa/relocation score higher; "
-        "roles silent on sponsorship are uncertain, not zero; US roles are "
-        "harder due to H-1B; EU/UAE generally easier), role competition, and "
-        "posting freshness. Be calibrated and realistic — most cold "
-        "applications are long shots; reserve 60+ for genuinely strong matches "
-        "at likely sponsors.",
+        "roles silent on sponsorship are uncertain, not zero; EU/UAE generally "
+        "easier), role competition, and posting freshness. Be calibrated and "
+        "realistic — most cold applications are long shots; reserve 60+ for "
+        "genuinely strong matches at likely sponsors.",
+        "- US ROLES ARE A PRIORITY for this candidate: do NOT down-rank US "
+        "postings for H-1B difficulty — big US tech sponsors H-1B routinely. "
+        "Score US roles on fit/sponsor-likelihood like any other region (a "
+        "strong-fit US role at a known sponsor should clear the apply bar).",
+        "- SPONSORSHIP REALISM (this is where past scores were too optimistic): "
+        "an India-based hire needing visa + RELOCATION is a real cost. Reserve "
+        "35%+ for (a) large, well-known H-1B sponsors (US big tech / scaled "
+        "public cos) OR (b) any role whose posting EXPLICITLY mentions visa "
+        "sponsorship / relocation. Small & mid-size NON-US fintechs/startups "
+        "(typical EU/UK/AU) that are SILENT on sponsorship rarely sponsor an "
+        "India relocation for a mid/senior IC — score those LOWER (≤25) and add "
+        "a sponsorship red_flag. Do not assume 'EU/UAE easier' by default.",
+        "- DOMAIN FIT: candidate is a BACKEND-leaning FULL-STACK engineer, not "
+        "ML. Backend AND full-stack roles are a strong fit. Core-ML / "
+        "applied-science / model-training / research / data-science roles are a "
+        "POOR fit — score selection_chance LOW and add a domain red_flag. "
+        "AI-platform / AI-infrastructure / model-SERVING-platform / "
+        "GenAI-tooling / backend-for-AI roles ARE a strong fit too (real "
+        "GenAI-tooling experience). Pure front-end-only roles are a weak fit.",
+        "- SENIORITY: the candidate is Senior (SDE3, ~5y). If the title or "
+        "description targets Staff/Principal/Director/VP/Head, or the posting "
+        "requires materially more than ~6-7 years, treat it as a poor fit — "
+        "lower selection_chance and note it in red_flags.",
         "- sponsorship_confidence (high/medium/low): how confident the "
         "posting/company suggests visa sponsorship is realistic.",
         "- reasons: short bullets; red_flags: concerns (sponsorship doubts, "
-        "stack/seniority mismatch, contract/agency role).",
+        "stack/seniority mismatch, over-senior level, too many years, "
+        "contract/agency role).",
         "",
         "JOBS:",
     ]
     for job in batch:
         desc = (job["description"] or "")[:DESC_TRUNC]
+        size_bits = [b for b in (
+            (job["employee_count"] if "employee_count" in job.keys() else None),
+            (job["market_cap"] if "market_cap" in job.keys() else None),
+            (job["tier"] if "tier" in job.keys() else None),
+        ) if b and b != "Unknown"]
+        size_hint = f"  [{', '.join(size_bits)}]" if size_bits else ""
         lines += [
             f"--- job_id: {job['id']}",
             f"title: {job['title']}",
-            f"company: {job['company_name']}",
+            f"company: {job['company_name']}{size_hint}",
             f"location: {job['location'] or 'unknown'}",
             f"description: {desc or '(no description available)'}",
         ]
@@ -95,7 +136,8 @@ def run_judge(limit: int = 60) -> dict:
     min_chance = caps.get("min_selection_chance", 50)
     borderline = max(20, min_chance - 20)  # show near-misses in the digest
     jobs = conn.execute(
-        "SELECT j.id, j.title, j.location, j.description, c.name AS company_name "
+        "SELECT j.id, j.title, j.location, j.description, c.name AS company_name, "
+        "c.employee_count, c.market_cap, c.tier "
         "FROM jobs j JOIN companies c ON j.company_id = c.id "
         "WHERE j.status = 'prefiltered' ORDER BY j.id LIMIT ?",
         (limit,),

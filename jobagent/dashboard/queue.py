@@ -43,15 +43,18 @@ def resolve(conn: sqlite3.Connection, item_id: int, resolution: str) -> bool:
     if resolution == "applied_manually" and row["job_id"] is not None:
         conn.execute(
             """
-            INSERT INTO applications (job_id, method, status, submitted_at)
-            VALUES (?, 'manual', 'submitted', datetime('now'))
+            INSERT INTO applications (job_id, method, status, submitted_at, predicted_chance)
+            VALUES (?, 'manual', 'submitted', datetime('now'),
+                    (SELECT selection_chance FROM jobs WHERE id=?))
             ON CONFLICT(job_id) DO UPDATE SET
               method='manual',
               status='submitted',
-              submitted_at=COALESCE(submitted_at, datetime('now'))
+              submitted_at=COALESCE(submitted_at, datetime('now')),
+              predicted_chance=COALESCE(predicted_chance, excluded.predicted_chance)
             """,
-            (row["job_id"],),
+            (row["job_id"], row["job_id"]),
         )
+        conn.execute("UPDATE jobs SET status='applied' WHERE id=?", (row["job_id"],))
 
     conn.commit()
     log_event(conn, "review_queue", item_id, "review_resolved",
