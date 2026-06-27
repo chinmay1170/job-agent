@@ -46,7 +46,7 @@ no_response_after_days: 14
 exclude_remote: true           # relocation/visa path only — skip remote-only roles
 dry_run: false                 # LIVE since 2026-06-12 (user-approved); outreach still shadows first 3 days via --shadow
 # Which resume PDF gets uploaded to applications and outreach:
-#   original = the user's own hand-made PDF (config/Chinmay_Krishna_Resume.pdf)
+#   original = the user's own hand-made PDF (config/resume.pdf)
 #   tailored = per-job Typst-generated PDF (riskier: AI-resume filters)
 # 'tailored' (2026-06-23): resume_pdf returns each application's own resume_path
 # — the driver sets a per-JD tailored v2 PDF for high-fit (>=tailor_min_chance)

@@ -19,7 +19,7 @@ point_at_original() {
   $PY -c "
 import sys; sys.path.insert(0,'.')
 from jobagent import db, config
-caps=config.caps(); orig=caps.get('original_resume_path','config/Chinmay_Krishna_Resume.pdf'); minc=caps.get('tailor_min_chance',35)
+caps=config.caps(); orig=caps.get('original_resume_path','config/resume.pdf'); minc=caps.get('tailor_min_chance',35)
 conn=db.connect()
 rows=conn.execute(\"SELECT j.id FROM jobs j LEFT JOIN applications a ON a.job_id=j.id WHERE j.status='apply_queued' AND a.resume_path IS NULL AND (j.selection_chance < ? OR j.selection_chance IS NULL)\",(minc,)).fetchall()
 n=0

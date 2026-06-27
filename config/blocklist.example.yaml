@@ -1,0 +1,27 @@
+# Companies the agent must NEVER contact or apply to.
+# Copy to config/blocklist.yaml and add YOUR current employer + subsidiaries.
+companies:
+  # >>> add your current employer + its subsidiaries here <<<
+  # - Your Employer
+  # Staffing agencies / consultancies that repost jobs (low value, noisy) —
+  # keep or trim as you like:
+  - Crossover
+  - Turing
+  - Toptal
+  - Andela
+  - Robert Half
+  - Hays
+  - Randstad
+  - Adecco
+  - Michael Page
+  - TEKsystems
+  - Infosys
+  - Wipro
+  - TCS
+  - Tata Consultancy Services
+  - Cognizant
+  - Capgemini
+  - Accenture
+  - Luxoft
+  - EPAM
+domains: []
