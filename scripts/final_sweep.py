@@ -1,11 +1,13 @@
 """Wait for the running apply to finish, then requeue fixable + re-apply with
 the consent-checkbox / token-embed / mapper-deferral fixes. Headless."""
 import sys, time, subprocess
-sys.path.insert(0,"/Users/chinmaykrishna/Documents/job-agent")
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 while subprocess.run(["pgrep","-f","run_apply"],capture_output=True,text=True).stdout.strip():
     time.sleep(15)
 subprocess.run(["pkill","-9","-f","Chrome for Testing"],capture_output=True)
-subprocess.run("rm -f data/browser_profile/Singleton*",shell=True,cwd="/Users/chinmaykrishna/Documents/job-agent")
+subprocess.run("rm -f data/browser_profile/Singleton*",shell=True,cwd=ROOT)
 time.sleep(3)
 from jobagent.inbox.manual_email import requeue_fixable, send_manual_apply_email
 n=requeue_fixable(); print(f"requeued {n}",flush=True)

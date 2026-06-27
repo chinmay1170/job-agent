@@ -1,0 +1,79 @@
+# ── HONEST SCREENING ANSWERS ─────────────────────────────────────────
+# Copy to `config/answers.yaml` and fill with YOUR true answers.
+# This is the integrity core: legal/visa/salary/numeric questions are answered
+# ONLY verbatim from here — the field mapper never invents them. A required
+# question with no grounded answer goes to the review queue.
+
+work_authorization:
+  requires_visa_sponsorship: false   # true if you need a work visa where you apply
+  authorized_us: true                # set each to YOUR true work authorization
+  authorized_uk: false
+  authorized_eu: false
+  authorized_au: false
+  authorized_uae: false
+  current_visa_status: "US citizen"  # describe your real status
+
+relocation:
+  willing_to_relocate: true
+  needs_relocation_assistance: false
+  open_to_onsite: true
+  open_to_hybrid: true
+
+logistics:
+  notice_period: "2 weeks"
+  earliest_start_date: "Within 2-4 weeks of an offer"
+  current_location: "San Francisco, United States"
+  current_employer: "Example Corp"
+  years_of_experience: "5+"
+
+# Seniority / min-YoE prefilter gate. Reject postings whose required minimum
+# years exceeds candidate_years_experience + year_stretch.
+fit:
+  candidate_years_experience: 5
+  year_stretch: 2
+
+compensation:
+  expected_salary_usd: 185000
+  expected_salary_eur: 115000
+  expected_salary_gbp: 110000
+  expected_salary_aud: 175000
+  expected_salary_sgd: 170000
+  salary_note: "Open to discussing compensation based on role, location, and total package"
+
+# Answer "Do you have experience with X?" Yes ONLY for what's listed here.
+skills_confirmed_exposure:
+  [Java, Go, Python, SQL, Spring Boot, Kafka, REST APIs, Microservices,
+   AWS, Docker, Kubernetes, PostgreSQL, Redis]
+
+eeo_demographics:
+  default: "Decline to self-identify"
+
+misc:
+  how_did_you_hear: "Company careers page"
+  criminal_record: false
+  security_clearance: false
+  previously_employed_by_company: false
+  relatives_at_company: false
+  ai_policy_agreement: true
+  public_official: false
+  pronouns: "Decline to self-identify"
+  gender: "Decline to self-identify"
+  references_available: "Available upon request"
+  current_city: "San Francisco"        # current location autocomplete fields
+  current_state: "California"
+  current_country: "United States"
+  currently_located_in_us: true        # answer truthfully
+  military_status: "I am not a veteran"
+  veteran_status: "I am not a protected veteran"
+  disability_status: "Decline to self-identify"
+  citizenship_country: "United States"
+  eu_citizen: false
+  marketing_opt_in: false
+  # Education (mirror profile.yaml education[0])
+  education_school: "Your University"
+  education_degree: "Bachelor's Degree"
+  education_degree_full: "B.S. Computer Science"
+  education_field: "Computer Science"
+  education_start_year: "2014"
+  education_end_year: "2018"
+  education_gpa: "3.8/4.0"

@@ -2,7 +2,9 @@
 so today's fresh finds get scored into the apply queue fast. run_volume (chained
 after) does the tailor/point/apply loop."""
 import sys
-sys.path.insert(0, "/Users/chinmaykrishna/Documents/job-agent")
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 from jobagent.score.prefilter import run_prefilter
 print("== PREFILTER ==", flush=True)

@@ -22,10 +22,17 @@ _REMOTE = re.compile(r"\bremote\b", re.I)
 # India-located role is never the goal. Used to reject India postings even when
 # the company's seed region is a target (a US company's Bengaluru office is
 # still an India job).
-_HOME_EXCLUDE = re.compile(
-    r"\bindia\b|bengaluru|bangalore|hyderabad|mumbai|\bpune\b|"
-    r"\b(new )?delhi\b|\bncr\b|noida|gurugram|gurgaon|chennai|kolkata|"
-    r"ahmedabad|\bgoa\b", re.I)
+def _home_exclude_re():
+    """Regex of home-country location terms to exclude, from profile identity.
+    Empty config -> a never-matching pattern (don't exclude anything)."""
+    from jobagent import config
+    terms = config.identity().get("home_exclude_terms") or []
+    if not terms:
+        return re.compile(r"(?!x)x")  # matches nothing
+    return re.compile("|".join(re.escape(str(t)) for t in terms), re.I)
+
+
+_HOME_EXCLUDE = _home_exclude_re()
 
 # Titles above Senior that the candidate (Senior SDE3, ~5y) can't realistically
 # land. "Lead" is intentionally absent (kept as a senior IC title).

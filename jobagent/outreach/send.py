@@ -20,7 +20,7 @@ from pathlib import Path
 from jobagent import config, db, killswitch
 from jobagent.outreach import compose, contacts, gmail
 
-SHADOW_RECIPIENT = "chinmaykrishna3@gmail.com"
+SHADOW_RECIPIENT = config.identity().get("email", "")
 _GUESS_PRIORITY = {"careers": 0, "jobs": 1, "talent": 2}
 
 

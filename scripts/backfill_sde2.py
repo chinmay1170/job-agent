@@ -1,7 +1,9 @@
 """Backfill SDE2/SE2 roles title-rejected before the include-list widened.
 Waits for any running fresh_cycle/apply to finish, then reprocesses them."""
 import sys, time, subprocess
-sys.path.insert(0, "/Users/chinmaykrishna/Documents/job-agent")
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 # Wait for the in-flight cycle to release the DB / browser / claude budget.
 def _busy():

@@ -1,10 +1,12 @@
 """Discover ONLY the freshly-added (verified 2026-06-26) companies, then
 prefilter -> enrich -> judge. Fast refill without re-scraping all 701 boards."""
 import sys
-sys.path.insert(0, "/Users/chinmaykrishna/Documents/job-agent")
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 import yaml
 
-SEED = "/Users/chinmaykrishna/Documents/job-agent/config/seeds/eu_uae_boards.yaml"
+SEED = str(ROOT / "config/seeds/eu_uae_boards.yaml")
 doc = yaml.safe_load(open(SEED))
 new = [c for c in doc["companies"] if str(c.get("verified")) == "2026-06-26"]
 yaml.safe_dump({"companies": new}, open("/tmp/new_seeds.yaml", "w"))

@@ -2,8 +2,8 @@
 # Robust volume driver: each tailor batch and apply chunk is a FRESH short-lived
 # python subprocess, so no process accumulates memory (the long-process exit-144
 # / EPIPE crashes that capped earlier runs). Loops until the queue drains.
-cd /Users/chinmaykrishna/Documents/job-agent || exit 1
-export PYTHONPATH=/Users/chinmaykrishna/Documents/job-agent
+cd "$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")/.." && pwd)" || exit 1
+export PYTHONPATH="$(pwd)"
 PY=.venv/bin/python
 
 # High-fit (>= tailor_min_chance) queued jobs get a per-JD TAILORED v2 resume

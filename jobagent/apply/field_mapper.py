@@ -32,8 +32,9 @@ class FillPlan(BaseModel):
     notes: list[str] = []
 
 
-PROMPT = """You are filling a job application form for Chinmay Krishna. Map each
-form control to an action. You must be conservative and honest.
+PROMPT = """You are filling a job application form for the candidate described in
+the profile/answers below. Map each form control to an action. You must be
+conservative and honest.
 
 ## Candidate facts (the ONLY permitted sources of answers)
 Identity/profile:
@@ -79,19 +80,19 @@ Cover letter text (for "why do you want to work here" style questions):
     questions → agree/yes (misc.ai_policy_agreement). confidence 0.95.
 4d. "How did you hear about this role / where did you find this job?" →
     misc.how_did_you_hear ("Company careers page"). confidence 0.95.
-4e. Location / city autocomplete fields → misc.current_city + ", India"
-    ("Bengaluru, India"). confidence 0.9.
-4e2. CURRENT-location questions (answer with where he lives NOW — honest):
+4e. Location / city autocomplete fields → misc.current_city + ", " +
+    misc.current_country. confidence 0.9.
+4e2. CURRENT-location questions (answer with where the candidate lives NOW — honest):
     - "what country are you based in / country of residence / where do you
-      live" -> misc.current_country ("India"). confidence 0.95.
+      live" -> misc.current_country. confidence 0.95.
     - "which state or province do you currently live in" ->
-      misc.current_state ("Karnataka"). confidence 0.9.
-    - "are you currently located/based in the US / in <country>?" -> No
-      (misc.currently_located_in_us is false; he is in India). confidence 0.9.
-    - "if located in the US, what city/state" -> action=skip (he is not). conf 0.9.
+      misc.current_state. confidence 0.9.
+    - "are you currently located/based in the US / in <country>?" -> answer
+      truthfully from misc.currently_located_in_us. confidence 0.9.
+    - "if located in the US, what city/state" -> action=skip if not in the US. conf 0.9.
     - nationality / citizenship / "are you a citizen of X" -> answer from
-      misc.citizenship_country ("India") / "are you an EU citizen" -> No
-      (misc.eu_citizen). NEVER claim a citizenship he lacks. confidence 0.9.
+      misc.citizenship_country / "are you an EU citizen" -> from misc.eu_citizen.
+      NEVER claim a citizenship the candidate lacks. confidence 0.9.
 4e3. PREFERRED / future work-location ("preferred office location", "in what
     cities are you available to work", "where will you be based for this role")
     -> the ROLE's city/region from answers.this_job.location (he relocates for

@@ -52,7 +52,7 @@ dry_run: false                 # LIVE since 2026-06-12 (user-approved); outreach
 # — the driver sets a per-JD tailored v2 PDF for high-fit (>=tailor_min_chance)
 # roles, and the original master PDF for everything else.
 resume_mode: tailored
-original_resume_path: config/Chinmay_Krishna_Resume.pdf
+original_resume_path: config/resume.pdf   # drop your own PDF here (gitignored)
 # Roles >= this selection_chance get a per-JD tailored resume. Set to 30 (not
 # 35) because the sponsorship-realistic judge clusters most roles at 20-34, and
 # the >=35 roles were already applied with the master pre-tailoring — 30 lets

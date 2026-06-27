@@ -7,3 +7,13 @@ credentials.json
 __pycache__/
 .venv/
 .DS_Store
+
+# ── personal config (copy the .example files and fill your own) ──
+config/profile.yaml
+config/answers.yaml
+config/resume.pdf
+config/*.pdf
+config/resume_v2.html
+config/REFERRAL_TARGETS.md
+config/LINKEDIN_OUTREACH_KIT.md
+config/RESUME_REVISED_COPY.md

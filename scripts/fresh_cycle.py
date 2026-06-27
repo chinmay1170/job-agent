@@ -2,7 +2,9 @@
 (seniority/YoE-gated) -> enrich (tier) -> judge (tier-aware) -> tailor -> apply
 (tier-balanced + per-platform caps)."""
 import sys, time
-sys.path.insert(0, "/Users/chinmaykrishna/Documents/job-agent")
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 from jobagent.discover import run_discover
 print("== DISCOVER ==", flush=True)

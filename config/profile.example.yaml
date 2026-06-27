@@ -1,0 +1,65 @@
+# ── YOUR MASTER PROFILE ──────────────────────────────────────────────
+# Copy this file to `config/profile.yaml` and fill in YOUR real details.
+# This is the single source of truth the agent reads for scoring, form-fill
+# and tailoring. The tailor stage may SELECT/REPHRASE from here — never invent.
+#
+# `identity` drives prompts AND filters, so fill it carefully.
+
+identity:
+  full_name: Jane Doe
+  first_name: Jane
+  last_name: Doe
+  email: jane.doe@example.com           # used for digest/self/outreach + User-Agent
+  phone: "+1 555 123 4567"
+  location: United States               # your CURRENT country of residence
+  home_city: San Francisco              # your current city (form-fill fallback)
+  linkedin: https://linkedin.com/in/jane-doe
+  needs_visa_sponsorship: false         # true if you need a work visa where you're applying
+  willing_to_relocate: true
+  target_regions: [us, eu, uk, au, uae, sg]   # regions to target
+  # Locations to EXCLUDE from discovery (e.g. your home country if you only want
+  # roles abroad). Leave [] to NOT exclude anywhere.
+  home_exclude_terms: []
+
+headline: Senior Software Engineer
+
+summary: >
+  Senior software engineer with N years building large-scale, cloud-native
+  distributed systems. Replace this with 3-4 honest sentences on your scale,
+  stack, and impact — the judge and tailor read it verbatim.
+
+skills:
+  languages_backend: [Java, Go, Python, SQL, Spring Boot, Kafka]
+  cloud_devops_data: [AWS, Docker, Kubernetes, PostgreSQL, Terraform]
+  genai_tooling: [LLM integration, RAG]      # optional supporting line
+
+experience:
+  - company: Example Corp
+    title: Senior Software Engineer
+    start: "2021-01"
+    end: present
+    bullets:
+      - text: "Built X handling ~Y scale, improving Z by N% (use real, true metrics)."
+      - text: "Led <project>; owned <system> end to end."
+  - company: Previous Co
+    title: Software Engineer
+    start: "2018-06"
+    end: "2020-12"
+    bullets:
+      - text: "Shipped <feature> used by N customers."
+
+projects:
+  - name: Side Project
+    stack: "Python, FastAPI"
+    dates: "2023"
+    bullets:
+      - text: "What you built and why it mattered."
+
+education:
+  - school: Your University
+    degree: "Bachelor's Degree"
+    detail: "Computer Science"
+    dates: "2014 - 2018"
+
+awards:
+  - "Any honors / awards (optional)"

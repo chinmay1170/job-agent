@@ -587,6 +587,13 @@ def region_active(conn: sqlite3.Connection) -> list[dict]:
     return [dict(r) for r in rows]
 
 
+def _brand_subtitle() -> str:
+    """Config-driven dashboard subtitle (no hardcoded personal framing)."""
+    from jobagent import config
+    name = (config.identity().get("first_name") or "").strip()
+    return (f"{name}'s job search · live" if name else "Job search · live")
+
+
 # ---------- routes ----------
 
 @app.get("/", response_class=HTMLResponse)
@@ -677,6 +684,7 @@ def index(request: Request) -> HTMLResponse:
         context = {
             "request": request,
             "killed": killswitch.is_killed(),
+            "brand_subtitle": _brand_subtitle(),
             "funnel": funnel(conn),
             "applications": applications,
             "replies": replies,

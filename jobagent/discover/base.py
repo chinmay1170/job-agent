@@ -13,7 +13,7 @@ import yaml
 
 from jobagent import config, db
 
-USER_AGENT = "jobagent/0.1 (personal job search; chinmaykrishna3@gmail.com)"
+USER_AGENT = f"jobagent/0.1 (personal job search; {config.identity().get('email', 'user@example.com')})"
 HEADERS = {"User-Agent": USER_AGENT, "Accept": "application/json"}
 TIMEOUT = 20
 BOARD_SLEEP = 0.5  # politeness gap between board / detail fetches

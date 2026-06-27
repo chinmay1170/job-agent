@@ -25,7 +25,7 @@ RETRYABLE_REASONS = {
     "no_form_found", "unmapped_required_field", "submit_error",
     "submit_uncertain", "low_confidence", "human_check_failed",
 }
-SELF_EMAIL = "chinmaykrishna3@gmail.com"
+SELF_EMAIL = config.identity().get("email", "")
 
 
 def requeue_fixable(max_attempts: int = 3) -> dict:

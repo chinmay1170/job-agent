@@ -15,7 +15,7 @@ from jobagent.inbox import digest_html
 from jobagent.outreach import gmail
 
 DIGEST_DIR = ROOT / "artifacts" / "digests"
-DIGEST_TO = "chinmaykrishna3@gmail.com"
+DIGEST_TO = config.identity().get("email", "")
 
 
 def _section(title: str, lines: list[str], empty: str = "_none_") -> str:

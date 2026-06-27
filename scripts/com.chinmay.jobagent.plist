@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
+<!-- Edit /ABSOLUTE/PATH/TO/job-agent to your clone location, then load with launchctl. -->
 <dict>
     <key>Label</key>
-    <string>com.chinmay.jobagent</string>
+    <string>com.jobagent</string>
 
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>/Users/chinmaykrishna/Documents/job-agent/scripts/run_daily.sh</string>
+        <string>/ABSOLUTE/PATH/TO/job-agent/scripts/run_daily.sh</string>
     </array>
 
     <key>WorkingDirectory</key>
-    <string>/Users/chinmaykrishna/Documents/job-agent</string>
+    <string>/ABSOLUTE/PATH/TO/job-agent</string>
 
     <!-- Two daily runs share this script: run_daily.sh detects hour >= 17
          and runs the lighter evening pass (inbox scan + apply + digest). -->
@@ -33,8 +34,8 @@
     </array>
 
     <key>StandardOutPath</key>
-    <string>/Users/chinmaykrishna/Documents/job-agent/logs/launchd.log</string>
+    <string>/ABSOLUTE/PATH/TO/job-agent/logs/launchd.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/chinmaykrishna/Documents/job-agent/logs/launchd.log</string>
+    <string>/ABSOLUTE/PATH/TO/job-agent/logs/launchd.log</string>
 </dict>
 </plist>

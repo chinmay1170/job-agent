@@ -1,5 +1,7 @@
 import sys, time, subprocess
-sys.path.insert(0, "/Users/chinmaykrishna/Documents/job-agent")
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 from jobagent import db
 from jobagent.tailor.tailor import run_tailor
 
@@ -21,7 +23,6 @@ print("TAILOR_DONE", flush=True)
 
 # 2) chunked apply, fresh browser per chunk (avoids the ~13-job driver crash)
 from jobagent.apply.runner import run_apply
-ROOT = "/Users/chinmaykrishna/Documents/job-agent"
 for ch in range(16):
     conn = db.connect()
     q = conn.execute("SELECT COUNT(*) FROM jobs WHERE status='apply_queued'").fetchone()[0]

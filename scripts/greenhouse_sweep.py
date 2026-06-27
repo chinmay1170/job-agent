@@ -2,8 +2,10 @@
 park non-Greenhouse queue entries for the run, apply, restore."""
 import sys
 import time
+from pathlib import Path
 
-sys.path.insert(0, "/Users/chinmaykrishna/Documents/job-agent")
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 from jobagent import db
 from jobagent.enrich import benchmark_salaries

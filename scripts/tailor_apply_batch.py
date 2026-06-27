@@ -6,8 +6,10 @@ claude -p call volume proportional to what apply can actually submit today.
 """
 import sys
 import time
+from pathlib import Path
 
-sys.path.insert(0, "/Users/chinmaykrishna/Documents/job-agent")
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 from jobagent import db
 from jobagent.tailor.tailor import run_tailor

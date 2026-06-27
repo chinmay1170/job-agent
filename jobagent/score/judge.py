@@ -37,6 +37,10 @@ def _profile_summary() -> str:
     key_skills = ", ".join(
         (skills.get("languages_backend") or [])[:10]
         + (skills.get("cloud_devops_data") or [])[:8])
+    sp = ("needs visa sponsorship: YES" if ident.get("needs_visa_sponsorship")
+          else "needs visa sponsorship: no (work-authorized)")
+    rl = ("willing to relocate: yes" if ident.get("willing_to_relocate", True)
+          else "willing to relocate: no")
     return (
         f"CANDIDATE PROFILE\n"
         f"Headline: {p.get('headline', '')}\n"
@@ -52,8 +56,7 @@ def _profile_summary() -> str:
         f"experience (LLM integration, RAG, MCP servers), so AI-PLATFORM / "
         f"AI-infra / GenAI-tooling / backend-for-AI roles ARE a strong fit too. "
         f"(Pure front-end-only roles are a weak fit — he is backend-strong.)\n"
-        f"Location: {ident.get('location', 'India')} | needs visa sponsorship: yes | "
-        f"willing to relocate: yes | target regions: "
+        f"Location: {ident.get('location', '')} | {sp} | {rl} | target regions: "
         f"{', '.join(ident.get('target_regions', []))}\n"
         f"Summary: {p.get('summary', '').strip()}\n"
         f"Key skills: {key_skills}"

@@ -151,7 +151,7 @@ def tailor_highfit_batch(limit: int = 4) -> dict:
     to the master resume so the job still applies. Returns counts."""
     caps = config.caps()
     minc = caps.get("tailor_min_chance", 35)
-    master = str(ROOT / caps.get("original_resume_path", "config/Chinmay_Krishna_Resume.pdf"))
+    master = str(ROOT / caps.get("original_resume_path", "config/resume.pdf"))
     conn = db.connect()
     # Only tailor jobs with NO resume yet (resume_path IS NULL). A job that
     # already has a path — tailored (resume_v2.pdf) OR a master fallback after a
